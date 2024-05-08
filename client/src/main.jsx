@@ -1,6 +1,8 @@
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
+// index.js or App.js
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import App from './App.jsx';
 import Home from './pages/Home';
@@ -20,22 +22,41 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
-      }, {
+      }, 
+      {
         path: '/login',
         element: <Login />
-      }, {
+      }, 
+      {
         path: '/signup',
         element: <Signup />
-      }, {
+      }, 
+      {
         path: '/orderHistory',
         element: <OrderHistory />
-      }, {
+      }, 
+      {
         path: '/products/:id',
         element: <Detail />
-      }, {
+      }, 
+      {
         path: '/success',
         element: <Success />
       },
+// below links I've added //////////////////////////////////////////
+//{
+//  path: '/page1',
+//  element: <Events />
+//},
+//{
+//  path: '/page2',
+//  element: <Event-1 />
+//},
+//{
+//path: '/page3',
+//element: <Chat />
+//},
+
     ],
   },
 ]);

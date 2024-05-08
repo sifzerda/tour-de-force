@@ -1,3 +1,6 @@
+//import './App.css';
+// index.js or App.js
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Outlet } from 'react-router-dom';
 import {
   ApolloClient,
@@ -8,7 +11,17 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import Nav from './components/Nav';
+
 import { StoreProvider } from './utils/GlobalState';
+
+import Header from './components/Header';
+import Navi from './components/Navi';
+import Footer from './components/Footer';
+
+//import 'antd/dist/antd.css';
+//import Footer from 'antd/lib/footer';
+
+////////////////////////////////////////////////////////////////////
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -34,8 +47,19 @@ function App() {
     <ApolloProvider client={client}>
       <div>
         <StoreProvider>
+
+
+<Header />
+
+<Navi />
           <Nav />
           <Outlet />
+
+
+<Footer />
+
+
+ 
         </StoreProvider>
       </div>
     </ApolloProvider>
