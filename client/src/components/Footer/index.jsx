@@ -9,7 +9,7 @@ import SubscribeForm from "../SubscribeForm";
 import "../../App.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-import { MDBFooter, MDBContainer, MDBIcon, MDBCol, MDBRow, MDBBtn } from 'mdb-react-ui-kit';
+import { MDBFooter, MDBContainer, MDBCol, MDBRow } from 'mdb-react-ui-kit';
 
 //import { Container, Row, Col } from 'react-bootstrap';
 

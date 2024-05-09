@@ -62,24 +62,23 @@ function Navi() {
         </Link>
       </li>
 
-{/* ---------------------------------- Portfolio --------------------------------  */}
+{/* ---------------------------------- SHOWS (ALL) --------------------------------  */}
 
       <li className="nav-item">
         <Link
           to="/Shows"
-          // Check to see if the currentPage is `About`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
+          // Check to see if the currentPage is `Shows`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
           className={currentPage === '/Shows' ? 'nav-link active' : 'nav-link'}>
           Shows & Events
         </Link>
       </li>
 
-
-{/* ---------------------------------- Contact --------------------------------  */}
+{/* ---------------------------------- SHOP (ALL) --------------------------------  */}
 
       <li className="nav-item">
         <Link
           to="/Shop"
-          // Check to see if the currentPage is `Portfolio`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
+          // Check to see if the currentPage is `Shop`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
           className={currentPage === '/Shop' ? 'nav-link active' : 'nav-link'}>
           Shop
         </Link>
