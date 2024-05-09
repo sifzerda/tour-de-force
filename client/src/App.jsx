@@ -41,18 +41,14 @@ function App() {
       <div>
         <StoreProvider>
 
+          <Header />
 
-<Header />
-
-<Navi />
+          <Navi />
           <Nav />
           <Outlet />
 
+          <Footer />
 
-<Footer />
-
-
- 
         </StoreProvider>
       </div>
     </ApolloProvider>
