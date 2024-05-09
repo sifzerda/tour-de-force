@@ -1,7 +1,6 @@
 //import React from 'react';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-//import { faGithub } from '@fortawesome/free-brands-svg-icons';
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+//import { faGithub, faGoogle, faLinkedin, faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 //import { faCode } from '@fortawesome/free-solid-svg-icons';
 
 //import  { useState } from 'react';
@@ -10,7 +9,7 @@ import SubscribeForm from "../SubscribeForm";
 import "../../App.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-import { MDBFooter, MDBContainer, MDBIcon, MDBInput, MDBCol, MDBRow, MDBBtn } from 'mdb-react-ui-kit';
+import { MDBFooter, MDBContainer, MDBIcon, MDBCol, MDBRow, MDBBtn } from 'mdb-react-ui-kit';
 
 //import { Container, Row, Col } from 'react-bootstrap';
 
@@ -21,27 +20,27 @@ function Footer () {
       <MDBContainer className='p-4'>
         <section className='mb-4'>
           <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
-            <MDBIcon fab icon='facebook-f' />
+            <MDBIcon fab icon='facebook-f' id= 'i-facebook' className='bigger-icon' />
           </MDBBtn>
 
           <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
-            <MDBIcon fab icon='twitter' />
+            <MDBIcon fab icon='twitter'  id= 'i-twitter' className='bigger-icon'/>
           </MDBBtn>
 
           <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
-            <MDBIcon fab icon='google' />
+            <MDBIcon fab icon='google'  id= 'i-google' className='bigger-icon'/>
           </MDBBtn>
 
           <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
-            <MDBIcon fab icon='instagram' />
+            <MDBIcon fab icon='instagram'  id= 'i-instagram' className='bigger-icon'/>
           </MDBBtn>
 
           <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
-            <MDBIcon fab icon='linkedin-in' />
+            <MDBIcon fab icon='linkedin-in'  id= 'i-linkedin' className='bigger-icon'/>
           </MDBBtn>
 
           <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
-            <MDBIcon fab icon='github' />
+            <MDBIcon fab icon='github'  id= 'i-github' className='bigger-icon'/>
           </MDBBtn>
         </section>
 

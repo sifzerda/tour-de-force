@@ -50,6 +50,14 @@ footer {
   border: var(--volt) ridge 8px;
 }
 
+.bigger-icon {
+  font-size: 24px; 
+}
+
+.bigger-icon:active {
+  pointer-events: none; 
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -257,17 +265,6 @@ div.sib-form-block-2 {
   overflow: hidden;
 }
 
-.sib-form-block__button.sib-form-block__button-with-loader::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0); /* Initial color of the pseudo-element */
-  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Transition properties */
-}
-
 .sib-form-block__button.sib-form-block__button-with-loader:hover {
   background-color: var(--cyan);
   color:  black;
@@ -290,6 +287,8 @@ p.p-red {
   font-size: 1.1rem;
   text-align: center;
 }
+
+
 
 
 /*--------------------------------------- MEDIA QUERIES --------------------*/
