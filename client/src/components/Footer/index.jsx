@@ -1,7 +1,8 @@
-//import React from 'react';
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-//import { faGithub, faGoogle, faLinkedin, faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
-//import { faCode } from '@fortawesome/free-solid-svg-icons';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faLinkedin, faFacebook, faGoogle, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+//import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+
 
 //import  { useState } from 'react';
 //import axios from 'axios';
@@ -13,46 +14,59 @@ import { MDBFooter, MDBContainer, MDBIcon, MDBCol, MDBRow, MDBBtn } from 'mdb-re
 
 //import { Container, Row, Col } from 'react-bootstrap';
 
-function Footer () {
-  
+function Footer() {
+
   return (
 
-    
     <MDBFooter className='text-center' color='white' bgColor='dark'>
       <MDBContainer className='p-4'>
         <section className='mb-4'>
-          <MDBBtn outline color="light" floating className='m-1' href='https://facebook.com/' role='button'>
-            <MDBIcon fab icon='facebook-f' id= 'i-facebook' className='bigger-icon' />
-          </MDBBtn>
 
-          <MDBBtn outline color="light" floating className='m-1' href='https://www.twitter.com/' role='button'>
-            <MDBIcon fab icon='twitter'  id= 'i-twitter' className='bigger-icon'/>
-          </MDBBtn>
-
-          <MDBBtn outline color="light" floating className='m-1' href='https://www.google.com/' role='button'>
-            <MDBIcon fab icon='google'  id= 'i-google' className='bigger-icon'/>
-          </MDBBtn>
-
-          <MDBBtn outline color="light" floating className='m-1' href='https://www.instagram.com/' role='button'>
-            <MDBIcon fab icon='instagram'  id= 'i-instagram' className='bigger-icon'/>
-          </MDBBtn>
-
-          <MDBBtn outline color="light" floating className='m-1' href='https://www.linkedin.com/' role='button'>
-            <MDBIcon fab icon='linkedin-in'  id= 'i-linkedin' className='bigger-icon'/>
-          </MDBBtn>
-
-          <MDBBtn outline color="light" floating className='m-1' href='https://github.com/sifzerda/tour-de-force' role='button'>
-            <MDBIcon fab icon='github'  id= 'i-github' className='bigger-icon'/>
-          </MDBBtn>
-        </section>
-
-        <section className='mb-4'>
           <p>
             Find us on social media.
           </p>
+
+          <div className="icons-wrapper">
+          <div className="icon-container">
+            <a href="https://facebook.com" className="icon">
+              <MDBIcon fab icon='facebook-f' id='i-facebook' className='bigger-icon' />
+            </a>
+          </div>
+
+          <div className="icon-container">
+            <a href="https://twitter.com" className="icon">
+              <FontAwesomeIcon icon={faTwitter} size="2x" />
+            </a>
+          </div>
+
+          <div className="icon-container">
+            <a href="https://google.com" className="icon">
+              <FontAwesomeIcon icon={faGoogle} size="2x" />
+            </a>
+          </div>
+
+          <div className="icon-container">
+            <a href="https://instagram.com" className="icon">
+              <FontAwesomeIcon icon={faInstagram} size="2x" />
+            </a>
+          </div>
+
+          <div className="icon-container">
+            <a href="https://linkedin.com" className="icon">
+              <FontAwesomeIcon icon={faLinkedin} size="2x" />
+            </a>
+          </div>
+
+          <div className="icon-container">
+            <a href="https://github.com/sifzerda/tour-de-force" className="icon">
+              <FontAwesomeIcon icon={faGithub} size="2x" />
+            </a>
+          </div>
+          </div>
+
         </section>
 
-<SubscribeForm />
+        <SubscribeForm />
 
         <section className=''>
           <MDBRow>
@@ -173,7 +187,7 @@ function Footer () {
           MDBootstrap.com
         </a>
       </div>
-      </MDBFooter>
+    </MDBFooter>
   );
 }
 
