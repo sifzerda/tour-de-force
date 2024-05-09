@@ -2,18 +2,11 @@
 // index.js or App.js
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Outlet } from 'react-router-dom';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink, } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
 import Nav from './components/Nav';
-
 import { StoreProvider } from './utils/GlobalState';
-
 import Header from './components/Header';
 import Navi from './components/Navi';
 import Footer from './components/Footer';
