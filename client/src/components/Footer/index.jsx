@@ -7,6 +7,7 @@
 import  { useState } from 'react';
 import axios from 'axios';
 import SubscribeForm from "../SubscribeForm";
+import "../../App.css";
 
 
 import { MDBFooter, MDBContainer, MDBIcon, MDBInput, MDBCol, MDBRow, MDBBtn } from 'mdb-react-ui-kit';

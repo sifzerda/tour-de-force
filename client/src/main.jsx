@@ -12,6 +12,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import OrderHistory from './pages/OrderHistory';
 import Success from './pages/Success';
+import SubConfirm from './pages/SubConfirm.jsx';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: '/success',
         element: <Success />
+      },
+      {
+        path: '/subscribed',
+        element: <SubConfirm />
       },
 // below links I've added //////////////////////////////////////////
 //{

@@ -56,9 +56,11 @@ footer {
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -76,17 +78,21 @@ footer {
 
 .nav-tabs .nav-item {
   display: inline-block;
-  margin-right: 10px; /* Adjust the margin as needed */
+  margin-right: 10px;
+  /* Adjust the margin as needed */
 }
 
 .nav-tabs .nav-link {
-  padding: 10px; /* Adjust padding as needed */
+  padding: 10px;
+  /* Adjust padding as needed */
 }
 
 /* Optional: Style the active tab */
 .nav-tabs .nav-link.active {
-  background-color: #007bff; /* Change to your preferred active tab color */
-  color: white; /* Change to your preferred active tab text color */
+  background-color: #007bff;
+  /* Change to your preferred active tab color */
+  color: white;
+  /* Change to your preferred active tab text color */
 }
 
 
@@ -130,12 +136,153 @@ footer {
   color: #c0ccda;
 }
 
+.sib-form {
+text-align: center;
+background-color: #EFF2F7;                             
+}
+
 #sib-container a {
   text-decoration: underline;
   color: #2BB2FC;
 }
 
+#sib-container-2 {
+  text-align: 'center';
+  background-color: #88e70c;
+  max-width: 540px;
+  border-radius: '3px';
+  border-width: '1px';
+  color: #2BB2FC;
+  border-color: '#C0CCD9';
+  border-style: 'solid';
+  direction: 'ltr';
+}
 
+p.subscribe-instruction {
+  color: blue;
+}
+
+#error-message {
+  font-size: 16px;
+  text-align: 'left';
+  font-family: 'Helvetica, sans-serif';
+  color: '#661d1d';
+  background-color: #ffeded;
+  border-radius: '3px';
+  border-color: '#ff4949';
+  max-width: '540px';
+}
+
+#success-message {
+  font-size: 16px;
+  text-align: 'left';
+  font-family: 'Helvetica, sans-serif';
+  color: '#085229';
+  background-color: #e7faf0;
+  border-radius: '3px';
+  border-color: '#13ce66';
+  max-width: '540px';
+}
+
+div.sib-form-block {
+  font-family: "Helvetica", sans-serif;
+  background-color: 'transparent';
+  text-align: 'center';
+  color: '#3C4858';
+  padding: 8px 0;
+}
+
+div.sib-form-block-1 {
+  font-weight: 700;
+  font-size: 32px;
+}
+
+div.sib-form-block-2 {
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 0;
+}
+
+.entry__label {
+  font-weight: 700;
+  font-size: 16px;
+  color: #3c4858;
+  text-align: left;
+  font-family: Helvetica, sans-serif;
+}
+
+.entry__error.entry__error--primary {
+  font-size: 16px;
+  text-align: left;
+  font-family: Helvetica, sans-serif;
+  color: #661d1d;
+  background-color: #ffeded;
+  border-radius: 3px;
+  border-color: #ff4949;
+}
+
+.entry__specification {
+  font-weight: 700;
+  font-size: 12px;
+  color: #8390A4;
+  text-align: left;
+  font-family: Helvetica, sans-serif;
+}
+
+.sib-form-block__button.sib-form-block__button-with-loader {
+  font-size: 16px;
+  text-align: center;
+  font-weight: 700;
+  font-family: Helvetica, sans-serif;
+  color: #FFFFFF;
+  background-color: #3E4857;
+  border-radius: 3px;
+  border-width: 0px;
+}
+
+
+/*--------------------------------------- SUB confirm page --------------------*/
+
+.confirmation-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.confirmation-content {
+  text-align: center;
+}
+
+.confirmation-icon-svg {
+  width: 100px;
+  height: 100px;
+  fill: #13ce66; /* Change the color to match your design */
+}
+
+.confirmation-heading {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+.confirmation-message {
+  margin-top: 10px;
+}
+
+.confirmation-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #13ce66; /* Change the color to match your design */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.confirmation-button:hover {
+  background-color: #0f9d58; /* Change the color to match your design */
+}
 
 /*--------------------------------------- MEDIA QUERIES --------------------*/
 
@@ -143,6 +290,7 @@ footer {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
