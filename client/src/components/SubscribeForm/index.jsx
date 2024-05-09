@@ -1,3 +1,4 @@
+
 import '../../App.css';
 
 function SubscribeForm() {
@@ -28,27 +29,27 @@ function SubscribeForm() {
 
             <div id="sib-container-2" className="sib-container--large sib-container--vertical" >
                 <form id="sib-form" method="POST" action="https://76aa2c05.sibforms.com/serve/MUIFAMTPhWySZwrF6yv6NoVxDQvmmyBRRx2pOjlWRJQDsGLX0lk0IRAOvyz1k_j1f7Gd91zxleeC7SWskCHe03IuIhNfIu4lY0KZmMbft8hDBVdZJ7c9ltmOAlFoIQhZq_ofbo0TuZR2pS-7-Px4lFIdIaeke8Uf5ACyENZNB-dHkNjAJW1y_dHysMhp0-ZT55CiqjcNvQqv05Pn" data-type="subscription">
-                    <div style={{ padding: '8px 0' }}>
+                    <div>
                         <div className="sib-form-block-1" >
                             <p className="subscribe-instruction">Subscribe</p>
                         </div>
                     </div>
 
-                    <div style={{ padding: '8px 0' }}>
+                    <div>
                         <div className="sib-form-block-2">
                             <div className="sib-text-form-block">
-                                <p className="subscribe-instruction">Subscribe to our newsletter and stay updated about upcoming shows and events</p>
+                                <p>Subscribe to our newsletter and stay updated about upcoming shows and events</p>                            
                             </div>
                         </div>
                     </div>
 
-                    <div style={{ padding: '8px 0' }}>
+                    <div>
                         <div className="sib-input sib-form-block">
                             <div className="form__entry entry_block">
                                 <div className="form__label-row ">
                                     <label className="entry__label" htmlFor="EMAIL" data-required="*">Enter your email address to subscribe</label>
                                     <div className="entry__field">
-                                        <input className="input" type="text" id="EMAIL" name="EMAIL" autoComplete="off" placeholder="EMAIL" data-required="true" required />
+                                        <input className="input" type="text" id="EMAIL" name="EMAIL" autoComplete="off" placeholder="e.g. yourname@emailprovider.com" data-required="true" required />
                                     </div>
                                 </div>
 
@@ -60,7 +61,7 @@ function SubscribeForm() {
                         </div>
                     </div>
 
-                    <div style={{ padding: '8px 0' }}>
+                    <div>
                         <div className="sib-form-block" >
                             <button className="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
                                 <svg className="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">

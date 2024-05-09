@@ -75,9 +75,7 @@ function Footer () {
           </p>
         </section>
 
-
 <SubscribeForm />
-
 
         <section className=''>
           <MDBRow>
