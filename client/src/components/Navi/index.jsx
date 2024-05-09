@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Auth from "../../utils/auth";
+import "../../App.css";
 
 function Navi() {
   const currentPage = useLocation().pathname;
@@ -72,11 +73,6 @@ function Navi() {
         </Link>
       </li>
 
-{/* ---------------------------------- log in conditional function --------------------------------  */}
-
-      <li className="nav-item">
-        {showNavigation()}
-      </li>
 
 {/* ---------------------------------- Contact --------------------------------  */}
 
@@ -102,21 +98,14 @@ function Navi() {
         </Link>
       </li>
 
+{/* ---------------------------------- log in conditional function --------------------------------  */}
 
-{/* ----------------------------------Log in --------------------------------  */}
-
-
-      <li className="nav-item">
-        <Link
-          to="/Contact"
-          // Check to see if the currentPage is `Portfolio`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
-          className={currentPage === '/Contact' ? 'nav-link active' : 'nav-link'}>
-          Shop
-        </Link>
+<li className="nav-item">
+        {showNavigation()}
       </li>
 
 
-      {/* ----------------------------------end --------------------------------  */}
+{/* ----------------------------------end --------------------------------  */}
 
 
     </ul>
