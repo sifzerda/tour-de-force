@@ -149,6 +149,34 @@ db.once('open', async () => {
     password: 'password12345'
   });
 
+  await User.create({
+    firstName: 'Sal',
+    lastName: 'X',
+    email: 'sal@hotmail.com',
+    password: 'password12345'
+  });
+
+  await User.create({
+    firstName: 'Lernantino',
+    lastName: 'X',
+    email: 'lernantino@gmail.com',
+    password: 'password12345'
+  });
+
+  await User.create({
+    firstName: 'Amiko',
+    lastName: 'X',
+    email: 'amiko2k20@aol.com',
+    password: 'password12345'
+  });
+
+  await User.create({
+    firstName: 'Xandromus',
+    lastName: 'X',
+    email: 'xandro@aol.com',
+    password: 'password12345'
+  });
+
   console.log('users seeded');
 
   // generate venues and shows -----------------------------------------------------------------//
