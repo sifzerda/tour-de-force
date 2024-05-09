@@ -13,6 +13,7 @@ import Signup from './pages/Signup';
 import OrderHistory from './pages/OrderHistory';
 import Success from './pages/Success';
 import SubConfirm from './pages/SubConfirm.jsx';
+import Shop from './pages/Shop.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
         element: <Signup />
       }, 
       {
-        path: '/orderHistory',
+        path: '/account',
         element: <OrderHistory />
       }, 
       {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: '/subscribed',
         element: <SubConfirm />
+      },
+      {
+        path: '/shop',
+        element: <Shop />
       },
 // below links I've added //////////////////////////////////////////
 //{

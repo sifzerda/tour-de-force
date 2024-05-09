@@ -75,7 +75,17 @@ footer {
   transition: border-color 0.3s, color 0.26s; 
 }
 
-/* -------------------------- ----------------------------*/
+/* -------------------------- HOME ----------------------------*/
+
+p.whats-on {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* -------------------------- HOME ----------------------------*/
+
 
 .logo {
   height: 6em;

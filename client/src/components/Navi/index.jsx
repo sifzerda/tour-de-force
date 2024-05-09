@@ -14,8 +14,8 @@ function Navi() {
       return (
         <React.Fragment>
           <li className="nav-item">
-            <Link to="/orderHistory" className={currentPage === '/orderHistory' ? 'nav-link active' : 'nav-link'}>
-              Order History
+            <Link to="/account" className={currentPage === '/account' ? 'nav-link active' : 'nav-link'}>
+              Account
             </Link>
           </li>
           <li className="nav-item">
@@ -66,9 +66,9 @@ function Navi() {
 
       <li className="nav-item">
         <Link
-          to="/Portfolio"
+          to="/Shows"
           // Check to see if the currentPage is `About`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
-          className={currentPage === '/Portfolio' ? 'nav-link active' : 'nav-link'}>
+          className={currentPage === '/Shows' ? 'nav-link active' : 'nav-link'}>
           Shows & Events
         </Link>
       </li>
@@ -76,24 +76,11 @@ function Navi() {
 
 {/* ---------------------------------- Contact --------------------------------  */}
 
-
-      <li className="nav-item">
-
-        <Link
-          to="/Contact"
-          // Check to see if the currentPage is `Portfolio`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
-          className={currentPage === '/Contact' ? 'nav-link active' : 'nav-link'}>
-          My Account (change to if loggedin)
-        </Link>
-      </li>
-
-{/* ---------------------------------- Contact --------------------------------  */}
-
       <li className="nav-item">
         <Link
-          to="/Contact"
+          to="/Shop"
           // Check to see if the currentPage is `Portfolio`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
-          className={currentPage === '/Contact' ? 'nav-link active' : 'nav-link'}>
+          className={currentPage === '/Shop' ? 'nav-link active' : 'nav-link'}>
           Shop
         </Link>
       </li>
