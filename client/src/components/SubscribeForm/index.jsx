@@ -38,7 +38,7 @@ function SubscribeForm() {
                     <div>
                         <div className="sib-form-block-2">
                             <div className="sib-text-form-block">
-                                <p>Subscribe to our newsletter and stay updated about upcoming shows and events</p>                            
+                                <p className="p-red">Subscribe to our newsletter and stay updated about upcoming shows and events</p>                            
                             </div>
                         </div>
                     </div>

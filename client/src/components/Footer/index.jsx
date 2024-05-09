@@ -4,11 +4,11 @@
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import { faCode } from '@fortawesome/free-solid-svg-icons';
 
-import  { useState } from 'react';
-import axios from 'axios';
+//import  { useState } from 'react';
+//import axios from 'axios';
 import SubscribeForm from "../SubscribeForm";
 import "../../App.css";
-
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import { MDBFooter, MDBContainer, MDBIcon, MDBInput, MDBCol, MDBRow, MDBBtn } from 'mdb-react-ui-kit';
 
@@ -69,9 +69,7 @@ function Footer () {
 
         <section className='mb-4'>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum repellat quaerat
-            voluptatibus placeat nam, commodi optio pariatur est quia magnam eum harum corrupti dicta, aliquam
-            sequi voluptate quas.
+            Lorem ipsum dolor sit amet.
           </p>
         </section>
 
