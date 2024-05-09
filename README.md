@@ -11,3 +11,8 @@
 - sendinblue/Brevo API = for sending notifications to subscribers, and purchase confirmation emails
 - 
 
+
+
+## to do:
+- create some queries for shows/typeDEFS, resolvers, mutations, etc
+- 

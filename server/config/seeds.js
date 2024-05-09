@@ -1,11 +1,12 @@
 const db = require('./connection');
-const { User, Product, Category } = require('../models');
+const { User, Product, Category, Show } = require('../models');
 const cleanDB = require('./cleanDB');
 
 db.once('open', async () => {
   await cleanDB('Category', 'categories');
   await cleanDB('Product', 'products');
   await cleanDB('User', 'users');
+  await cleanDB('Show', 'shows');
 
   const categories = await Category.insertMany([
     { name: 'Food' },
@@ -149,6 +150,91 @@ db.once('open', async () => {
   });
 
   console.log('users seeded');
+
+  // generate venues and shows -----------------------------------------------------------------//
+
+  const shows = await Show.insertMany([
+    {
+      name: 'Coldplay: Music of the Spheres World Tour',
+      description:
+        'The "Music of the Spheres World Tour" is the eighth concert tour by British rock band Coldplay, in support of their album "Music of the Spheres". Coldplay is known for their captivating live performances featuring elaborate stage designs, stunning visual effects, and energetic renditions of their hit songs. Tour surpassed $810.9 million in revenue from 7.66 million tickets across 132 dates, making it the third-highest-grossing and second-most attended tour of all time. Featuring live performance of hit track such as "Higher Power", "Coloratura", and "My Universe" ',
+      image: 'cookie-tin.jpg',
+      venue: [
+        { name: 'Marvel Stadium, Melbourne' },
+        { name: 'Accor Stadium, Sydney' }
+      ],
+      dates: [
+        new Date('01-06-2024'),
+        new Date('02-05-2024')
+      ],
+      price: 32.99,
+    },
+
+    {
+      name: 'Iron Maiden: Future Past World Tour',
+      description:
+        'The "Future Past World Tour" is an ongoing concert tour by English heavy metal band, Iron Maiden, in support of their seventeenth studio album "Senjutsu" and their 1996 album "Somewhere in Time". Iron Maiden is a British heavy metal band that has become one of the most influential and enduring acts in the history of rock music. The band is known for its known for their complex compositions, featuring galloping rhythms, dueling guitar solos, and operatic vocals, as well as their elaborate stage shows. Featuring live performance of hit track such as "Stratego", "The Writing on the Wall", and "Days of Future Past"',
+      image: 'soap.jpg',
+      venue: [
+        { name: 'RAC Arena, Perth' },
+        { name: 'Adelaide Entertainment Centre, Adelaide' },
+        { name: 'Rod Laver Arena, Melbourne' },
+        { name: 'Brisbane Entertainment Centre, Brisbane'  },
+        { name: 'Qudos Bank Arena, Sydney' },
+      ],
+      dates: [
+        new Date('01-02-2024'),
+        new Date('02-03-2024'),
+        new Date('03-04-2024'),
+        new Date('04-05-2024'),
+        new Date('05-06-2024'),
+      ],
+      price: 109.99,
+    },
+
+    {
+      name: 'Sia: Reasonable Woman Concert Tour',
+      description:
+        'The "Reasonable Woman Tour" is the sixth concert tour by Australian artist Sia, in support of her tenth studio album, "Reasonable Woman." Sia is renowned for her powerful vocals and emotive stage presence. Her concerts feature high-energy choreography, stunning visuals, and an immersive atmosphere. The concert features live performance of tracks such as "Incredible", "Gimme Love", and "Dance Alone". ',
+      image: 'tablet.jpg',
+      venue: [
+        { name: 'AAMI Park, Melbourne' },
+        { name: 'Allianz Stadium, Adelaide, Sydney' },
+      ],
+      dates: [
+        new Date('01-06-2024'),
+        new Date('02-05-2024')
+      ],
+      price: 97.99,
+    },
+
+    {
+      name: 'Dua Lipa: Radical Optimism Tour',
+      description:
+        'The "Radical Optimism Tour" is an global concert tour by English/Albanian singer-songwriter Dua Lipa, in support of her third studio album, "Radical Optimism." pop anthems with retro flair and a modern twist. Dua Lipa is known for her powerful vocals, energetic performances, and catchy pop anthems with retro flair and a modern twist. The concert features live performance of tracks such as "Houdini", "Training Season", and "Illusion". ',
+      image: 'camera.jpg',
+      venue: [
+        { name: 'RAC Arena, Perth' },
+        { name: 'Adelaide Entertainment Centre, Adelaide' },
+        { name: 'Rod Laver Arena, Melbourne' },
+        { name: 'Brisbane Entertainment Centre, Brisbane'  },
+        { name: 'Qudos Bank Arena, Sydney' },
+      ],
+      dates: [
+        new Date('09-09-2024'),
+        new Date('10-10-2024'),
+        new Date('04-12-2024'),
+        new Date('12-12-2024'),
+        new Date('11-11-2024'),
+      ],
+      price: 104.99,
+    },
+
+   
+  ]);
+
+  console.log('shows seeded');
+
 
   process.exit();
 });
