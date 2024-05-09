@@ -1,7 +1,6 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin, faFacebook, faGoogle, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
-//import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 
 //import  { useState } from 'react';
@@ -27,9 +26,10 @@ function Footer() {
           </p>
 
           <div className="icons-wrapper">
+
           <div className="icon-container">
             <a href="https://facebook.com" className="icon">
-              <MDBIcon fab icon='facebook-f' id='i-facebook' className='bigger-icon' />
+              <FontAwesomeIcon icon={faFacebook} size="2x" />
             </a>
           </div>
 

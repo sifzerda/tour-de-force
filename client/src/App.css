@@ -52,14 +52,6 @@ footer {
   border: var(--volt) ridge 8px;
 }
 
-.bigger-icon {
-  font-size: 24px; 
-}
-
-.bigger-icon:active {
-  pointer-events: none; 
-}
-
 .icons-wrapper {
   display: flex;
   justify-content: center;
@@ -76,6 +68,11 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.icon-container:hover .icon {
+  color: rgb(255, 255, 255); 
+  transition: border-color 0.3s, color 0.26s; 
 }
 
 /* -------------------------- ----------------------------*/
