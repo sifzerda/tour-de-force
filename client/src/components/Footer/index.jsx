@@ -16,37 +16,39 @@ import { MDBFooter, MDBContainer, MDBIcon, MDBCol, MDBRow, MDBBtn } from 'mdb-re
 function Footer () {
   
   return (
+
+    
     <MDBFooter className='text-center' color='white' bgColor='dark'>
       <MDBContainer className='p-4'>
         <section className='mb-4'>
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
+          <MDBBtn outline color="light" floating className='m-1' href='https://facebook.com/' role='button'>
             <MDBIcon fab icon='facebook-f' id= 'i-facebook' className='bigger-icon' />
           </MDBBtn>
 
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
+          <MDBBtn outline color="light" floating className='m-1' href='https://www.twitter.com/' role='button'>
             <MDBIcon fab icon='twitter'  id= 'i-twitter' className='bigger-icon'/>
           </MDBBtn>
 
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
+          <MDBBtn outline color="light" floating className='m-1' href='https://www.google.com/' role='button'>
             <MDBIcon fab icon='google'  id= 'i-google' className='bigger-icon'/>
           </MDBBtn>
 
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
+          <MDBBtn outline color="light" floating className='m-1' href='https://www.instagram.com/' role='button'>
             <MDBIcon fab icon='instagram'  id= 'i-instagram' className='bigger-icon'/>
           </MDBBtn>
 
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
+          <MDBBtn outline color="light" floating className='m-1' href='https://www.linkedin.com/' role='button'>
             <MDBIcon fab icon='linkedin-in'  id= 'i-linkedin' className='bigger-icon'/>
           </MDBBtn>
 
-          <MDBBtn outline color="light" floating className='m-1' href='#!' role='button'>
+          <MDBBtn outline color="light" floating className='m-1' href='https://github.com/sifzerda/tour-de-force' role='button'>
             <MDBIcon fab icon='github'  id= 'i-github' className='bigger-icon'/>
           </MDBBtn>
         </section>
 
         <section className='mb-4'>
           <p>
-            Lorem ipsum dolor sit amet.
+            Find us on social media.
           </p>
         </section>
 
