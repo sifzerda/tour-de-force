@@ -1,8 +1,53 @@
+/* Import Google fonts - Josefin+Sans, Outfit, Source Code Pro, Rubik, Poppins, Vazmatin, Jersey 10, Space Grotesk */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Vazmatin&display-swap");
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Outfit:wght@100..900&family=Rowdies:wght@300;400;700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Space+Grotesk:wght@300..700&display=swap');
+
+:root {
+  --blue: #2684ff;
+  --light-blue: #63f8f1;
+  --volt: #c8ff00;
+  --dark-blue: #072752;
+  --yellow: #e5dc15;
+  --dark-yellow: #c2bb11;
+  --bootstrap-dark: #212529;
+  --bootstrap-lighter: #364459;
+  --cyan: #01fff7;
+  --light-red: #f02652;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 #root {
   /*max-width: 1280px;*/
   margin: 0 auto;
   /*padding: 2rem;*/
   text-align: center;
+}
+
+body {
+  background-color: var(--bootstrap-dark);
+}
+
+header {
+  background: rgb(54, 68, 89);
+  background: radial-gradient(circle, rgba(54, 68, 89, 1) 0%, rgba(54, 68, 89, 1) 35%, rgba(33, 37, 41, 1) 100%);
+  padding-top: 16px;
+  border: var(--volt) ridge 8px;
+}
+
+footer {
+  margin-top: auto;
+  background: rgb(54, 68, 89);
+  background: radial-gradient(circle, rgba(54, 68, 89, 1) 0%, rgba(54, 68, 89, 1) 35%, rgba(33, 37, 41, 1) 100%);
+  padding: 16px;
+  border: var(--volt) ridge 8px;
 }
 
 .logo {
