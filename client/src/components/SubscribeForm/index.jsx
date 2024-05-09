@@ -30,9 +30,6 @@ function SubscribeForm() {
             <div id="sib-container-2" className="sib-container--large sib-container--vertical" >
                 <form id="sib-form" method="POST" action="https://76aa2c05.sibforms.com/serve/MUIFAMTPhWySZwrF6yv6NoVxDQvmmyBRRx2pOjlWRJQDsGLX0lk0IRAOvyz1k_j1f7Gd91zxleeC7SWskCHe03IuIhNfIu4lY0KZmMbft8hDBVdZJ7c9ltmOAlFoIQhZq_ofbo0TuZR2pS-7-Px4lFIdIaeke8Uf5ACyENZNB-dHkNjAJW1y_dHysMhp0-ZT55CiqjcNvQqv05Pn" data-type="subscription">
                     <div>
-                        <div className="sib-form-block-1" >
-                            <p className="subscribe-instruction">Subscribe</p>
-                        </div>
                     </div>
 
                     <div>
