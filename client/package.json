@@ -23,6 +23,7 @@
     "@stripe/stripe-js": "^1.54.0",
     "@testing-library/react": "^14.0.0",
     "antd": "^5.17.0",
+    "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "customize-cra": "^1.0.0",
     "graphql": "^16.6.0",

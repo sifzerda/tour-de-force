@@ -3,20 +3,18 @@
 //import { faGithub } from '@fortawesome/free-brands-svg-icons';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import { faCode } from '@fortawesome/free-solid-svg-icons';
-//import React from 'react';
-import {
-  MDBFooter,
-  MDBContainer,
-  MDBIcon,
-  MDBInput,
-  MDBCol,
-  MDBRow,
-  MDBBtn
-} from 'mdb-react-ui-kit';
+
+import  { useState } from 'react';
+import axios from 'axios';
+import SubscribeForm from "../SubscribeForm";
+
+
+import { MDBFooter, MDBContainer, MDBIcon, MDBInput, MDBCol, MDBRow, MDBBtn } from 'mdb-react-ui-kit';
 
 //import { Container, Row, Col } from 'react-bootstrap';
 
 function Footer () {
+  
   return (
     <MDBFooter className='text-center' color='white' bgColor='dark'>
       <MDBContainer className='p-4'>
@@ -75,6 +73,10 @@ function Footer () {
             sequi voluptate quas.
           </p>
         </section>
+
+
+<SubscribeForm />
+
 
         <section className=''>
           <MDBRow>
