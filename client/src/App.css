@@ -147,15 +147,15 @@ background-color: #EFF2F7;
 }
 
 #sib-container-2 {
-  text-align: 'center';
+  text-align: center !important;
   background-color: #88e70c;
   max-width: 540px;
-  border-radius: '3px';
-  border-width: '1px';
+  border-radius: 3px;
+  border-width: 1px;
   color: #2BB2FC;
-  border-color: '#C0CCD9';
-  border-style: 'solid';
-  direction: 'ltr';
+  border-color: #C0CCD9;
+  border-style: solid;
+  direction: ltr;
 }
 
 p.subscribe-instruction {
@@ -164,31 +164,31 @@ p.subscribe-instruction {
 
 #error-message {
   font-size: 16px;
-  text-align: 'left';
-  font-family: 'Helvetica, sans-serif';
-  color: '#661d1d';
+  text-align: left;
+  font-family: "Helvetica", sans-serif;
+  color: #661d1d;
   background-color: #ffeded;
-  border-radius: '3px';
-  border-color: '#ff4949';
-  max-width: '540px';
+  border-radius: 3px;
+  border-color: #ff4949;
+  max-width: 540px;
 }
 
 #success-message {
   font-size: 16px;
-  text-align: 'left';
-  font-family: 'Helvetica, sans-serif';
-  color: '#085229';
+  text-align: left;
+  font-family: "Helvetica", sans-serif;
+  color: #085229;
   background-color: #e7faf0;
-  border-radius: '3px';
-  border-color: '#13ce66';
-  max-width: '540px';
+  border-radius: 3px;
+  border-color: #13ce66;
+  max-width: 540px;
 }
 
 div.sib-form-block {
   font-family: "Helvetica", sans-serif;
-  background-color: 'transparent';
-  text-align: 'center';
-  color: '#3C4858';
+  background-color: transparent;
+  text-align: center;
+  color: #3C4858;
   padding: 8px 0;
 }
 
@@ -240,48 +240,13 @@ div.sib-form-block-2 {
   border-width: 0px;
 }
 
-
-/*--------------------------------------- SUB confirm page --------------------*/
-
-.confirmation-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+#sib-form {
+  text-align: left;
+  width: 100%;
 }
 
-.confirmation-content {
-  text-align: center;
-}
-
-.confirmation-icon-svg {
-  width: 100px;
-  height: 100px;
-  fill: #13ce66; /* Change the color to match your design */
-}
-
-.confirmation-heading {
-  font-size: 24px;
-  margin-top: 20px;
-}
-
-.confirmation-message {
-  margin-top: 10px;
-}
-
-.confirmation-button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #13ce66; /* Change the color to match your design */
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.confirmation-button:hover {
-  background-color: #0f9d58; /* Change the color to match your design */
+form {
+    width: 40%;
 }
 
 /*--------------------------------------- MEDIA QUERIES --------------------*/
