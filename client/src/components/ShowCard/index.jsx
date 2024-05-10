@@ -1,58 +1,12 @@
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 //import { pluralize } from "../../utils/helpers"
 //import { useStoreContext } from "../../utils/GlobalState";
 //import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 //import { idbPromise } from "../../utils/helpers";
 
 function ShowCard({ show }) {
-
-
-    const {
-        name,
-        description,
-        image,
-        price,
-        venue
-    } = show;
-
-    const venue0 = venue[0]?.name;
-    const venue1 = venue[1]?.name;
-    const venue2 = venue[2]?.name;
-    const venue3 = venue[3]?.name;
-    const venue4 = venue[4]?.name;
-    const venue5 = venue[5]?.name;
-
-
-    return (
-        <div className="card px-1 py-1">
-            <Link to={`/show/${_id}`}>
-                <img
-                    alt={name}
-                    src={`/images/${image}`}
-                />
-                <p>{name}</p>
-            </Link>
-            <div>
-                <div>{quantity} {pluralize("item", quantity)} in stock</div>
-                <span>${price}</span>
-            </div>
-            <button onClick={addToCart}>Add to cart</button>
-        </div>
-    );
-}
-
-export default ShowCard;
-
-
-
-
-
-
-
-
-
-const ShowCard = ({ show }) => {
-    const { name, description, image, venue, price } = show;
+    // Destructuring show props
+    const { name, description, venue, image, price } = show;
 
     return (
         <div className="card">
@@ -76,6 +30,6 @@ const ShowCard = ({ show }) => {
             </div>
         </div>
     );
-};
+}
 
 export default ShowCard;
