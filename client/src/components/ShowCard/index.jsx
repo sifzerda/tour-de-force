@@ -30,7 +30,7 @@ function ShowCard({ show }) {
                             {venueItem.time.map((timeItem, idx) => {
                                     console.log("Time Item:", timeItem); // Log timeItem object
                                     console.log("Time Value:", timeItem.time); // Log time value for debugging
-                                    const formattedDate = new Date(parseInt(timeItem.time)).toLocaleDateString('en-US', {
+                                    const formattedDate = new Date(parseInt(timeItem.time)).toLocaleDateString('en-AU', {
                                         day: '2-digit',
                                         month: '2-digit',
                                         year: 'numeric'
