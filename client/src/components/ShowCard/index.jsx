@@ -27,9 +27,14 @@ function ShowCard({ show }) {
                         <li key={index} className="list-group-item">
                             <strong>Venues: {venueItem.name}</strong>
                             <ul>
-                                {venueItem.time.map((timeItem, idx) => {
-                                    console.log("Time:", timeItem.time); // Log the date value for debugging
-                                    const formattedDate = new Date(timeItem.time * 1000).toLocaleDateString();
+                            {venueItem.time.map((timeItem, idx) => {
+                                    console.log("Time Item:", timeItem); // Log the entire timeItem object
+                                    console.log("Time Value:", timeItem.time); // Log the time value for debugging
+                                    const formattedDate = new Date(parseInt(timeItem.time)).toLocaleDateString('en-US', {
+                                        day: '2-digit',
+                                        month: '2-digit',
+                                        year: 'numeric'
+                                    });
                                     return <li key={idx}>{formattedDate}</li>;
                                 })}
                             </ul>
