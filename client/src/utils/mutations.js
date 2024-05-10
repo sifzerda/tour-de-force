@@ -1,5 +1,51 @@
 import { gql } from '@apollo/client';
 
+
+export const CREATE_SHOW = gql`
+mutation CreateShow($input: ShowInput) {
+  createShow(input: $input) {
+    _id
+    name
+    description
+    image
+    price
+    venue {
+      name
+      time {
+        time
+      }
+    }
+  }
+}
+`;
+
+export const UPDATE_SHOW = gql`
+  mutation UpdateShow($_id: ID!, $input: ShowInput!) {
+    updateShow(_id: $_id, input: $input) {
+      _id
+      name
+      description
+      image
+      price
+      venue {
+        name
+        time {
+          time
+        }
+      }
+    }
+  }
+`;
+
+export const DELETE_SHOW = gql`
+  mutation DeleteShow($_id: ID!) {
+    deleteShow(_id: $_id) {
+      _id
+      name
+    }
+  }
+`;
+
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {

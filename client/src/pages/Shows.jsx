@@ -1,14 +1,10 @@
-
+//import ShowCardList from '../components/ShowCardList';
+//import shows from '../../../server/config/seeds';
 
 const Shows = () => {
   return (
     <div className="container">
-
-
-
-<p className='whats-on'> insert text</p>
-
-
+      <h1>Shows</h1>
 
     </div>
   );

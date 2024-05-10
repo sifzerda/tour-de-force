@@ -1,9 +1,22 @@
-const { User, Product, Category, Order } = require('../models');
+const { User, Product, Category, Order, Show } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
-  Query: {
+
+Query: {
+
+// ----------------------------------------------------- //
+
+  shows: async () => {
+    return await Show.find();
+  },
+  show: async (parent, { _id}) => {
+    return await Show.findById(_id); 
+  },
+
+// ----------------------------------------------------- //
+
     categories: async () => {
       return await Category.find();
     },
@@ -83,7 +96,26 @@ const resolvers = {
       return { session: session.id };
     },
   },
-  Mutation: {
+
+  // ------------------------ MUTATIONS ---------------------- //
+
+Mutation: {
+
+    //------------------- shows ------------------------- //
+
+    createShow: async (parent, { input }) => {
+      return await Show.create(input);
+    },
+    updateShow: async (parent, { _id, input }) => {
+      return await Show.findByIdAndUpdate(_id, input, { new: true });
+    },
+    deleteShow: async (parent, { _id }) => {
+      return await Show.findByIdAndDelete(_id);
+    },
+  
+
+      //------------------- ------ ------------------------- //
+
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
@@ -121,6 +153,10 @@ const resolvers = {
         { new: true }
       );
     },
+
+
+
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 

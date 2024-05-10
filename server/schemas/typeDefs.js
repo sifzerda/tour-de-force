@@ -1,4 +1,25 @@
 const typeDefs = `
+
+type Show {
+  _id: ID
+  name: String
+  description: String
+  image: String
+  venue: [Venue]
+  price: Float
+}
+
+type Venue {
+  _id: ID
+  name: String
+  time: [Time]
+}
+
+type Time {
+  _id: ID
+  time: String
+}
+
   type Category {
     _id: ID
     name: String
@@ -46,7 +67,26 @@ const typeDefs = `
     quantity: Int
   }
 
+  input ShowInput {
+    name: String
+    description: String
+    image: String
+    venue: [VenueInput]
+    price: Float
+  }
+
+  input VenueInput {
+    name: String
+    time: [TimeInput]
+  }
+
+  input TimeInput {
+    time: String
+  }
+
   type Query {
+    shows: [Show]
+    show(_id: ID): Show
     categories: [Category]
     products(category: ID, name: String): [Product]
     product(_id: ID!): Product
@@ -56,6 +96,9 @@ const typeDefs = `
   }
 
   type Mutation {
+    createShow(input: ShowInput): Show
+    updateShow(_id: ID!, input: ShowInput!): Show
+    deleteShow(_id: ID!): Show
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     addOrder(products: [ID]!): Order
     updateUser(firstName: String, lastName: String, email: String, password: String): User
