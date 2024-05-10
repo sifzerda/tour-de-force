@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-
 const { Schema } = mongoose;
 
-// each show contains multiple venues, each venue contains multiple times
+// each show contains multiple venues, each venue contains multiple sshow times
 
 // sub-sub-document schema for time and venue combination
 const timeSchema = new Schema({
@@ -47,6 +46,7 @@ const showSchema = new Schema({
   },
 
 });
+
 
 //const Venue = mongoose.model('Venue', venueSchema);
 

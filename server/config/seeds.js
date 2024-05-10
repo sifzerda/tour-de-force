@@ -16,7 +16,7 @@ db.once('open', async () => {
     { name: 'Toys' }
   ]);
 
-  console.log('categories seeded');
+  console.log('🔠 categories seeded');
 
   const products = await Product.insertMany([
     {
@@ -128,7 +128,7 @@ db.once('open', async () => {
     }
   ]);
 
-  console.log('products seeded');
+  console.log('📦 products seeded');
 
   await User.create({
     firstName: 'Pamela',
@@ -177,7 +177,7 @@ db.once('open', async () => {
     password: 'password12345'
   });
 
-  console.log('users seeded');
+  console.log('🔑 users seeded');
 
   // generate venues and shows -----------------------------------------------------------------//
 
@@ -193,24 +193,24 @@ db.once('open', async () => {
         {
           name: 'RAC Arena, Perth',
           time: [
-            { time: new Date('2024-08-09T20:10:00.000Z') },
-            { time: new Date('2024-08-10T20:50:00.000Z') },
+            { time: '2024-08-09T00:00:00Z' },
+            { time: '2024-08-10T00:00:00Z' },
           ]
         },
 
         {
           name: 'Adelaide Entertainment Centre, Adelaide',
           time: [
-            { time: new Date('2024-09-01T21:20:00.000Z') },
-            { time: new Date('2024-09-02T19:15:00.000Z') },
+            { time: '2024-09-01T00:00:00Z' },
+            { time: '2024-09-02T00:00:00Z' },
           ]
         },
 
         {
           name: 'Marvel Stadium, Melbourne',
           time: [
-            { time: new Date('2024-11-05T18:30:00.000Z') },
-            { time: new Date('2024-11-06T17:45:00.000Z') },
+            { time: '2024-11-05T00:00:00Z' },
+            { time: '2024-11-06T00:00:00Z' },
           ]
         },
       ]
@@ -227,40 +227,40 @@ db.once('open', async () => {
         {
           name: 'RAC Arena, Perth',
           time: [
-            { time: new Date('2024-08-09T20:10:00.000Z') },
-            { time: new Date('2024-08-10T20:50:00.000Z') },
+            { time: new Date('2024-08-09T00:00:00Z') },
+            { time: new Date('2024-08-10T00:00:00Z') },
           ]
         },
 
         {
           name: 'Adelaide Entertainment Centre, Adelaide',
           time: [
-            { time: new Date('2024-09-01T21:20:00.000Z') },
-            { time: new Date('2024-09-02T19:15:00.000Z') },
+            { time: new Date('2024-09-01T00:00:00Z') },
+            { time: new Date('2024-09-02T00:00:00Z') },
           ]
         },
 
         {
           name: 'Rod Laver Arena, Melbourne',
           time: [
-            { time: new Date('2024-11-05T18:20:00.000Z') },
-            { time: new Date('2024-11-06T17:45:00.000Z') },
+            { time: new Date('2024-11-05T00:00:00Z') },
+            { time: new Date('2024-11-06T00:00:00Z') },
           ]
         },
 
         {
           name: 'Brisbane Entertainment Centre, Brisbane',
           time: [
-            { time: new Date('2024-11-05T18:20:00.000Z') },
-            { time: new Date('2024-11-06T17:50:00.000Z') },
+            { time: new Date('2024-11-05T00:00:00Z') },
+            { time: new Date('2024-11-06T00:00:00Z') },
           ]
         },
 
         {
           name: 'Qudos Bank Arena, Sydney',
           time: [
-            { time: new Date('2024-11-05T18:30:00.000Z') },
-            { time: new Date('2024-11-06T17:45:00.000Z') },
+            { time: new Date('2024-11-05T00:00:00Z') },
+            { time: new Date('2024-11-06T00:00:00Z') },
           ]
         },
       ]
@@ -277,15 +277,15 @@ db.once('open', async () => {
         {
           name: 'AAMI Park, Melbourne',
           time: [
-            { time: new Date('2024-08-09T20:10:00.000Z') },
-            { time: new Date('2024-09-10T21:10:00.000Z') },
+            { time: new Date('2024-08-09T00:00:00Z') },
+            { time: new Date('2024-09-10T00:00:00Z') },
           ]
         },
         {
           name: 'Allianz Stadium, Adelaide, Sydney',
           time: [
-            { time: new Date('2024-10-01T21:20:00.000Z') },
-            { time: new Date('2024-11-02T19:15:00.000Z') },
+            { time: new Date('2024-10-01T00:00:00Z') },
+            { time: new Date('2024-11-02T00:00:00Z') },
           ]
         },
       ]
@@ -302,40 +302,40 @@ db.once('open', async () => {
         {
           name: 'RAC Arena, Perth',
           time: [
-            { time: new Date('2024-11-09T20:10:00.000Z') },
-            { time: new Date('2024-11-10T20:50:00.000Z') },
+            { time: new Date('2024-11-09T00:00:00Z') },
+            { time: new Date('2024-11-10T00:00:00Z') },
           ]
         },
 
         {
           name: 'Adelaide Entertainment Centre, Adelaide',
           time: [
-            { time: new Date('2024-12-01T21:20:00.000Z') },
-            { time: new Date('2024-09-02T19:15:00.000Z') },
+            { time: new Date('2024-12-01T00:00:00Z') },
+            { time: new Date('2024-09-02T00:00:00Z') },
           ]
         },
 
         {
           name: 'Rod Laver Arena, Melbourne',
           time: [
-            { time: new Date('2024-05-05T18:20:00.000Z') },
-            { time: new Date('2024-06-06T17:45:00.000Z') },
+            { time: new Date('2024-05-05T00:00:00Z') },
+            { time: new Date('2024-06-06T00:00:00Z') },
           ]
         },
 
         {
           name: 'Brisbane Entertainment Centre, Brisbane',
           time: [
-            { time: new Date('2024-02-05T18:20:00.000Z') },
-            { time: new Date('2024-03-06T17:50:00.000Z') },
+            { time: new Date('2024-02-05T00:00:00Z') },
+            { time: new Date('2024-03-06T00:00:00Z') },
           ]
         },
 
         {
           name: 'Qudos Bank Arena, Sydney',
           time: [
-            { time: new Date('2024-11-05T18:30:00.000Z') },
-            { time: new Date('2024-08-06T17:45:00.000Z') },
+            { time: new Date('2024-11-05T00:00:00Z') },
+            { time: new Date('2024-08-06T00:00:00Z') },
           ]
         },
       ]
@@ -345,7 +345,7 @@ db.once('open', async () => {
 
   ]);
 
-  console.log('shows seeded');
+  console.log('🎤 shows seeded');
 
 
   process.exit();

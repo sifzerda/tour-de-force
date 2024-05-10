@@ -18,19 +18,20 @@ function ShowCard({ show }) {
         <p>{name}</p>
       </Link>
 
-
-            <div className="card-body">
+      <div className="card-body">
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">{description}</p>
                 <p className="card-text">Price: ${price}</p>
                 <ul className="list-group list-group-flush">
                     {venue.map((venueItem, index) => (
                         <li key={index} className="list-group-item">
-                            <strong>Venue: {venueItem.name}</strong>
+                            <strong>Venues: {venueItem.name}</strong>
                             <ul>
-                                {venueItem.time.map((timeItem, idx) => (
-                                    <li key={idx}>{new Date(timeItem.time).toLocaleString()}</li>
-                                ))}
+                                {venueItem.time.map((timeItem, idx) => {
+                                    console.log("Time:", timeItem.time); // Log the date value for debugging
+                                    const formattedDate = new Date(timeItem.time * 1000).toLocaleDateString();
+                                    return <li key={idx}>{formattedDate}</li>;
+                                })}
                             </ul>
                         </li>
                     ))}
