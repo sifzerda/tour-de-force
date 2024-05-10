@@ -41,7 +41,9 @@ Pre-made working accounts for logging in debugging purposes:
     password: password12345
 
 
+Links to each specific show can be found using the URL:
 
+http:// [domain] /Shows/ [show._id]
 
 
 
