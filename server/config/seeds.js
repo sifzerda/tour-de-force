@@ -187,15 +187,33 @@ db.once('open', async () => {
       description:
         'The "Music of the Spheres World Tour" is the eighth concert tour by British rock band Coldplay, in support of their album "Music of the Spheres". Coldplay is known for their captivating live performances featuring elaborate stage designs, stunning visual effects, and energetic renditions of their hit songs. Tour surpassed $810.9 million in revenue from 7.66 million tickets across 132 dates, making it the third-highest-grossing and second-most attended tour of all time. Featuring live performance of hit track such as "Higher Power", "Coloratura", and "My Universe" ',
       image: 'cookie-tin.jpg',
-      venue: [
-        { name: 'Marvel Stadium, Melbourne' },
-        { name: 'Accor Stadium, Sydney' }
-      ],
-      dates: [
-        new Date('01-06-2024'),
-        new Date('02-05-2024')
-      ],
       price: 32.99,
+      venue: [
+
+        {
+          name: 'RAC Arena, Perth',
+          time: [
+            { time: new Date('2024-08-09T20:10:00.000Z') },
+            { time: new Date('2024-08-10T20:50:00.000Z') },
+          ]
+        },
+
+        {
+          name: 'Adelaide Entertainment Centre, Adelaide',
+          time: [
+            { time: new Date('2024-09-01T21:20:00.000Z') },
+            { time: new Date('2024-09-02T19:15:00.000Z') },
+          ]
+        },
+
+        {
+          name: 'Marvel Stadium, Melbourne',
+          time: [
+            { time: new Date('2024-11-05T18:30:00.000Z') },
+            { time: new Date('2024-11-06T17:45:00.000Z') },
+          ]
+        },
+      ]
     },
 
     {
@@ -203,21 +221,49 @@ db.once('open', async () => {
       description:
         'The "Future Past World Tour" is an ongoing concert tour by English heavy metal band, Iron Maiden, in support of their seventeenth studio album "Senjutsu" and their 1996 album "Somewhere in Time". Iron Maiden is a British heavy metal band that has become one of the most influential and enduring acts in the history of rock music. The band is known for its known for their complex compositions, featuring galloping rhythms, dueling guitar solos, and operatic vocals, as well as their elaborate stage shows. Featuring live performance of hit track such as "Stratego", "The Writing on the Wall", and "Days of Future Past"',
       image: 'soap.jpg',
-      venue: [
-        { name: 'RAC Arena, Perth' },
-        { name: 'Adelaide Entertainment Centre, Adelaide' },
-        { name: 'Rod Laver Arena, Melbourne' },
-        { name: 'Brisbane Entertainment Centre, Brisbane'  },
-        { name: 'Qudos Bank Arena, Sydney' },
-      ],
-      dates: [
-        new Date('01-02-2024'),
-        new Date('02-03-2024'),
-        new Date('03-04-2024'),
-        new Date('04-05-2024'),
-        new Date('05-06-2024'),
-      ],
       price: 109.99,
+      venue: [
+
+        {
+          name: 'RAC Arena, Perth',
+          time: [
+            { time: new Date('2024-08-09T20:10:00.000Z') },
+            { time: new Date('2024-08-10T20:50:00.000Z') },
+          ]
+        },
+
+        {
+          name: 'Adelaide Entertainment Centre, Adelaide',
+          time: [
+            { time: new Date('2024-09-01T21:20:00.000Z') },
+            { time: new Date('2024-09-02T19:15:00.000Z') },
+          ]
+        },
+
+        {
+          name: 'Rod Laver Arena, Melbourne',
+          time: [
+            { time: new Date('2024-11-05T18:20:00.000Z') },
+            { time: new Date('2024-11-06T17:45:00.000Z') },
+          ]
+        },
+
+        {
+          name: 'Brisbane Entertainment Centre, Brisbane',
+          time: [
+            { time: new Date('2024-11-05T18:20:00.000Z') },
+            { time: new Date('2024-11-06T17:50:00.000Z') },
+          ]
+        },
+
+        {
+          name: 'Qudos Bank Arena, Sydney',
+          time: [
+            { time: new Date('2024-11-05T18:30:00.000Z') },
+            { time: new Date('2024-11-06T17:45:00.000Z') },
+          ]
+        },
+      ]
     },
 
     {
@@ -225,15 +271,24 @@ db.once('open', async () => {
       description:
         'The "Reasonable Woman Tour" is the sixth concert tour by Australian artist Sia, in support of her tenth studio album, "Reasonable Woman." Sia is renowned for her powerful vocals and emotive stage presence. Her concerts feature high-energy choreography, stunning visuals, and an immersive atmosphere. The concert features live performance of tracks such as "Incredible", "Gimme Love", and "Dance Alone". ',
       image: 'tablet.jpg',
-      venue: [
-        { name: 'AAMI Park, Melbourne' },
-        { name: 'Allianz Stadium, Adelaide, Sydney' },
-      ],
-      dates: [
-        new Date('01-06-2024'),
-        new Date('02-05-2024')
-      ],
       price: 97.99,
+
+      venue: [
+        {
+          name: 'AAMI Park, Melbourne',
+          time: [
+            { time: new Date('2024-08-09T20:10:00.000Z') },
+            { time: new Date('2024-09-10T21:10:00.000Z') },
+          ]
+        },
+        {
+          name: 'Allianz Stadium, Adelaide, Sydney',
+          time: [
+            { time: new Date('2024-10-01T21:20:00.000Z') },
+            { time: new Date('2024-11-02T19:15:00.000Z') },
+          ]
+        },
+      ]
     },
 
     {
@@ -241,24 +296,53 @@ db.once('open', async () => {
       description:
         'The "Radical Optimism Tour" is an global concert tour by English/Albanian singer-songwriter Dua Lipa, in support of her third studio album, "Radical Optimism." pop anthems with retro flair and a modern twist. Dua Lipa is known for her powerful vocals, energetic performances, and catchy pop anthems with retro flair and a modern twist. The concert features live performance of tracks such as "Houdini", "Training Season", and "Illusion". ',
       image: 'camera.jpg',
-      venue: [
-        { name: 'RAC Arena, Perth' },
-        { name: 'Adelaide Entertainment Centre, Adelaide' },
-        { name: 'Rod Laver Arena, Melbourne' },
-        { name: 'Brisbane Entertainment Centre, Brisbane'  },
-        { name: 'Qudos Bank Arena, Sydney' },
-      ],
-      dates: [
-        new Date('09-09-2024'),
-        new Date('10-10-2024'),
-        new Date('04-12-2024'),
-        new Date('12-12-2024'),
-        new Date('11-11-2024'),
-      ],
       price: 104.99,
+      venue: [
+
+        {
+          name: 'RAC Arena, Perth',
+          time: [
+            { time: new Date('2024-11-09T20:10:00.000Z') },
+            { time: new Date('2024-11-10T20:50:00.000Z') },
+          ]
+        },
+
+        {
+          name: 'Adelaide Entertainment Centre, Adelaide',
+          time: [
+            { time: new Date('2024-12-01T21:20:00.000Z') },
+            { time: new Date('2024-09-02T19:15:00.000Z') },
+          ]
+        },
+
+        {
+          name: 'Rod Laver Arena, Melbourne',
+          time: [
+            { time: new Date('2024-05-05T18:20:00.000Z') },
+            { time: new Date('2024-06-06T17:45:00.000Z') },
+          ]
+        },
+
+        {
+          name: 'Brisbane Entertainment Centre, Brisbane',
+          time: [
+            { time: new Date('2024-02-05T18:20:00.000Z') },
+            { time: new Date('2024-03-06T17:50:00.000Z') },
+          ]
+        },
+
+        {
+          name: 'Qudos Bank Arena, Sydney',
+          time: [
+            { time: new Date('2024-11-05T18:30:00.000Z') },
+            { time: new Date('2024-08-06T17:45:00.000Z') },
+          ]
+        },
+      ]
+
     },
 
-   
+
   ]);
 
   console.log('shows seeded');

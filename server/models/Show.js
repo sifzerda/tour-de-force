@@ -2,6 +2,28 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+// each show contains multiple venues, each venue contains multiple times
+
+// sub-sub-document schema for time and venue combination
+const timeSchema = new Schema({
+  time: { 
+    type: Date, 
+    required: true 
+  }, 
+});
+
+// sub-document schema for venues
+const venueSchema = new Schema({
+  name: { 
+    type: String, 
+    required: true 
+  }, 
+  time: { 
+    type: [timeSchema], 
+    required: true 
+  } 
+});
+
 const showSchema = new Schema({
   name: {
     type: String,
@@ -14,15 +36,10 @@ const showSchema = new Schema({
   image: {
     type: String
   },
-  date: {
-    type: Date,
-    required: true
+  venue: { 
+    type: [venueSchema], 
+    required: true 
   },
-
-  venue: [{
-    name: String
-  }],
-
   price: {
     type: Number,
     required: true,

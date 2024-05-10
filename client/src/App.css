@@ -295,11 +295,11 @@ div.sib-form-block-2 {
 }
 
 .sib-form-block__button.sib-form-block__button-with-loader:hover {
-  background-color: var(--cyan);
-  color:  black;
+  color:   white;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  border-color: white;
+/*border-color:  var(--cyan);*/
+  border-color:  white;
 }
 
 #sib-form {

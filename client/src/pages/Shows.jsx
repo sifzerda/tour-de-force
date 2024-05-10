@@ -6,7 +6,7 @@ const Shows = () => {
 
 
 
-
+<p className='whats-on'> insert text</p>
 
 
 
@@ -15,3 +15,4 @@ const Shows = () => {
 };
 
 export default Shows;
+
