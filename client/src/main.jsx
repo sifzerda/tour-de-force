@@ -15,6 +15,7 @@ import Success from './pages/Success';
 import SubConfirm from './pages/SubConfirm.jsx';
 import Shop from './pages/Shop.jsx';
 import Shows from './pages/Shows.jsx';
+import ShowDetail from './pages/ShowDetail.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,39 +27,52 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />
       }, 
+////////////////////////////////////////
       {
         path: '/login',
         element: <Login />
       }, 
+////////////////////////////////////////
       {
         path: '/signup',
         element: <Signup />
       }, 
+////////////////////////////////////////
       {
         path: '/account',
         element: <OrderHistory />
       }, 
+////////////////////////////////////////
       {
         path: '/products/:id',
         element: <Detail />
       }, 
+////////////////////////////////////////
       {
         path: '/success',
         element: <Success />
       },
+/////////////////////////////////////
       {
         path: '/subscribed',
         element: <SubConfirm />
       },
+////////////////////////////////////////
       {
         path: '/shop',
         element: <Shop />
       },
+////////////////////////////////////////
       {
         path: '/shows',
         element: <Shows />
       },
-// below links I've added //////////////////////////////////////////
+////////////////////////////////////////
+      {
+        path: '/shows/:id',
+        element: <ShowDetail />
+      }, 
+// more links //////////////////////////////////////////
 //{
 //  path: '/page1',
 //  element: <Events />

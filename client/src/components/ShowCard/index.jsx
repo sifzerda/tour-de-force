@@ -1,4 +1,4 @@
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 //import { pluralize } from "../../utils/helpers"
 //import { useStoreContext } from "../../utils/GlobalState";
 //import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
@@ -6,11 +6,19 @@
 
 function ShowCard({ show }) {
     // Destructuring show props
-    const { name, description, venue, image, price } = show;
+    const { _id, name, description, venue, image, price } = show;
 
     return (
         <div className="card">
-            <img src={image} alt={name} className="card-img-top" />
+
+
+<Link to={`/Shows/${_id}`}>
+        <img
+        className="card-img-top" alt={name} src={`/images/${image}`} />
+        <p>{name}</p>
+      </Link>
+
+
             <div className="card-body">
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">{description}</p>
