@@ -7,7 +7,7 @@ const ThoughtList = ({
   showUsername = true,
 }) => {
   if (!thoughts.length) {
-    return <h3>No Thoughts Yet</h3>;
+    return <h3 className='post-head'>No Thoughts Yet</h3>;
   }
 
   return (
@@ -42,7 +42,7 @@ const ThoughtList = ({
               className="btn btn-primary btn-block btn-squared"
               to={`/thoughts/${thought._id}`}
             >
-              Join the discussion on this thought.
+              INSERT STAR RATING HERE OR HEADER OF THOUGHT
             </Link>
           </div>
         ))}

@@ -8,8 +8,8 @@ Query: {
 
   // ----------------------------------------------------- //
 
-  thoughts: async (parent, { username }) => {
-    const params = username ? { username } : {};
+  thoughts: async (parent, { firstName }) => {
+    const params = firstName ? { firstName } : {};
     return Thought.find(params).sort({ createdAt: -1 });
   },
   thought: async (parent, { thoughtId }) => {
@@ -23,6 +23,13 @@ Query: {
   },
   show: async (parent, { _id}) => {
     return await Show.findById(_id); 
+  },
+
+  me: async (parent, args, context) => {
+    if (context.user) {
+      return User.findOne({ _id: context.user._id }).populate('thoughts');
+    }
+    throw AuthenticationError;
   },
 
 // ----------------------------------------------------- //
@@ -117,7 +124,7 @@ Mutation: {
         if (context.user) {
           const thought = await Thought.create({
             thoughtText,
-            thoughtAuthor: context.user.username,
+            thoughtAuthor: context.user.firstName,
           });
   
           await User.findOneAndUpdate(
@@ -135,7 +142,7 @@ Mutation: {
             { _id: thoughtId },
             {
               $addToSet: {
-                comments: { commentText, commentAuthor: context.user.username },
+                comments: { commentText, commentAuthor: context.user.firstName },
               },
             },
             {
@@ -150,7 +157,7 @@ Mutation: {
         if (context.user) {
           const thought = await Thought.findOneAndDelete({
             _id: thoughtId,
-            thoughtAuthor: context.user.username,
+            thoughtAuthor: context.user.firstName,
           });
   
           await User.findOneAndUpdate(
@@ -170,7 +177,7 @@ Mutation: {
               $pull: {
                 comments: {
                   _id: commentId,
-                  commentAuthor: context.user.username,
+                  commentAuthor: context.user.firstName,
                 },
               },
             },

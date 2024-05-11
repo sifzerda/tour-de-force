@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 
 import { ADD_THOUGHT } from '../../utils/mutations';
 import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
@@ -11,6 +11,12 @@ const ThoughtForm = () => {
   const [thoughtText, setThoughtText] = useState('');
 
   const [characterCount, setCharacterCount] = useState(0);
+
+  const { loading: queryLoading, error: queryError, data: queryData } = useQuery(QUERY_ME);
+
+  console.log('Query loading:', queryLoading);
+  console.log('Query error:', queryError);
+  console.log('Query data:', queryData);
 
   const [addThought, { error }] = useMutation
   (ADD_THOUGHT, {
@@ -25,11 +31,13 @@ const ThoughtForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
+         // Log the firstName
+    console.log("User's firstName:", Auth.getProfile().data.firstName);
       const { data } = await addThought({
         variables: {
           thoughtText,
-          // Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's username 
-          thoughtAuthor: Auth.getProfile().authenticatedPerson.username
+          // Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's firstName 
+          thoughtAuthor: Auth.getProfile().data.firstName
         },
       });
 
@@ -49,8 +57,8 @@ const ThoughtForm = () => {
   };
 
   return (
-    <div>
-      <h3>What's on your techy mind?</h3>
+    <div className='post-box'>
+      <h3 className='post-head'>What&apos;s on your techy mind?</h3>
 
       {Auth.loggedIn() ? (
         <>

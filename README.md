@@ -13,14 +13,16 @@
 
 
 
+
 ## to do:
 - create some queries for shows/typeDEFS, resolvers, mutations, etc
 
 
-
-
-
 Pre-made working accounts for logging in debugging purposes:
+
+
+    email: xandro@aol.com
+    password: password12345
 
     email: sal@hotmail.com
     password: password12345
@@ -31,14 +33,34 @@ Pre-made working accounts for logging in debugging purposes:
     email: amiko2k20@aol.com
     password: password12345
 
-    email: xandro@aol.com
-    password: password12345
-
     email: eholt@testmail.com
     password: password12345
 
     email: eholt@testmail.com
-    password: password12345
+    password: 'password12345'
+
+    email: bkernighan@techfriends.dev
+    password: password01
+
+    email: mkanatalexander@techfriends.dev
+    password: password02
+
+    email: kbeck@techfriends.dev
+    password: password04
+
+    email: evberard@techfriends.dev
+    password: password05
+
+    email: akay@techfriends.dev
+    password: password06
+
+    email: dthomas@techfriends.dev
+    password: password08
+
+    email: dknuth@techfriends.dev
+    password: password09
+
+
 
 
 Links to each specific show can be found using the URL:

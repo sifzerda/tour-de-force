@@ -49,6 +49,13 @@ h2 {
   margin-bottom: 2rem;
 }
 
+h3 {
+  /* Your styles here */
+  /* For example: */
+  font-weight: bold;
+  color: #d40e0e;
+  /* Add more styles as needed */
+}
 
 header {
   background: rgb(54, 68, 89);
@@ -407,6 +414,56 @@ p.detail-price {
   font-size: 1.5rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+/* thoughts on show detail page */
+
+h3.post-head {
+  color: var(--light-red);
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+div.post-box {
+  background-color: var(--cyan);
+  border: 4px solid var(--light-red);
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  transition: transform 0.3s;
+  width: 1000px;
+}
+
+div.flex-row.justify-center {
+  display: flex;
+  justify-content: center;
+border: 2px solid greenyellow;
+
+}
+
+/* ------------------ login ----------*/
+
+h2.login-title {
+  color: var(--light-red);
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+div.container.my-1 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: 2px solid var(--light-red);
+}
+
+.email-label {
+  /* Your styles here */
+  /* For example: */
+  color: #f0e10c;
+  font-size: 16px;
+  /* Add more styles as needed */
 }
 
 

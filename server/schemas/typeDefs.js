@@ -111,6 +111,7 @@ type Time {
     checkout(products: [ProductInput]): Checkout
     thoughts(firstName: String): [Thought]
     thought(thoughtId: ID!): Thought
+    me: User
   }
 
   type Mutation {
