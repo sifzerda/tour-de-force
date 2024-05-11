@@ -1,10 +1,20 @@
-const { User, Product, Category, Order, Show } = require('../models');
+const { User, Product, Category, Order, Show, Thought } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
 
 Query: {
+
+  // ----------------------------------------------------- //
+
+  thoughts: async (parent, { username }) => {
+    const params = username ? { username } : {};
+    return Thought.find(params).sort({ createdAt: -1 });
+  },
+  thought: async (parent, { thoughtId }) => {
+    return Thought.findOne({ _id: thoughtId });
+  },
 
 // ----------------------------------------------------- //
 
@@ -101,6 +111,76 @@ Query: {
 
 Mutation: {
 
+      //------------------- thoughts ------------------------- //
+
+      addThought: async (parent, { thoughtText }, context) => {
+        if (context.user) {
+          const thought = await Thought.create({
+            thoughtText,
+            thoughtAuthor: context.user.username,
+          });
+  
+          await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $addToSet: { thoughts: thought._id } }
+          );
+  
+          return thought;
+        }
+        throw AuthenticationError;
+      },
+      addComment: async (parent, { thoughtId, commentText }, context) => {
+        if (context.user) {
+          return Thought.findOneAndUpdate(
+            { _id: thoughtId },
+            {
+              $addToSet: {
+                comments: { commentText, commentAuthor: context.user.username },
+              },
+            },
+            {
+              new: true,
+              runValidators: true,
+            }
+          );
+        }
+        throw AuthenticationError;
+      },
+      removeThought: async (parent, { thoughtId }, context) => {
+        if (context.user) {
+          const thought = await Thought.findOneAndDelete({
+            _id: thoughtId,
+            thoughtAuthor: context.user.username,
+          });
+  
+          await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $pull: { thoughts: thought._id } }
+          );
+  
+          return thought;
+        }
+        throw AuthenticationError;
+      },
+      removeComment: async (parent, { thoughtId, commentId }, context) => {
+        if (context.user) {
+          return Thought.findOneAndUpdate(
+            { _id: thoughtId },
+            {
+              $pull: {
+                comments: {
+                  _id: commentId,
+                  commentAuthor: context.user.username,
+                },
+              },
+            },
+            { new: true }
+          );
+        }
+        throw AuthenticationError;
+      },
+
+
     //------------------- shows ------------------------- //
 
     createShow: async (parent, { input }) => {
@@ -153,9 +233,6 @@ Mutation: {
         { new: true }
       );
     },
-
-
-
 
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

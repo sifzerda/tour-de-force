@@ -47,6 +47,22 @@ type Time {
     lastName: String
     email: String
     orders: [Order]
+    thoughts: [Thought]!
+  }
+
+  type Thought {
+    _id: ID
+    thoughtText: String
+    thoughtAuthor: String
+    createdAt: String
+    comments: [Comment]!
+  }
+
+  type Comment {
+    _id: ID
+    commentText: String
+    commentAuthor: String
+    createdAt: String
   }
 
   type Checkout {
@@ -93,6 +109,8 @@ type Time {
     user: User
     order(_id: ID!): Order
     checkout(products: [ProductInput]): Checkout
+    thoughts(firstName: String): [Thought]
+    thought(thoughtId: ID!): Thought
   }
 
   type Mutation {
@@ -104,6 +122,10 @@ type Time {
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
+    addThought(thoughtText: String!): Thought
+    addComment(thoughtId: ID!, commentText: String!): Thought
+    removeThought(thoughtId: ID!): Thought
+    removeComment(thoughtId: ID!, commentId: ID!): Thought
   }
 `;
 
