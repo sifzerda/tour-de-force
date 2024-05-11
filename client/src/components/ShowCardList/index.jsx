@@ -1,4 +1,5 @@
 import ShowCard from '../ShowCard';
+import "../../App.css";
 
 function ShowCardList({ shows }) {
   return (

@@ -46,6 +46,11 @@ Links to each specific show can be found using the URL:
 http:// [domain] /Shows/ [show._id]
 
 
+Instructions:
+
+- npm i 
+- npm run seed
+- npm run start (or develop)
 
 //////////////////////////////////
 

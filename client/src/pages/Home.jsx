@@ -8,7 +8,7 @@ const Home = () => {
     <div className="container">
 
 
-      <p className="whats-on">What&apos;s On</p>
+      <h1>What&apos;s On</h1>
 
       <Carousel />
 
