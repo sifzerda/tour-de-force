@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
-import dayjs from 'dayjs'; // Import dayjs library
+import dayjs from 'dayjs';
 import '../../App.css';
+import ThoughtList from '../ThoughtList';
 
 function ShowDetailOne({ show }) {
     // Destructuring show props
@@ -40,27 +41,9 @@ function ShowDetailOne({ show }) {
                 </ul>
             </div>
 
-            {/* Thoughts list */}
-            <ul className="list-group list-group-flush">
-                {thoughts.map((thought, index) => {
-                    // Debugging
-                    console.log('Raw value of thought.createdAt:', thought.createdAt);
-                    console.log('Type of thought.createdAt:', typeof thought.createdAt);
-                    console.log('Formatted createdAt:', thought.formattedCreatedAt);
+{/* ------------------------ Thoughts list ------------------------------------*/}
 
-                    // Format createdAt date
-                    const formattedDate = dayjs(parseInt(thought.createdAt)).format('DD/MM/YYYY');
-
-                    return (
-                        <li key={index} className="list-group-item">
-                            <strong>{thought.thoughtAuthor} said: </strong>
-                            <p>{thought.thoughtText}</p>
-                            {/* Use the formattedCreatedAt virtual property */}
-                            <p>Posted on: {formattedDate}</p>
-                        </li>
-                    );
-                })}
-            </ul>
+            <ThoughtList thoughts={thoughts} />
         </div>
     );
 }

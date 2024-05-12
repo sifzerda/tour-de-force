@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_SHOWS } from '../utils/queries';
 import { ADD_THOUGHT } from '../utils/mutations';
@@ -8,6 +7,7 @@ import spinner from '../assets/spinner.gif';
 import '../App.css';
 import '../components/ShowDetailOne/index';
 import ShowDetailOne from '../components/ShowDetailOne/index';
+import Auth from '../utils/auth';
 
 //import ThoughtList from '../components/ThoughtList';
 //import ThoughtForm from '../components/ThoughtForm';
@@ -24,7 +24,6 @@ function ShowDetail() {
   const [currentShow, setCurrentShow] = useState({});
   const [thoughtText, setThoughtText] = useState('');
   const [addThought, { loading: thoughtLoading, error: thoughtError }] = useMutation(ADD_THOUGHT);
-
 
   // GET shows data
   const { loading: showsLoading, data: showsData } = useQuery(QUERY_SHOWS);
@@ -64,7 +63,6 @@ function ShowDetail() {
       }
     };
 
-
     return (
       <>
         {showsLoading ? (
@@ -81,28 +79,48 @@ function ShowDetail() {
                 <p className='detail-price'><strong>Price:</strong>${currentShow.price}{' '}</p>
                 <img src={`/images/${currentShow.image}`} alt={currentShow.name} />
                 
-                {/* Form to add thought */}
-                <form onSubmit={handleThoughtSubmit}>
-                  <textarea
-                    value={thoughtText}
-                    onChange={handleThoughtChange}
-                    placeholder="Add your thought..."
-                  />
-                  <button type="submit">Add Thought</button>
-                </form>
+{/*-------------------- Form to add thought -------------------------------------------------------------- */}
                 
-                {/* Display loading or error message */}
-                {thoughtLoading && <p>Loading...</p>}
-                {thoughtError && <p>Error: {thoughtError.message}</p>}
-  
-                {/* Show details */}
-                <ShowDetailOne show={currentShow} />
+<div className='post-box'>
+                <h3 className='post-head'>Seen the show? Leave a Review!</h3>
+                {Auth.loggedIn() ? (
+                  <>
+                    <form onSubmit={handleThoughtSubmit}>
+                      <div className="col-12 col-lg-9">
+                        <textarea
+                          name="thoughtText"
+                          placeholder="Share your thoughts..."
+                          value={thoughtText}
+                          className="form-input w-100"
+                          style={{ lineHeight: '1.5', resize: 'vertical' }}
+                          onChange={handleThoughtChange}
+                        ></textarea>
+                      </div>
+
+                      <div className="col-12 col-lg-3">
+                        <button className="btn btn-primary btn-block py-3" type="submit">
+                          Submit
+                        </button>
+                      </div>
+                    </form>
+                    {thoughtError && <p>Error: {thoughtError.message}</p>}
+                  </>
+                ) : (
+                  <p>
+                    You need to be logged in to share a review. Please{' '}
+                    <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+                  </p>
+                )}
               </div>
+
+              {/* Show details */}
+              <ShowDetailOne show={currentShow} />
             </div>
-          )
-        )}
-      </>
-    );
-  }
-  
-  export default ShowDetail;
+          </div>
+        )
+      )}
+    </>
+  );
+}
+
+export default ShowDetail;
