@@ -8,9 +8,9 @@ import '../App.css';
 import '../components/ShowDetailOne/index';
 import ShowDetailOne from '../components/ShowDetailOne/index';
 
-import ThoughtList from '../components/ThoughtList';
-import ThoughtForm from '../components/ThoughtForm';
-import { QUERY_THOUGHTS } from '../utils/queries';
+//import ThoughtList from '../components/ThoughtList';
+//import ThoughtForm from '../components/ThoughtForm';
+//import { QUERY_THOUGHTS } from '../utils/queries';
 
 //import Cart from '../components/Cart';
 //import { useStoreContext } from '../utils/GlobalState';
@@ -26,7 +26,7 @@ function ShowDetail() {
   const { loading: showsLoading, data: showsData } = useQuery(QUERY_SHOWS);
   
   // GET thoughts data
-    const { loading: thoughtsLoading, data: thoughtsData } = useQuery(QUERY_THOUGHTS);
+ //   const { loading: thoughtsLoading, data: thoughtsData } = useQuery(QUERY_THOUGHTS);
   
     useEffect(() => {
       if (showsData && showsData.shows) {
@@ -37,7 +37,7 @@ function ShowDetail() {
   
     return (
       <>
-        {(showsLoading || thoughtsLoading) ? (
+        {(showsLoading ) ? (
           <div className="container my-1">
             <img src={spinner} alt="loading" />
           </div>
@@ -54,19 +54,25 @@ function ShowDetail() {
   
                 {/* user thoughts/comments*/}
 
-                <div className='flex-row justify-center'>
-                  <div className='col-12 col-md-10 mb-3 p-3' style={{ border: '1px dotted #1a1a1a' }}>
-                    <ThoughtForm />
-                  </div>
-  
-                 <div className='col-12 col-md-8 mb-3'>
-{/*                    {/* Pass thoughtsData to ThoughtList */}
-                    <ThoughtList thoughts={thoughtsData?.thoughts || []} title='Some feed for Thoughts...' />
-                 </div>
-                </div>
+
+
+
+
+
+
+
+
   
 {/*                {/* generated show detail card   /}            */}
-                <ShowDetailOne show={currentShow} />           
+                <ShowDetailOne show={currentShow} />   
+
+
+
+
+
+
+
+
               </div>
             </div>
           )

@@ -9,10 +9,18 @@ export const QUERY_SHOWS = gql`
     image
     price
     venue {
+      _id
       name
       time {
+        _id
         time
       }
+    }
+    thoughts {
+      _id
+      thoughtText
+      thoughtAuthor
+      createdAt
     }
   }
 }
@@ -27,10 +35,18 @@ query getShow($id: ID!) {
     image
     price
     venue {
+      _id
       name
       time {
+        _id
         time
       }
+    }
+    thoughts {
+      _id
+      thoughtText
+      thoughtAuthor
+      createdAt
     }
   }
 }
@@ -101,18 +117,6 @@ export const QUERY_USER = gql`
           image
         }
       }
-    }
-  }
-`;
-
-
-export const QUERY_THOUGHTS = gql`
-  query getThoughts {
-    thoughts {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
     }
   }
 `;

@@ -15,7 +15,6 @@ Query: {
   thought: async (parent, { thoughtId }) => {
     return Thought.findOne({ _id: thoughtId });
   },
-
   me: async (parent, args, context) => {
     console.log("Debugging 'me' query - Context User:", context.user);
     if (context.user) {
@@ -123,11 +122,13 @@ Mutation: {
 
       //------------------- thoughts ------------------------- //
 
-      addThought: async (parent, { thoughtText }, context) => {
+          // creating a thought linked to a show
+      addThought: async (parent, { showId, thoughtText }, context) => {
         if (context.user) {
           const thought = await Thought.create({
             thoughtText,
             thoughtAuthor: context.user.firstName,
+            show: showId,
           });
   
           await User.findOneAndUpdate(
@@ -194,16 +195,19 @@ Mutation: {
     //------------------- shows ------------------------- //
 
     createShow: async (parent, { input }) => {
-      return await Show.create(input);
+      const show = await Show.create(input);
+      //  add thoughts here if you want
+      return show;
     },
     updateShow: async (parent, { _id, input }) => {
-      return await Show.findByIdAndUpdate(_id, input, { new: true });
+      const updatedShow = await Show.findByIdAndUpdate(_id, input, { new: true });
+      // add thoughts update here if you want
+      return updatedShow;
     },
     deleteShow: async (parent, { _id }) => {
       return await Show.findByIdAndDelete(_id);
     },
   
-
       //------------------- ------ ------------------------- //
 
     addUser: async (parent, args) => {

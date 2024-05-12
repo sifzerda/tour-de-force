@@ -1,7 +1,7 @@
 const db = require('./connection');
-const { User, Product, Category, Show, Thought } = require('../models');
+const { User, Product, Category, Show } = require('../models');
 const cleanDB = require('./cleanDB');
-const thoughtSeeds = require('./thoughtSeeds.json');
+//const thoughtSeeds = require('./thoughtSeeds.json');
 
 db.once('open', async () => {
   try {
@@ -9,7 +9,7 @@ db.once('open', async () => {
     await cleanDB('Product', 'products');
     await cleanDB('User', 'users');
     await cleanDB('Show', 'shows');
-    await cleanDB('Thought', 'thoughts');
+    //await cleanDB('Thought', 'thoughts');
 
     const categories = await Category.insertMany([
       { name: 'Food' },
@@ -231,24 +231,6 @@ db.once('open', async () => {
 
     console.log('🔑 users seeded');
 
-    for (let i = 0; i < thoughtSeeds.length; i++) {
-      const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
-      const user = await User.findOneAndUpdate(
-        { username: thoughtAuthor },
-        {
-          $addToSet: {
-            thoughts: _id,
-          },
-        }
-      );
-    }
-  } catch (err) {
-    console.error(err);
-    process.exit(1);
-  }
-
-  console.log('💭 thoughts seeded');
-
   // generate venues and shows -----------------------------------------------------------------//
 
   const shows = await Show.insertMany([
@@ -258,6 +240,38 @@ db.once('open', async () => {
         'The "Music of the Spheres World Tour" is the eighth concert tour by British rock band Coldplay, in support of their album "Music of the Spheres". Coldplay is known for their captivating live performances featuring elaborate stage designs, stunning visual effects, and energetic renditions of their hit songs. Tour surpassed $810.9 million in revenue from 7.66 million tickets across 132 dates, making it the third-highest-grossing and second-most attended tour of all time. Featuring live performance of hit track such as "Higher Power", "Coloratura", and "My Universe" ',
       image: 'cookie-tin.jpg',
       price: 32.99,
+
+  // seed thoughts into show -----------------------------------------------------------------//
+
+      thoughts: [
+        {
+          thoughtText: "I saw Coldplay at Marvel Stadium and it was incredible!",
+          thoughtAuthor: "Amiko",
+          createdAt: new Date('2024-05-12T10:00:00Z'),
+          comments: [
+            {
+              commentText: "Absolutely! Their performances are always so immersive.",
+              commentAuthor: "Xandromus",
+              createdAt: new Date('2024-05-12T10:05:00Z')
+            }
+          ]
+        },
+        {
+          thoughtText: "Coldplay's Music of the Spheres World Tour was the highlight of the year!",
+          thoughtAuthor: "David",
+          createdAt: new Date('2024-05-10T15:30:00Z'),
+          comments: [
+            {
+              commentText: "I agree! It was an unforgettable experience.",
+              commentAuthor: "Amiko",
+              createdAt: new Date('2024-05-10T15:35:00Z')
+            }
+          ]
+        }
+      ],
+
+  // seed venues into show (and seed times into venues) -----------------------------------------------------------------//
+
       venue: [
 
         {
@@ -412,13 +426,14 @@ db.once('open', async () => {
 
     },
 
-
   ]);
 
   console.log('🎤 shows seeded');
-
+  console.log('💭 thoughts seeded');
 
   process.exit();
+} catch (err) {
+  console.error(err);
+  process.exit(1);
+}
 });
-
-

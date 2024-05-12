@@ -4,7 +4,7 @@ const ThoughtList = ({
   thoughts,
   title,
   showTitle = true,
-  showUsername = true,
+  showFirstName = true,
 }) => {
   if (!thoughts.length) {
     return <h3 className='post-head'>No Thoughts Yet</h3>;
@@ -17,7 +17,7 @@ const ThoughtList = ({
         thoughts.map((thought) => (
           <div key={thought._id} className="card mb-3">
             <h4 className="card-header bg-primary text-light p-2 m-0">
-              {showUsername ? (
+              {showFirstName ? (
                 <Link
                   className="text-light"
                   to={`/profiles/${thought.thoughtAuthor}`}

@@ -7,6 +7,7 @@ type Show {
   image: String
   venue: [Venue]
   price: Float
+  thoughts: [Thought]
 }
 
 type Venue {
@@ -47,7 +48,7 @@ type Time {
     lastName: String
     email: String
     orders: [Order]
-    thoughts: [Thought]!
+    thoughts: [Thought]
   }
 
   type Thought {
@@ -55,7 +56,8 @@ type Time {
     thoughtText: String
     thoughtAuthor: String
     createdAt: String
-    comments: [Comment]!
+    comments: [Comment]
+    show: Show
   }
 
   type Comment {
@@ -123,7 +125,7 @@ type Time {
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
+    addThought(showId: ID!, thoughtText: String!): Thought
     addComment(thoughtId: ID!, commentText: String!): Thought
     removeThought(thoughtId: ID!): Thought
     removeComment(thoughtId: ID!, commentId: ID!): Thought

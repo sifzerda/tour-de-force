@@ -3,7 +3,7 @@ import '../../App.css';
 
 function ShowDetailOne({ show }) {
     // Destructuring show props
-    const { _id, name, description, venue, image, price } = show;
+    const { _id, name, description, venue, image, price, thoughts } = show;
     const { id } = useParams(); // Get the _id from the URL path
 
     // Check if the _id from the URL path matches the _id of the current show
@@ -41,8 +41,39 @@ function ShowDetailOne({ show }) {
                         </li>
                     ))}
                 </ul>
+
+
             </div>
+
+{/*  ----------------------------------- thoughts ------------------------ */}
+
+                {/* Render thoughts list */}
+                <ul className="list-group list-group-flush">
+                    {thoughts.map((thought, index) => (
+                        <li key={index} className="list-group-item">
+                            <strong>{thought.thoughtAuthor} said: </strong>
+                            <p>{thought.thoughtText}</p>
+                            <p>Posted on: {new Date(thought.createdAt).toLocaleString()}</p>
+                        </li>
+                    ))}
+                </ul>
+
+
+
+
+
+
         </div>
+
+
+
+
+
+
+
+
+
+
     );
 }
 
