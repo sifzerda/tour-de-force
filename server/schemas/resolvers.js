@@ -1,40 +1,67 @@
-const { User, Product, Category, Order, Show, Thought } = require('../models');
+const { User, Product, Category, Order, Show } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
 
-Query: {
+  Query: {
 
-  // ----------------------------------------------------- //
+    // ----------------------------------------------------- //
 
-  thoughts: async (parent, { firstName }) => {
-    const params = firstName ? { firstName } : {};
-    return Thought.find(params).sort({ createdAt: -1 });
-  },
-  thought: async (parent, { thoughtId }) => {
-    return Thought.findOne({ _id: thoughtId });
-  },
-  me: async (parent, args, context) => {
-    console.log("Debugging 'me' query - Context User:", context.user);
-    if (context.user) {
-      const user = await User.findOne({ _id: context.user._id }).populate('thoughts');
-      console.log("Debugging 'me' query - Found User:", user);
-      return user;
-    }
-    console.log("Debugging 'me' query - No User Found");
-    throw new AuthenticationError('You must be logged in');
-  },
-// ----------------------------------------------------- //
+    thoughts: async (parent, args) => {
+      // Assuming thoughts are retrieved from the current show of the logged-in user
+      if (args.firstName && args.showId) {
+        const user = await User.findOne({ firstName: args.firstName });
+        const show = await Show.findOne({ _id: args.showId, user: user._id });
+        return show.thoughts;
+      }
+      throw new Error('Invalid query parameters.');
+    },
 
-  shows: async () => {
-    return await Show.find();
-  },
-  show: async (parent, { _id}) => {
-    return await Show.findById(_id); 
-  },
+    thought: async (parent, { thoughtId }) => {
+      try {
+        // Find the thought within the shows collection where it's embedded
+        const showWithThought = await Show.findOne({ 'thoughts._id': thoughtId });
+        // Find the thought within the embedded thoughts array
+        const thought = showWithThought.thoughts.find(t => t._id === thoughtId);
+        return thought;
+      } catch (error) {
+        console.error(error);
+        throw new Error('Failed to find the thought.');
+      }
+    },
 
-// ----------------------------------------------------- //
+    me: async (parent, args, context) => {
+      console.log("Debugging 'me' query - Context User:", context.user);
+      if (context.user) {
+        const user = await User.findOne({ _id: context.user._id }).populate('thoughts');
+        console.log("Debugging 'me' query - Found User:", user);
+        return user;
+      }
+      console.log("Debugging 'me' query - No User Found");
+      throw new AuthenticationError('You must be logged in');
+    },
+    // ----------------------------------------------------- //
+
+    shows: async () => {
+      try {
+        return await Show.find().populate('thoughts');
+      } catch (error) {
+        console.error(error);
+        throw new Error('Failed to fetch shows.');
+      }
+    },
+
+    show: async (parent, { _id }) => {
+      try {
+        return await Show.findById(_id).populate('thoughts');
+      } catch (error) {
+        console.error(error);
+        throw new Error('Failed to fetch show.');
+      }
+    },
+
+    // ----------------------------------------------------- //
 
     categories: async () => {
       return await Category.find();
@@ -118,31 +145,42 @@ Query: {
 
   // ------------------------ MUTATIONS ---------------------- //
 
-Mutation: {
+  Mutation: {
 
-      //------------------- thoughts ------------------------- //
+    //------------------- thoughts ------------------------- //
 
-          // creating a thought linked to a show
-      addThought: async (parent, { showId, thoughtText }, context) => {
-        if (context.user) {
-          const thought = await Thought.create({
+    // creating a thought linked to a show
+    addThought: async (parent, { showId, thoughtText }, context) => {
+      if (context.user) {
+        try {
+          // Find the show by its ID
+          const show = await Show.findById(showId);
+          if (!show) {
+            throw new Error('Show not found');
+          }
+
+          // Create a new thought embedded within the show
+          show.thoughts.push({
             thoughtText,
             thoughtAuthor: context.user.firstName,
-            show: showId,
           });
-  
-          await User.findOneAndUpdate(
-            { _id: context.user._id },
-            { $addToSet: { thoughts: thought._id } }
-          );
-  
-          return thought;
-        }
-        throw AuthenticationError;
-      },
-      addComment: async (parent, { thoughtId, commentText }, context) => {
-        if (context.user) {
-          return Thought.findOneAndUpdate(
+
+      // Save the updated show
+      const updatedShow = await show.save();
+
+      return updatedShow;
+    } catch (error) {
+      throw new Error(`Error creating thought: ${error.message}`);
+    }
+  }
+  throw new Error('You must be logged in');
+},
+
+    addComment: async (parent, { thoughtId, commentText }, context) => {
+      if (context.user) {
+        try {
+          // Find the thought by its ID and update its comments array
+          const updatedThought = await Thought.findOneAndUpdate(
             { _id: thoughtId },
             {
               $addToSet: {
@@ -154,28 +192,58 @@ Mutation: {
               runValidators: true,
             }
           );
+
+          if (!updatedThought) {
+            throw new Error('Thought not found');
+          }
+
+          return updatedThought;
+        } catch (error) {
+          console.error(error);
+          throw new Error('Failed to add comment to thought.');
         }
-        throw AuthenticationError;
-      },
-      removeThought: async (parent, { thoughtId }, context) => {
-        if (context.user) {
-          const thought = await Thought.findOneAndDelete({
+      } else {
+        throw new AuthenticationError('You must be logged in to add a comment.');
+      }
+    },
+
+
+
+    removeThought: async (parent, { thoughtId }, context) => {
+      if (context.user) {
+        try {
+          // Find the thought by its ID and delete it
+          const deletedThought = await Thought.findOneAndDelete({
             _id: thoughtId,
             thoughtAuthor: context.user.firstName,
           });
-  
+
+          if (!deletedThought) {
+            throw new Error('Thought not found or you are not authorized to delete it.');
+          }
+          // Remove the thought's ID from the user's thoughts array
           await User.findOneAndUpdate(
             { _id: context.user._id },
-            { $pull: { thoughts: thought._id } }
+            { $pull: { thoughts: deletedThought._id } }
           );
-  
-          return thought;
+
+          return deletedThought;
+        } catch (error) {
+          console.error(error);
+          throw new Error('Failed to remove thought.');
         }
-        throw AuthenticationError;
-      },
-      removeComment: async (parent, { thoughtId, commentId }, context) => {
-        if (context.user) {
-          return Thought.findOneAndUpdate(
+      } else {
+        throw new AuthenticationError('You must be logged in to remove a thought.');
+      }
+    },
+
+
+
+    removeComment: async (parent, { thoughtId, commentId }, context) => {
+      if (context.user) {
+        try {
+          // Find the thought by its ID and update it to pull the specified comment
+          const updatedThought = await Thought.findOneAndUpdate(
             { _id: thoughtId },
             {
               $pull: {
@@ -187,9 +255,20 @@ Mutation: {
             },
             { new: true }
           );
+
+          if (!updatedThought) {
+            throw new Error('Thought not found or you are not authorized to remove the comment.');
+          }
+
+          return updatedThought;
+        } catch (error) {
+          console.error(error);
+          throw new Error('Failed to remove comment.');
         }
-        throw AuthenticationError;
-      },
+      } else {
+        throw new AuthenticationError('You must be logged in to remove a comment.');
+      }
+    },
 
 
     //------------------- shows ------------------------- //
@@ -207,8 +286,8 @@ Mutation: {
     deleteShow: async (parent, { _id }) => {
       return await Show.findByIdAndDelete(_id);
     },
-  
-      //------------------- ------ ------------------------- //
+
+    //------------------- ------ ------------------------- //
 
     addUser: async (parent, args) => {
       const user = await User.create(args);

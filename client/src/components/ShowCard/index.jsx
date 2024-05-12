@@ -29,8 +29,8 @@ function ShowCard({ show }) {
                             <strong>Venues: {venueItem.name}</strong>
                             <ul>
                             {venueItem.time.map((timeItem, idx) => {
-                                    console.log("TimeItem =", timeItem); //  debugging
-                                    console.log("TimeItem.time =", timeItem.time); // debugging 
+                                    //console.log("TimeItem =", timeItem); //  debugging
+                                    //console.log("TimeItem.time =", timeItem.time); // debugging 
                                     const formattedDate = new Date(parseInt(timeItem.time)).toLocaleDateString('en-AU', {
                                         day: '2-digit',
                                         month: '2-digit',

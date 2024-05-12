@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const ADD_THOUGHT = gql`
-  mutation addThought($thoughtText: String!) {
-    addThought(thoughtText: $thoughtText) {
+mutation addThought($showId: ID!, $thoughtText: String!) {
+  addThought(showId: $showId, thoughtText: $thoughtText) {
       _id
       thoughtText
       thoughtAuthor

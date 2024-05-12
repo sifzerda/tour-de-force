@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_SHOWS } from '../utils/queries';
+import { ADD_THOUGHT } from '../utils/mutations';
 import spinner from '../assets/spinner.gif';
 import '../App.css';
 import '../components/ShowDetailOne/index';
@@ -21,7 +22,10 @@ function ShowDetail() {
 
   const { id } = useParams();
   const [currentShow, setCurrentShow] = useState({});
-  
+  const [thoughtText, setThoughtText] = useState('');
+  const [addThought, { loading: thoughtLoading, error: thoughtError }] = useMutation(ADD_THOUGHT);
+
+
   // GET shows data
   const { loading: showsLoading, data: showsData } = useQuery(QUERY_SHOWS);
   
@@ -34,10 +38,36 @@ function ShowDetail() {
         setCurrentShow(foundShow);
       }
     }, [showsData, id]);
-  
+
+    const handleThoughtChange = (event) => {
+      setThoughtText(event.target.value);
+    };
+
+    const handleThoughtSubmit = async (event) => {
+      event.preventDefault();
+      try {
+        console.log('Submitting thought...');
+        console.log('showId:', id);
+        console.log('thoughtText:', thoughtText);
+        
+        await addThought({
+          variables: { showId: id, thoughtText },
+          refetchQueries: [{ query: QUERY_SHOWS }] // Optionally refetch the shows list
+        });
+        
+        console.log('Thought submitted successfully!');
+        
+        setThoughtText('');
+      } catch (err) {
+        // Handle error
+        console.error('Error creating thought:', err);
+      }
+    };
+
+
     return (
       <>
-        {(showsLoading ) ? (
+        {showsLoading ? (
           <div className="container my-1">
             <img src={spinner} alt="loading" />
           </div>
@@ -45,34 +75,28 @@ function ShowDetail() {
           currentShow && (
             <div className="container my-1">
               <Link to="/Shows">← Check Out What Else is On</Link>
-  
               <div className="card-body">
                 <h2 className='detail-title'>{currentShow.name}</h2>
                 <p className='detail-text'>{currentShow.description}</p>
                 <p className='detail-price'><strong>Price:</strong>${currentShow.price}{' '}</p>
                 <img src={`/images/${currentShow.image}`} alt={currentShow.name} />
+                
+                {/* Form to add thought */}
+                <form onSubmit={handleThoughtSubmit}>
+                  <textarea
+                    value={thoughtText}
+                    onChange={handleThoughtChange}
+                    placeholder="Add your thought..."
+                  />
+                  <button type="submit">Add Thought</button>
+                </form>
+                
+                {/* Display loading or error message */}
+                {thoughtLoading && <p>Loading...</p>}
+                {thoughtError && <p>Error: {thoughtError.message}</p>}
   
-                {/* user thoughts/comments*/}
-
-
-
-
-
-
-
-
-
-  
-{/*                {/* generated show detail card   /}            */}
-                <ShowDetailOne show={currentShow} />   
-
-
-
-
-
-
-
-
+                {/* Show details */}
+                <ShowDetailOne show={currentShow} />
               </div>
             </div>
           )
