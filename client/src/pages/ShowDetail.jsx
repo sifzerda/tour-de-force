@@ -8,6 +8,7 @@ import '../App.css';
 import '../components/ShowDetailOne/index';
 import ShowDetailOne from '../components/ShowDetailOne/index';
 import Auth from '../utils/auth';
+import ThoughtList from '../components/ThoughtList';
 
 //import ThoughtList from '../components/ThoughtList';
 //import ThoughtForm from '../components/ThoughtForm';
@@ -113,9 +114,13 @@ function ShowDetail() {
                 )}
               </div>
 
+              <ThoughtList thoughts={currentShow.thoughts} />
+
               {/* Show details */}
               <ShowDetailOne show={currentShow} />
             </div>
+
+
           </div>
         )
       )}

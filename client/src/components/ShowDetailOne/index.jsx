@@ -43,7 +43,7 @@ function ShowDetailOne({ show }) {
 
 {/* ------------------------ Thoughts list ------------------------------------*/}
 
-            <ThoughtList thoughts={thoughts} />
+            <ThoughtList thoughts={thoughts} /> 
         </div>
     );
 }

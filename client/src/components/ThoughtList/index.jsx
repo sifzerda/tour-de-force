@@ -7,7 +7,8 @@ const ThoughtList = ({
   showTitle = true,
   showFirstName = true,
 }) => {
-  if (!thoughts.length) {
+  // Check if thoughts is undefined or null
+  if (!thoughts || !thoughts.length) {
     return <h3 className='post-head'>No Thoughts Yet</h3>;
   }
 
