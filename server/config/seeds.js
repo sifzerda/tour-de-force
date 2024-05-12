@@ -306,6 +306,38 @@ db.once('open', async () => {
         'The "Future Past World Tour" is an ongoing concert tour by English heavy metal band, Iron Maiden, in support of their seventeenth studio album "Senjutsu" and their 1996 album "Somewhere in Time". Iron Maiden is a British heavy metal band that has become one of the most influential and enduring acts in the history of rock music. The band is known for its known for their complex compositions, featuring galloping rhythms, dueling guitar solos, and operatic vocals, as well as their elaborate stage shows. Featuring live performance of hit track such as "Stratego", "The Writing on the Wall", and "Days of Future Past"',
       image: 'soap.jpg',
       price: 109.99,
+
+  // seed thoughts into show -----------------------------------------------------------------//
+
+  thoughts: [
+    {
+      thoughtText: "Just saw Iron Maiden at the RAC Arena and it was amazing!",
+      thoughtAuthor: "Amiko",
+      createdAt: new Date('2024-05-12T10:00:00Z'),
+      comments: [
+        {
+          commentText: "The show was incredible! I loved every minute of it.",
+          commentAuthor: "Xandromus",
+          createdAt: new Date('2024-05-12T10:05:00Z')
+        }
+      ]
+    },
+    {
+      thoughtText: "I've been to all of Iron Maiden's concerts and this is definitely the best I've seen so far.",
+      thoughtAuthor: "David",
+      createdAt: new Date('2024-05-10T15:30:00Z'),
+      comments: [
+        {
+          commentText: "The energy and passion they bring to the stage is unmatched.",
+          commentAuthor: "Amiko",
+          createdAt: new Date('2024-05-10T15:35:00Z')
+        }
+      ]
+    }
+  ],
+
+// seed venues into show (and seed times into venues) -----------------------------------------------------------------//
+
       venue: [
 
         {
@@ -357,6 +389,37 @@ db.once('open', async () => {
       image: 'tablet.jpg',
       price: 97.99,
 
+  // seed thoughts into show -----------------------------------------------------------------//
+
+  thoughts: [
+    {
+      thoughtText: "If you see this show, you have to get the VIP package, it's worth it!",
+      thoughtAuthor: "Amiko",
+      createdAt: new Date('2024-05-12T10:00:00Z'),
+      comments: [
+        {
+          commentText: "I agree! The VIP package is a must-have for any Sia fan.",
+          commentAuthor: "Xandromus",
+          createdAt: new Date('2024-05-12T10:05:00Z')
+        }
+      ]
+    },
+    {
+      thoughtText: "Sia is a true performer. Her voice is even more powerful live than on her albums.",
+      thoughtAuthor: "David",
+      createdAt: new Date('2024-05-10T15:30:00Z'),
+      comments: [
+        {
+          commentText: "I was blown away by her performance. She's truly one of a kind.",
+          commentAuthor: "Amiko",
+          createdAt: new Date('2024-05-10T15:35:00Z')
+        }
+      ]
+    }
+  ],
+
+// seed venues into show (and seed times into venues) -----------------------------------------------------------------//
+
       venue: [
         {
           name: 'AAMI Park, Melbourne',
@@ -381,6 +444,37 @@ db.once('open', async () => {
         'The "Radical Optimism Tour" is an global concert tour by English/Albanian singer-songwriter Dua Lipa, in support of her third studio album, "Radical Optimism." pop anthems with retro flair and a modern twist. Dua Lipa is known for her powerful vocals, energetic performances, and catchy pop anthems with retro flair and a modern twist. The concert features live performance of tracks such as "Houdini", "Training Season", and "Illusion". ',
       image: 'camera.jpg',
       price: 104.99,
+        // seed thoughts into show -----------------------------------------------------------------//
+
+  thoughts: [
+    {
+      thoughtText: "I saw this show at the Adelaide Entertainment Centre and it was one-of-a-kind, plus scored some amazing seats!",
+      thoughtAuthor: "Amiko",
+      createdAt: new Date('2024-05-12T10:00:00Z'),
+      comments: [
+        {
+          commentText: "I was there too! The show was absolutely incredible.",
+          commentAuthor: "Xandromus",
+          createdAt: new Date('2024-05-12T10:05:00Z')
+        }
+      ]
+    },
+    {
+      thoughtText: "The Radical Optimism Tour was even better than the Future Nostalgia Tour.",
+      thoughtAuthor: "David",
+      createdAt: new Date('2024-05-10T15:30:00Z'),
+      comments: [
+        {
+          commentText: "I agree! Dua Lipa's performances are always so energetic and fun.",
+          commentAuthor: "Amiko",
+          createdAt: new Date('2024-05-10T15:35:00Z')
+        }
+      ]
+    }
+  ],
+
+// seed venues into show (and seed times into venues) -----------------------------------------------------------------//
+
       venue: [
 
         {

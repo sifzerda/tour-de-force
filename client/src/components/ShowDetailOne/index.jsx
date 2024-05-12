@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useParams } from "react-router-dom";
 import dayjs from 'dayjs'; // Import dayjs library
 import '../../App.css';
