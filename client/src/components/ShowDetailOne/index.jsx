@@ -1,11 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 import dayjs from 'dayjs';
 import '../../App.css';
-import ThoughtList from '../ThoughtList';
+//import ThoughtList from '../ThoughtList';
 
 function ShowDetailOne({ show }) {
     // Destructuring show props
-    const { _id, name, description, venue, image, price, thoughts } = show;
+    const { _id, name, description, venue, image, price } = show;
     const { id } = useParams(); // Get the _id from the URL path
 
     // Check if the _id from the URL path matches the _id of the current show
@@ -43,7 +43,10 @@ function ShowDetailOne({ show }) {
 
 {/* ------------------------ Thoughts list ------------------------------------*/}
 
-            <ThoughtList thoughts={thoughts} /> 
+        {/*     <ThoughtList thoughts={thoughts} />  */}
+
+
+
         </div>
     );
 }
