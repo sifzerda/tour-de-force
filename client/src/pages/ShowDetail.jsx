@@ -59,14 +59,14 @@ function ShowDetail() {
                     <ThoughtForm />
                   </div>
   
-                  <div className='col-12 col-md-8 mb-3'>
-                    {/* Pass thoughtsData to ThoughtList */}
+                 <div className='col-12 col-md-8 mb-3'>
+{/*                    {/* Pass thoughtsData to ThoughtList */}
                     <ThoughtList thoughts={thoughtsData?.thoughts || []} title='Some feed for Thoughts...' />
-                  </div>
+                 </div>
                 </div>
   
-                {/* generated show detail card*/}
-                <ShowDetailOne show={currentShow} />
+{/*                {/* generated show detail card   /}            */}
+                <ShowDetailOne show={currentShow} />           
               </div>
             </div>
           )

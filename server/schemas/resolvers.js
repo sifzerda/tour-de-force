@@ -16,6 +16,16 @@ Query: {
     return Thought.findOne({ _id: thoughtId });
   },
 
+  me: async (parent, args, context) => {
+    console.log("Debugging 'me' query - Context User:", context.user);
+    if (context.user) {
+      const user = await User.findOne({ _id: context.user._id }).populate('thoughts');
+      console.log("Debugging 'me' query - Found User:", user);
+      return user;
+    }
+    console.log("Debugging 'me' query - No User Found");
+    throw new AuthenticationError('You must be logged in');
+  },
 // ----------------------------------------------------- //
 
   shows: async () => {
@@ -23,13 +33,6 @@ Query: {
   },
   show: async (parent, { _id}) => {
     return await Show.findById(_id); 
-  },
-
-  me: async (parent, args, context) => {
-    if (context.user) {
-      return User.findOne({ _id: context.user._id }).populate('thoughts');
-    }
-    throw AuthenticationError;
   },
 
 // ----------------------------------------------------- //
