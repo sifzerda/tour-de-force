@@ -1,4 +1,6 @@
+import React from "react";
 import { Link, useParams } from "react-router-dom";
+import dayjs from 'dayjs'; // Import dayjs library
 import '../../App.css';
 
 function ShowDetailOne({ show }) {
@@ -30,50 +32,37 @@ function ShowDetailOne({ show }) {
                                 {venueItem.time.map((timeItem, idx) => {
                                     console.log("TimeItem =", timeItem); //  debugging
                                     console.log("TimeItem.time =", timeItem.time); // debugging 
-                                    const formattedDate = new Date(parseInt(timeItem.time)).toLocaleDateString('en-AU', {
-                                        day: '2-digit',
-                                        month: '2-digit',
-                                        year: 'numeric'
-                                    });
+                                    const formattedDate = dayjs(parseInt(timeItem.time)).format('DD/MM/YYYY');
                                     return <li key={idx}>{formattedDate}</li>;
                                 })}
                             </ul>
                         </li>
                     ))}
                 </ul>
-
-
             </div>
 
-{/*  ----------------------------------- thoughts ------------------------ */}
+            {/* Thoughts list */}
+            <ul className="list-group list-group-flush">
+                {thoughts.map((thought, index) => {
+                    // Debugging
+                    console.log('Raw value of thought.createdAt:', thought.createdAt);
+                    console.log('Type of thought.createdAt:', typeof thought.createdAt);
+                    console.log('Formatted createdAt:', thought.formattedCreatedAt);
 
-                {/* Render thoughts list */}
-                <ul className="list-group list-group-flush">
-                    {thoughts.map((thought, index) => (
+                    // Format createdAt date
+                    const formattedDate = dayjs(parseInt(thought.createdAt)).format('DD/MM/YYYY');
+
+                    return (
                         <li key={index} className="list-group-item">
                             <strong>{thought.thoughtAuthor} said: </strong>
                             <p>{thought.thoughtText}</p>
-                            <p>Posted on: {new Date(thought.createdAt).toLocaleString()}</p>
+                            {/* Use the formattedCreatedAt virtual property */}
+                            <p>Posted on: {formattedDate}</p>
                         </li>
-                    ))}
-                </ul>
-
-
-
-
-
-
+                    );
+                })}
+            </ul>
         </div>
-
-
-
-
-
-
-
-
-
-
     );
 }
 

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
-const dateFormat = require('../utils/dateFormat');
+//const dateFormat = require('../utils/dateFormat');
+const dayjs = require('dayjs');
 
 // each show contains multiple venues, each venue contains multiple sshow times
 
@@ -41,8 +42,8 @@ const thoughtSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    get: (timestamp) => dateFormat(timestamp),
   },
+
   comments: [
     {
       commentText: {
@@ -58,7 +59,6 @@ const thoughtSchema = new Schema({
       createdAt: {
         type: Date,
         default: Date.now,
-        get: (timestamp) => dateFormat(timestamp),
       },
     },
   ],
@@ -88,6 +88,12 @@ const showSchema = new Schema({
   },
   // References the Thought model (which references comments)
   thoughts: [thoughtSchema]  // thoughts is an array of thoughtSchema
+});
+
+// Virtual property to format createdAt date
+thoughtSchema.virtual('formattedCreatedAt').get(function() {
+  // Parse createdAt date and format it
+  return dayjs(this.createdAt).format('DD/MM/YYYY');
 });
 
 //const Venue = mongoose.model('Venue', venueSchema);
