@@ -16,77 +16,77 @@ import '../App.css';
 //import { idbPromise } from '../utils/helpers';
 
 function ShowDetail() {
-  const { id } = useParams();
-  const [currentShow, setCurrentShow] = useState({});
+    const { id } = useParams();
+    const [currentShow, setCurrentShow] = useState({});
 
-  // GET shows data
-  const { loading: showsLoading, data: showsData } = useQuery(QUERY_SHOWS);
+    // GET shows data
+    const { loading: showsLoading, data: showsData } = useQuery(QUERY_SHOWS);
 
-  useEffect(() => {
-    if (showsData && showsData.shows) {
-      const foundShow = showsData.shows.find((show) => show._id === id);
-      setCurrentShow(foundShow);
-    }
-  }, [showsData, id]);
-
-
-  return (
-    <>
-      {showsLoading ? (
-        <div className="container my-1">
-          <img src={spinner} alt="loading" />
-        </div>
-      ) : (
-        currentShow && (
-          <div className="container my-1">
+    useEffect(() => {
+        if (showsData && showsData.shows) {
+            const foundShow = showsData.shows.find((show) => show._id === id);
+            setCurrentShow(foundShow);
+        }
+    }, [showsData, id]);
 
 
-
-<div className='banner-image'>
-
-<img className='banner-image' src={`/images/${currentShow.image}`} alt={currentShow.name} />
-
-</div>
+    return (
+        <>
+            {showsLoading ? (
+                <div className="container my-1">
+                    <img src={spinner} alt="loading" />
+                </div>
+            ) : (
+                currentShow && (
+                    <div className="container my-1">
 
 
 
-            <Link to={`/shows/${currentShow._id}`}>← Back to Show Info</Link>
-            <div className="card-body">
-              <h2 className='detail-title'>{currentShow.name}</h2>
-              <p className='detail-text'>{currentShow.description}</p>
-              <p className='detail-price'><strong>Price:</strong>${currentShow.price}{' '}</p>
-              <img src={`/images/${currentShow.image}`} alt={currentShow.name} />
-            </div>
+                        <div className='banner-image'>
 
-{/* ------------------------ insert currentShow.ticketDesc ----------------*/}
-{/* ------------------------ insert currentShow.ticketDesc ----------------*/}
-{/* ------------------------ insert currentShow.ticketDesc ----------------*/}
-{/* ------------------------ insert currentShow.ticketDesc ----------------*/}
-{/* ------------------------ insert currentShow.ticketDesc ----------------*/}
+                            <img className='banner-image' src={`/images/${currentShow.image}`} alt={currentShow.name} />
+
+                        </div>
 
 
-<p className='detail-price'><strong>Find Tickets:</strong></p>
-            {/* Pass the venues of the current show as props to LocationForm */}
 
-
-<LocationForm show={currentShow} />
-
-
+                        <Link to={`/shows/${currentShow._id}`}>← Back to Show Info</Link>
+                        <div className="card-body">
+                            <h2 className='detail-title'>{currentShow.name}</h2>
+                            <p className='detail-text'>{currentShow.description}</p>
+                            <p className='detail-price'><strong>Price:</strong>${currentShow.price}{' '}</p>
+                            <img src={`/images/${currentShow.image}`} alt={currentShow.name} />
+                        </div>
 
 {/* ------------------------ insert currentShow.ticketDesc ----------------*/}
 {/* ------------------------ insert currentShow.ticketDesc ----------------*/}
 {/* ------------------------ insert currentShow.ticketDesc ----------------*/}
 {/* ------------------------ insert currentShow.ticketDesc ----------------*/}
 {/* ------------------------ insert currentShow.ticketDesc ----------------*/}
+
+
+                        <p className='detail-price'><strong>Find Tickets:</strong></p>
+{/* Pass the venues of the current show as props to LocationForm */}
+
+
+                        <LocationForm show={currentShow} />
+
+
+
+{/* ------------------------ insert currentShow.ticketDesc ----------------*/}
+{/* ------------------------ insert currentShow.ticketDesc ----------------*/}
+{/* ------------------------ insert currentShow.ticketDesc ----------------*/}
+{/* ------------------------ insert currentShow.ticketDesc ----------------*/}
+{/* ------------------------ insert currentShow.ticketDesc ----------------*/}
 {/* ------------------------ insert currentShow.ticketDesc ----------------*/}
 
-            <ShowDetailOne show={currentShow} />
+                        <ShowDetailOne show={currentShow} />
 
-          </div>
-        )
-      )}
-    </>
-  );
+                    </div>
+                )
+            )}
+        </>
+    );
 }
 
 export default ShowDetail;
