@@ -46,53 +46,59 @@ function LocationForm({ show }) {
   };
 
 
-// CREATE THE SEAT MAP ----------------------------------//
+  // CREATE THE SEAT MAP ----------------------------------//
 
-// Function to generate table rows and columns based on seatRows and seatCols
-const generateSeatMap = () => {
-  // Initialize an array to store the table rows
-  const rows = [];
-  
-  // Add a row for the stage
-  rows.push(
-    <tr key="stage">
-      <td colSpan={seatCols} className="stage-cell">
-        <div className="inner-stage">Stage</div>
-      </td>
-    </tr>
-  );
+  // Function to generate table rows and columns based on seatRows and seatCols
+  const generateSeatMap = () => {
+    // Initialize an array to store the table rows
+    const rows = [];
 
-    // Add a row for VIP seats
+    // 1 row stage
     rows.push(
-      <tr key="vip">
-        <td colSpan={seatCols} className="vip-cell">VIP</td>
+      <tr key="stage">
+        <td colSpan={seatCols} className="stage-cell">
+          <div className="inner-stage">Stage</div>
+        </td>
       </tr>
     );
-  
-// Loop over the number of seat rows
-for (let row = 1; row <= seatRows; row++) {
-  // Initialize an array to store the table cells (columns) for the current row
-  const cells = [];
-  // Loop over the number of seat columns
-  for (let col = 1; col <= seatCols; col++) {
-    // Generate a unique key for each table cell
-    const key = `seat-${row}-${col}`;
-    // Add the table cell to the array
-    cells.push(<td key={key} className="seat-cell">{row}-{col}</td>);
-  }
-  // Add the table row to the array of rows
-  rows.push(<tr key={row}>{cells}</tr>);
-}
 
-// Return the generated table rows
-return (
-  <table className="seat-map">
-    <tbody>
-      {rows}
-    </tbody>
-  </table>
-);
-};
+    // 1 row VIP seats
+    rows.push(
+      <tr key="vip">
+        <td colSpan={seatCols} className="vip-cell">
+          <button className="seat-button">VIP</button>
+        </td>
+      </tr>
+    );
+
+    // Loop over the number of seat rows
+    for (let row = 1; row <= seatRows; row++) {
+      // Initialize an array to store the table cells (columns) for the current row
+      const cells = [];
+      // Loop over the number of seat columns
+      for (let col = 1; col <= seatCols; col++) {
+        // Generate a unique key for each table cell
+        const key = `seat-${row}-${col}`;
+       // Add the table cell to the array
+       cells.push(
+        <td key={key} className="seat-cell">
+          <button className="seat-button">{row}-{col}</button>
+        </td>
+      );
+    }
+    // Add the table row to the array of rows
+    rows.push(<tr key={row}>{cells}</tr>);
+  }
+
+    // Return the generated table rows
+    return (
+      <table className="seat-map">
+        <tbody>
+          {rows}
+        </tbody>
+      </table>
+    );
+  };
 
 
 
@@ -105,7 +111,7 @@ return (
 
 
 
-<div className="card">
+      <div className="card">
         <Link to={`/Shows/${_id}`}>
           <img className="card-img-top" alt={name} src={`/images/${image}`} />
           <p>{name}</p>
@@ -116,9 +122,9 @@ return (
           <p className="card-text">Price: ${price}</p>
 
 
-{/* ----------------------------------- ticket purchasing form ------------------------*/}
+          {/* ----------------------------------- ticket purchasing form ------------------------*/}
 
-{/* Ticket purchasing form */}
+          {/* Ticket purchasing form */}
           <h5 className="card-title">Check ticket availability for {name}</h5>
 
           <form>
@@ -143,12 +149,12 @@ return (
               </select>
             </div>
             <button type="submit" className="btn btn-primary" onClick={handleCheckAvailability}>Check availability</button>
-          
+
           </form>
 
-{/* ----------------------------------- end form ----------------------------------------*/}
+          {/* ----------------------------------- end form ----------------------------------------*/}
 
-{/* Availability card */}
+          {/* Availability card */}
 
           {showAvailability && (
             <div className="availability-card">
