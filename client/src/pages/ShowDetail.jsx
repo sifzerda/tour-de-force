@@ -118,7 +118,11 @@ function ShowDetail() {
               )}
             </div>
 
+            <div className='post-box'>
+              <h3 className='post-head'>What others are saying about the show</h3>
+
             <ThoughtList thoughts={currentShow.thoughts} />
+            </div>
             <ShowDetailOne show={currentShow} />
 
 
