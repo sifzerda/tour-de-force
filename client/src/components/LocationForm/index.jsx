@@ -41,9 +41,9 @@ function LocationForm({ show }) {
                 </ul>
             </div>
 
-{/* ------------------------ Thoughts list ------------------------------------*/}
+{/* ------------------------ xxxxxxxxxxxxxxxxxx ------------------------------------*/}
 
-        {/*     <ThoughtList thoughts={thoughts} />  */}
+
 
 
 
