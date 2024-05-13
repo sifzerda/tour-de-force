@@ -128,7 +128,7 @@ export const QUERY_THOUGHTS = gql`
       _id
       thoughtText
       thoughtAuthor
-      createdAt
+      createdAtz
     }
   }
 `;

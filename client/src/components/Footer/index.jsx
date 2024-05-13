@@ -22,7 +22,7 @@ function Footer() {
         <section className='mb-4'>
 
           <p>
-            Find us on social media.
+            Follow us on social media.
           </p>
 
           <div className="icons-wrapper">
@@ -71,108 +71,108 @@ function Footer() {
         <section className=''>
           <MDBRow>
             <MDBCol lg='3' md='6' className='mb-4 mb-md-0'>
-              <h5 className='text-uppercase'>Links</h5>
+              <h5 className='text-uppercase'>Business</h5>
 
               <ul className='list-unstyled mb-0'>
                 <li>
                   <a href='#!' className='text-white'>
-                    Link 1
+                    About Us
                   </a>
                 </li>
                 <li>
                   <a href='#!' className='text-white'>
-                    Link 2
+                    Advertising
                   </a>
                 </li>
                 <li>
                   <a href='#!' className='text-white'>
-                    Link 3
+                    Career
                   </a>
                 </li>
                 <li>
                   <a href='#!' className='text-white'>
-                    Link 4
+                    Media
                   </a>
                 </li>
               </ul>
             </MDBCol>
 
             <MDBCol lg='3' md='6' className='mb-4 mb-md-0'>
-              <h5 className='text-uppercase'>Links</h5>
+              <h5 className='text-uppercase'>LEGAL</h5>
 
               <ul className='list-unstyled mb-0'>
                 <li>
                   <a href='#!' className='text-white'>
-                    Link 1
+                    Terms & Conditions
                   </a>
                 </li>
                 <li>
                   <a href='#!' className='text-white'>
-                    Link 2
+                    Private Policy
                   </a>
                 </li>
                 <li>
                   <a href='#!' className='text-white'>
-                    Link 3
+                    Security
                   </a>
                 </li>
                 <li>
                   <a href='#!' className='text-white'>
-                    Link 4
+                    Terms of Use
                   </a>
                 </li>
               </ul>
             </MDBCol>
 
             <MDBCol lg='3' md='6' className='mb-4 mb-md-0'>
-              <h5 className='text-uppercase'>Links</h5>
+              <h5 className='text-uppercase'>Help</h5>
 
               <ul className='list-unstyled mb-0'>
                 <li>
                   <a href='#!' className='text-white'>
-                    Link 1
+                    FAQ
                   </a>
                 </li>
                 <li>
                   <a href='#!' className='text-white'>
-                    Link 2
+                    Event Cancellations
                   </a>
                 </li>
                 <li>
                   <a href='#!' className='text-white'>
-                    Link 3
+                    Live Chat
                   </a>
                 </li>
                 <li>
                   <a href='#!' className='text-white'>
-                    Link 4
+                    Contact Us
                   </a>
                 </li>
               </ul>
             </MDBCol>
 
             <MDBCol lg='3' md='6' className='mb-4 mb-md-0'>
-              <h5 className='text-uppercase'>Links</h5>
+              <h5 className='text-uppercase'>Exclusive</h5>
 
               <ul className='list-unstyled mb-0'>
                 <li>
                   <a href='#!' className='text-white'>
-                    Link 1
+                    VIP
                   </a>
                 </li>
                 <li>
                   <a href='#!' className='text-white'>
-                    Link 2
+                    Special Offers
                   </a>
                 </li>
                 <li>
                   <a href='#!' className='text-white'>
-                    Link 3
+                    My TDF
                   </a>
                 </li>
                 <li>
                   <a href='#!' className='text-white'>
-                    Link 4
+                    Festivals
                   </a>
                 </li>
               </ul>

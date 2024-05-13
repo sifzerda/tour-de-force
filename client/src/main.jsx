@@ -13,10 +13,11 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import OrderHistory from './pages/OrderHistory';
 import Success from './pages/Success';
-import SubConfirm from './pages/SubConfirm.jsx';
+//import SubConfirm from './pages/SubConfirm.jsx';
 import Shop from './pages/Shop.jsx';
 import Shows from './pages/Shows.jsx';
 import ShowDetail from './pages/ShowDetail.jsx';
+import Tickets from './pages/Tickets.jsx';
 
 const router = createBrowserRouter([
   {
@@ -55,8 +56,8 @@ const router = createBrowserRouter([
       },
 /////////////////////////////////////
       {
-        path: '/subscribed',
-        element: <SubConfirm />
+        path: '/tickets',
+        element: <Tickets />
       },
 ////////////////////////////////////////
       {
