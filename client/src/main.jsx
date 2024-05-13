@@ -18,6 +18,7 @@ import Shop from './pages/Shop.jsx';
 import Shows from './pages/Shows.jsx';
 import ShowDetail from './pages/ShowDetail.jsx';
 import Tickets from './pages/Tickets.jsx';
+import TicketDetail from './pages/TicketDetail.jsx';
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,11 @@ const router = createBrowserRouter([
         path: '/tickets',
         element: <Tickets />
       },
+////////////////////////////////////////
+{
+  path: '/tickets/:id',
+  element: <TicketDetail />
+}, 
 ////////////////////////////////////////
       {
         path: '/shop',

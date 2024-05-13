@@ -83,6 +83,13 @@ function ShowDetail() {
 </div>
 
 
+<div className="container my-1">
+<Link to={`/tickets/${currentShow._id}`}>
+🎟️🎟️🎟️🎟️ Find Tickets to {currentShow.name} 🎟️🎟️🎟️🎟️
+      </Link>
+
+</div>
+
 
 {/*--------------------------- Form to add thought -----------------------------------------------------------------*/}
             <div className='post-box'>
@@ -124,7 +131,6 @@ function ShowDetail() {
             <ThoughtList thoughts={currentShow.thoughts} />
             </div>
             <ShowDetailOne show={currentShow} />
-
 
           </div>
         )

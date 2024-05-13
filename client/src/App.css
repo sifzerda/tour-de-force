@@ -106,7 +106,7 @@ p.whats-on {
   margin-bottom: 2rem;
 }
 
-/* -------------------------- HOME ----------------------------*/
+/* -------------------------- end HOME ----------------------------*/
 
 
 .logo {
@@ -440,10 +440,35 @@ div.flex-row.justify-center {
   display: flex;
   justify-content: center;
 border: 2px solid greenyellow;
-
 }
 
-/* ------------------ login ----------*/
+/* ------------------ ticket page ------------------*/
+
+div.banner-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 300px;
+  width: 100%;
+  border: 2px dashed var(--blue);
+}
+
+img.banner-image {
+  height: 300px;
+  width: 100%;
+}
+
+.my-1 {
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+}
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+  --bs-gutter-x: 0rem;
+}
+
+/* ------------------ login ------------------------*/
 
 h2.login-title {
   color: var(--light-red);
