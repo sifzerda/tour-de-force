@@ -46,7 +46,7 @@ function LocationForm({ show }) {
   };
 
 
-
+// CREATE THE SEAT MAP ----------------------------------//
 
 // Function to generate table rows and columns based on seatRows and seatCols
 const generateSeatMap = () => {
@@ -56,33 +56,42 @@ const generateSeatMap = () => {
   // Add a row for the stage
   rows.push(
     <tr key="stage">
-      <td colSpan={seatCols} className="stage-cell">Stage</td>
+      <td colSpan={seatCols} className="stage-cell">
+        <div className="inner-stage">Stage</div>
+      </td>
     </tr>
   );
+
+    // Add a row for VIP seats
+    rows.push(
+      <tr key="vip">
+        <td colSpan={seatCols} className="vip-cell">VIP</td>
+      </tr>
+    );
   
-  // Loop over the number of seat rows
-  for (let row = 1; row <= seatRows; row++) {
-    // Initialize an array to store the table cells (columns) for the current row
-    const cells = [];
-    // Loop over the number of seat columns
-    for (let col = 1; col <= seatCols; col++) {
-      // Generate a unique key for each table cell
-      const key = `seat-${row}-${col}`;
-      // Add the table cell to the array
-      cells.push(<td key={key} className="seat-cell">{row}-{col}</td>);
-    }
-    // Add the table row to the array of rows
-    rows.push(<tr key={row}>{cells}</tr>);
+// Loop over the number of seat rows
+for (let row = 1; row <= seatRows; row++) {
+  // Initialize an array to store the table cells (columns) for the current row
+  const cells = [];
+  // Loop over the number of seat columns
+  for (let col = 1; col <= seatCols; col++) {
+    // Generate a unique key for each table cell
+    const key = `seat-${row}-${col}`;
+    // Add the table cell to the array
+    cells.push(<td key={key} className="seat-cell">{row}-{col}</td>);
   }
-  
-  // Return the generated table rows
-  return (
-    <table className="seat-map">
-      <tbody>
-        {rows}
-      </tbody>
-    </table>
-  );
+  // Add the table row to the array of rows
+  rows.push(<tr key={row}>{cells}</tr>);
+}
+
+// Return the generated table rows
+return (
+  <table className="seat-map">
+    <tbody>
+      {rows}
+    </tbody>
+  </table>
+);
 };
 
 
