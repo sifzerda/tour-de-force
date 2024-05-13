@@ -1,55 +1,63 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_SHOWS = gql`
-{
-  shows {
-    _id
-    name
-    description 
-    image
-    price
-    venue {
+  {
+    shows {
       _id
       name
-      time {
+      description
+      ticketDesc
+      ticketBannerImg
+      image
+      price
+      venue {
         _id
-        time
+        name
+        time {
+          _id
+          time
+        }
+        seatRows
+        seatCols
+      }
+      thoughts {
+        _id
+        thoughtText
+        thoughtAuthor
+        createdAt
       }
     }
-    thoughts {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-    }
   }
-}
 `;
 
 export const QUERY_SHOW = gql`
-query getShow($id: ID!) {
-  show(_id: $id) {
-    _id
-    name
-    description
-    image
-    price
-    venue {
+  query getShow($id: ID!) {
+    show(_id: $id) {
       _id
       name
-      time {
+      description
+      ticketDesc
+      ticketBannerImg
+      image
+      price
+      venue {
         _id
-        time
+        name
+        time {
+          _id
+          time
+        }
+        seatRows
+        seatCols
+      }
+      thoughts {
+        _id
+        thoughtText
+        thoughtAuthor
+        createdAt
       }
     }
-    thoughts {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-    }
   }
-}
 `;
 
 export const QUERY_PRODUCTS = gql`
@@ -140,12 +148,6 @@ export const QUERY_SINGLE_THOUGHT = gql`
       thoughtText
       thoughtAuthor
       createdAt
-      comments {
-        _id
-        commentText
-        commentAuthor
-        createdAt
-      }
     }
   }
 `;

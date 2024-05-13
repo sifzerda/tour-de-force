@@ -7,46 +7,28 @@ mutation addThought($showId: ID!, $thoughtText: String!) {
       thoughtText
       thoughtAuthor
       createdAt
-      comments {
-        _id
-        commentText
-      }
-    }
-  }
-`;
-
-export const ADD_COMMENT = gql`
-  mutation addComment($thoughtId: ID!, $commentText: String!) {
-    addComment(thoughtId: $thoughtId, commentText: $commentText) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        createdAt
-      }
     }
   }
 `;
 
 export const CREATE_SHOW = gql`
-mutation CreateShow($input: ShowInput) {
-  createShow(input: $input) {
-    _id
-    name
-    description
-    image
-    price
-    venue {
+  mutation CreateShow($input: ShowInput) {
+    createShow(input: $input) {
+      _id
       name
-      time {
-        time
+      description
+      image
+      price
+      venue {
+        name
+        time {
+          time
+        }
+        seatRows
+        seatCols
       }
     }
   }
-}
 `;
 
 export const UPDATE_SHOW = gql`
@@ -62,6 +44,8 @@ export const UPDATE_SHOW = gql`
         time {
           time
         }
+        seatRows
+        seatCols
       }
     }
   }

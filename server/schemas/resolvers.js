@@ -176,38 +176,6 @@ const resolvers = {
   throw new Error('You must be logged in');
 },
 
-    addComment: async (parent, { thoughtId, commentText }, context) => {
-      if (context.user) {
-        try {
-          // Find the thought by its ID and update its comments array
-          const updatedThought = await Thought.findOneAndUpdate(
-            { _id: thoughtId },
-            {
-              $addToSet: {
-                comments: { commentText, commentAuthor: context.user.firstName },
-              },
-            },
-            {
-              new: true,
-              runValidators: true,
-            }
-          );
-
-          if (!updatedThought) {
-            throw new Error('Thought not found');
-          }
-
-          return updatedThought;
-        } catch (error) {
-          console.error(error);
-          throw new Error('Failed to add comment to thought.');
-        }
-      } else {
-        throw new AuthenticationError('You must be logged in to add a comment.');
-      }
-    },
-
-
 
     removeThought: async (parent, { thoughtId }, context) => {
       if (context.user) {
@@ -234,39 +202,6 @@ const resolvers = {
         }
       } else {
         throw new AuthenticationError('You must be logged in to remove a thought.');
-      }
-    },
-
-
-
-    removeComment: async (parent, { thoughtId, commentId }, context) => {
-      if (context.user) {
-        try {
-          // Find the thought by its ID and update it to pull the specified comment
-          const updatedThought = await Thought.findOneAndUpdate(
-            { _id: thoughtId },
-            {
-              $pull: {
-                comments: {
-                  _id: commentId,
-                  commentAuthor: context.user.firstName,
-                },
-              },
-            },
-            { new: true }
-          );
-
-          if (!updatedThought) {
-            throw new Error('Thought not found or you are not authorized to remove the comment.');
-          }
-
-          return updatedThought;
-        } catch (error) {
-          console.error(error);
-          throw new Error('Failed to remove comment.');
-        }
-      } else {
-        throw new AuthenticationError('You must be logged in to remove a comment.');
       }
     },
 

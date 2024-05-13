@@ -506,8 +506,43 @@ img.banner-image {
   padding: 5px;
 }
 
+/* -------------------------------- SEAT MAP ---------------------------------------*/
 
-/* ------------------ login ------------------------*/
+.seat-map {
+  border-collapse: collapse;
+  margin: auto;
+}
+
+.seat-cell {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  width: 50px; /* Adjust as needed */
+  height: 50px; /* Adjust as needed */
+}
+
+/* Styling to make it look like a stage */
+.seat-cell:nth-child(even) {
+  background-color: #eee;
+}
+
+/* Add more specific styling to the first row to represent the stage */
+.seat-map tr:first-child .seat-cell {
+  background-color: #333;
+  color: #fff;
+}
+
+.stage-cell {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  height: 50px; /* Adjust as needed */
+}
+
+
+
+/* --------------------------------- login -------------------------------------------*/
 
 h2.login-title {
   color: var(--light-red);

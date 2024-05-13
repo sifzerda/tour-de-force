@@ -5,6 +5,8 @@ type Show {
   name: String
   description: String
   image: String
+  ticketBannerImg: String
+  ticketDesc: String
   venue: [Venue]
   price: Float
   thoughts: [Thought]
@@ -14,6 +16,8 @@ type Venue {
   _id: ID
   name: String
   time: [Time]
+  seatRows: Int 
+  seatCols: Int
 }
 
 type Time {
@@ -56,15 +60,7 @@ type Time {
     thoughtText: String
     thoughtAuthor: String
     createdAt: String
-    comments: [Comment]
     show: Show
-  }
-
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
   }
 
   type Checkout {
@@ -96,6 +92,8 @@ type Time {
   input VenueInput {
     name: String
     time: [TimeInput]
+    seatRows: Int
+    seatCols: Int
   }
 
   input TimeInput {
@@ -126,9 +124,7 @@ type Time {
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
     addThought(showId: ID!, thoughtText: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
     removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
   }
 `;
 

@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import dayjs from 'dayjs';
 import '../../App.css';
 
+
 function LocationForm({ show }) {
   const { _id, name, description, venue, image, price } = show;
   const { id } = useParams();
@@ -10,6 +11,8 @@ function LocationForm({ show }) {
   const [selectedTime, setSelectedTime] = useState('');
   const [filteredTimes, setFilteredTimes] = useState([]);
   const [showAvailability, setShowAvailability] = useState(false);
+  const [seatRows, setSeatRows] = useState([]);
+  const [seatCols, setSeatCols] = useState([]);
 
   if (_id !== id) {
     return null;
@@ -33,8 +36,57 @@ function LocationForm({ show }) {
       alert("Please select a venue and time to see seat availability");
     } else {
       setShowAvailability(true);
+      // Assuming selectedVenue contains seat data
+      const venueData = venue.find(venueItem => venueItem.name === selectedVenue);
+      if (venueData) {
+        setSeatRows(venueData.seatRows);
+        setSeatCols(venueData.seatCols);
+      }
     }
   };
+
+
+
+
+// Function to generate table rows and columns based on seatRows and seatCols
+const generateSeatMap = () => {
+  // Initialize an array to store the table rows
+  const rows = [];
+  
+  // Add a row for the stage
+  rows.push(
+    <tr key="stage">
+      <td colSpan={seatCols} className="stage-cell">Stage</td>
+    </tr>
+  );
+  
+  // Loop over the number of seat rows
+  for (let row = 1; row <= seatRows; row++) {
+    // Initialize an array to store the table cells (columns) for the current row
+    const cells = [];
+    // Loop over the number of seat columns
+    for (let col = 1; col <= seatCols; col++) {
+      // Generate a unique key for each table cell
+      const key = `seat-${row}-${col}`;
+      // Add the table cell to the array
+      cells.push(<td key={key} className="seat-cell">{row}-{col}</td>);
+    }
+    // Add the table row to the array of rows
+    rows.push(<tr key={row}>{cells}</tr>);
+  }
+  
+  // Return the generated table rows
+  return (
+    <table className="seat-map">
+      <tbody>
+        {rows}
+      </tbody>
+    </table>
+  );
+};
+
+
+
 
   return (
     <div className='ticket-form-container'>
@@ -94,6 +146,8 @@ function LocationForm({ show }) {
               <h5>Availability for {name}</h5>
               <p>Venue: {selectedVenue}</p>
               <p>Date: {dayjs(parseInt(selectedTime)).format('DD/MM/YYYY')}</p>
+              <h5>Seat Map:</h5>
+              {generateSeatMap()}
             </div>
           )}
         </div>

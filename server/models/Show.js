@@ -7,22 +7,30 @@ const dayjs = require('dayjs');
 
 // sub-sub-document schema for time and venue combination
 const timeSchema = new Schema({
-  time: { 
-    type: Date, 
-    required: true 
-  }, 
+  time: {
+    type: Date,
+    required: true
+  },
 });
 
 // sub-document schema for venues
 const venueSchema = new Schema({
-  name: { 
-    type: String, 
-    required: true 
-  }, 
-  time: { 
-    type: [timeSchema], 
-    required: true 
-  } 
+  name: {
+    type: String,
+    required: true
+  },
+  time: {
+    type: [timeSchema],
+    required: true
+  },
+  seatRows: {
+    type: Number,
+    required: true,
+  },
+  seatCols: {
+    type: Number,
+    required: true,
+  },
 });
 
 // sub-document for thoughts 
@@ -43,25 +51,6 @@ const thoughtSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-
-  comments: [
-    {
-      commentText: {
-        type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 280,
-      },
-      commentAuthor: {
-        type: String,
-        required: true,
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-      },
-    },
-  ],
 });
 
 const showSchema = new Schema({
@@ -73,13 +62,19 @@ const showSchema = new Schema({
   description: {
     type: String
   },
+  ticketBannerImg: {
+    type: String
+  },
+  ticketDesc: {
+    type: String
+  },
   image: {
     type: String
   },
-    // References the Venue model (which references time)
-  venue: { 
-    type: [venueSchema], 
-    required: true 
+  // References the Venue model (which references time schema)
+  venue: {
+    type: [venueSchema],
+    required: true
   },
   price: {
     type: Number,
@@ -91,7 +86,7 @@ const showSchema = new Schema({
 });
 
 // Virtual property to format createdAt date
-thoughtSchema.virtual('formattedCreatedAt').get(function() {
+thoughtSchema.virtual('formattedCreatedAt').get(function () {
   // Parse createdAt date and format it
   return dayjs(this.createdAt).format('DD/MM/YYYY');
 });
