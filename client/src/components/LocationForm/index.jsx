@@ -73,7 +73,7 @@ function LocationForm({ show }) {
             </div>
 
             <div className="ticket-form-group">
-              <label htmlFor="exampleFormControlSelect2">Select Date & Time:</label>
+              <label htmlFor="exampleFormControlSelect2">Select Date:</label>
               <select className="form-control" id="exampleFormControlSelect2" onChange={handleTimeChange}>
                 <option value="" disabled selected>Select a time</option>
                 {selectedVenue && filteredTimes.map((timeItem, idx) => (
@@ -93,7 +93,7 @@ function LocationForm({ show }) {
             <div className="availability-card">
               <h5>Availability for {name}</h5>
               <p>Venue: {selectedVenue}</p>
-              <p>Time: {dayjs(parseInt(selectedTime)).format('DD/MM/YYYY')}</p>
+              <p>Date: {dayjs(parseInt(selectedTime)).format('DD/MM/YYYY')}</p>
             </div>
           )}
         </div>
