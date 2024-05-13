@@ -1,18 +1,26 @@
 import { Link, useParams } from "react-router-dom";
 import dayjs from 'dayjs';
 import '../../App.css';
-//import ThoughtList from '../ThoughtList';
 
 function LocationForm({ show }) {
-    // Destructuring show props
     const { _id, name, description, venue, image, price } = show;
-    const { id } = useParams(); // Get the _id from the URL path
+    const { id } = useParams();
 
-    // Check if the _id from the URL path matches the _id of the current show
     if (_id !== id) {
-        // If not matching, return null to render nothing
         return null;
     }
+
+    const handleVenueChange = (event) => {
+        // Handle venue selection
+        const selectedVenue = event.target.value;
+        // Your logic here
+    };
+
+    const handleTimeChange = (event) => {
+        // Handle time selection
+        const selectedTime = event.target.value;
+        // Your logic here
+    };
 
     return (
         <div className="card">
@@ -24,29 +32,25 @@ function LocationForm({ show }) {
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">{description}</p>
                 <p className="card-text">Price: ${price}</p>
-                <ul className="list-group list-group-flush">
-                    {venue.map((venueItem, index) => (
-                        <li key={index} className="list-group-item">
-                            <strong>Venue: {venueItem.name}</strong>
-                            <ul>
-                                {venueItem.time.map((timeItem, idx) => {
-                                    console.log("TimeItem =", timeItem); //  debugging
-                                    console.log("TimeItem.time =", timeItem.time); // debugging 
-                                    const formattedDate = dayjs(parseInt(timeItem.time)).format('DD/MM/YYYY');
-                                    return <li key={idx}>{formattedDate}</li>;
-                                })}
-                            </ul>
-                        </li>
-                    ))}
-                </ul>
+                <div>
+                    <label htmlFor="venueDropdown">Select Venue:</label>
+                    <select id="venueDropdown" onChange={handleVenueChange}>
+                        {venue.map((venueItem, index) => (
+                            <option key={index} value={venueItem.name}>{venueItem.name}</option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="timeDropdown">Select Time:</label>
+                    <select id="timeDropdown" onChange={handleTimeChange}>
+                        {venue.map((venueItem, index) => (
+                            venueItem.time.map((timeItem, idx) => (
+                                <option key={idx} value={timeItem.time}>{dayjs(parseInt(timeItem.time)).format('DD/MM/YYYY')}</option>
+                            ))
+                        ))}
+                    </select>
+                </div>
             </div>
-
-{/* ------------------------ xxxxxxxxxxxxxxxxxx ------------------------------------*/}
-
-
-
-
-
         </div>
     );
 }
