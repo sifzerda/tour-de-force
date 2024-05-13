@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../App' 
 
-function SubscriptionConfirmedPage() {
+function TicketConfirmedPage() {
   return (
     <div className="confirmation-page">
       <div className="confirmation-content">
@@ -10,9 +10,9 @@ function SubscriptionConfirmedPage() {
             {/* Your SVG path here */}
           </svg>
         </div>
-        <h1 className="confirmation-heading">Subscription Confirmed</h1>
+        <h1 className="confirmation-heading">Ticket Purchase Confirmed</h1>
         <p className="confirmation-message">
-          Thank you for subscribing to our newsletter! You have been added to our list and will now receive updates about upcoming shows and events.
+          Thank you for purchasing a ticket to a show! You will shortly receive an email with a copy of your ticket purchase and instructions on how to access the show.
         </p>
         <Link to="/" className="confirmation-button">
           Return to Site
@@ -22,4 +22,4 @@ function SubscriptionConfirmedPage() {
   );
 }
 
-export default SubscriptionConfirmedPage;
+export default TicketConfirmedPage;

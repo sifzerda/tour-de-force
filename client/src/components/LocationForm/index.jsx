@@ -22,40 +22,62 @@ function LocationForm({ show }) {
 
   const handleTimeChange = (event) => {
     const selectedTime = event.target.value;
-    // Your logic here
   };
 
   return (
-    <div className="card">
-      <Link to={`/Shows/${_id}`}>
-        <img className="card-img-top" alt={name} src={`/images/${image}`} />
-        <p>{name}</p>
-      </Link>
-      <div className="card-body">
-        <h5 className="card-title">{name}</h5>
-        <p className="card-text">{description}</p>
-        <p className="card-text">Price: ${price}</p>
-        <div>
-          <label htmlFor="venueDropdown">Select Venue:</label>
-          <select id="venueDropdown" onChange={handleVenueChange}>
-            <option value="" disabled selected>Select a venue</option>
-            {venue.map((venueItem, index) => (
-              <option key={index} value={venueItem.name}>{venueItem.name}</option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="timeDropdown">Select Time:</label>
-          <select id="timeDropdown" onChange={handleTimeChange}>
-            <option value="" disabled selected>Select a time</option>
-            {selectedVenue ? (
-              filteredTimes.map((timeItem, idx) => (
-                <option key={idx} value={timeItem.time}>{dayjs(parseInt(timeItem.time)).format('DD/MM/YYYY')}</option>
-              ))
-            ) : (
-              <option disabled>Select a venue to see times</option>
-            )}
-          </select>
+    <div className='ticket-form-container'>
+
+
+
+
+
+
+      <div className="card">
+        <Link to={`/Shows/${_id}`}>
+          <img className="card-img-top" alt={name} src={`/images/${image}`} />
+          <p>{name}</p>
+        </Link>
+        <div className="card-body">
+          <h5 className="card-title">{name}</h5>
+          <p className="card-text">{description}</p>
+          <p className="card-text">Price: ${price}</p>
+
+
+{/* ----------------------------------- ticket purchasing form ------------------------*/}
+
+          <form>
+
+            <div className="ticket-form-group">
+              <label htmlFor="exampleFormControlSelect1">Select Venue:</label>
+              <select className="form-control" id="exampleFormControlSelect1" onChange={handleVenueChange}>
+                <option value="" disabled selected>Select a venue</option>
+                {venue.map((venueItem, index) => (
+                  <option key={index} value={venueItem.name}>{venueItem.name}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="ticket-form-group">
+              <label htmlFor="exampleFormControlSelect1">Select Date & Time:</label>
+              <select className="form-control" id="exampleFormControlSelect1" onChange={handleTimeChange}>
+                <option value="" disabled selected>Select a time</option>
+                {selectedVenue ? (
+                  filteredTimes.map((timeItem, idx) => (
+                    <option key={idx} value={timeItem.time}>{dayjs(parseInt(timeItem.time)).format('DD/MM/YYYY')}</option>
+                  ))
+                ) : (
+                  <option disabled>Select a venue to see times</option>
+                )}
+              </select>
+            </div>
+
+          </form>
+
+{/* ----------------------------------- end form ----------------------------------------*/}
+
+
+
+
         </div>
       </div>
     </div>
