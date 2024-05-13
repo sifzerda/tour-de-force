@@ -1,3 +1,4 @@
+import { useState } from 'react'; // Import useState from React
 import { Link, useParams } from "react-router-dom";
 import dayjs from 'dayjs';
 import '../../App.css';
@@ -5,19 +6,21 @@ import '../../App.css';
 function LocationForm({ show }) {
     const { _id, name, description, venue, image, price } = show;
     const { id } = useParams();
+    const [selectedVenue, setSelectedVenue] = useState('');
+    const [filteredTimes, setFilteredTimes] = useState([]);
 
     if (_id !== id) {
         return null;
     }
 
     const handleVenueChange = (event) => {
-        // Handle venue selection
         const selectedVenue = event.target.value;
-        // Your logic here
+        setSelectedVenue(selectedVenue);
+        const venueTimes = venue.find(venueItem => venueItem.name === selectedVenue)?.time || [];
+        setFilteredTimes(venueTimes);
     };
 
     const handleTimeChange = (event) => {
-        // Handle time selection
         const selectedTime = event.target.value;
         // Your logic here
     };
@@ -43,10 +46,8 @@ function LocationForm({ show }) {
                 <div>
                     <label htmlFor="timeDropdown">Select Time:</label>
                     <select id="timeDropdown" onChange={handleTimeChange}>
-                        {venue.map((venueItem, index) => (
-                            venueItem.time.map((timeItem, idx) => (
-                                <option key={idx} value={timeItem.time}>{dayjs(parseInt(timeItem.time)).format('DD/MM/YYYY')}</option>
-                            ))
+                        {filteredTimes.map((timeItem, idx) => (
+                            <option key={idx} value={timeItem.time}>{dayjs(parseInt(timeItem.time)).format('DD/MM/YYYY')}</option>
                         ))}
                     </select>
                 </div>
