@@ -518,18 +518,16 @@ img.banner-image {
   border: 2px solid var(--light-red);
   padding: 10px;
   text-align: center;
-  width: 50px; /* Adjust as needed */
-  height: 50px; /* Adjust as needed */
+  width: 50px;
+  height: 50px; 
 }
 
-/* Styling to make it look like a stage */
+/* ----------- */
 .seat-map tr:nth-child(odd) .seat-cell {
-  background-color: #f5f5f5; /* Alternate row color */
+  background-color: #f5f5f5; 
 }
 
- 
-
-/* Add more specific styling to the first row to represent the stage */
+/* ----------- */
 .seat-map tr:first-child .seat-cell {
   background-color: #333;
   color: #fff;
@@ -540,23 +538,23 @@ img.banner-image {
   color: #fff;
   text-align: center;
   font-weight: bold;
-  height: 50px; /* Adjust as needed */
-  width: 100px; /* Adjust as needed */
+  height: 50px; 
+  width: 100px; 
 }
 
-/* Style for the inner stage box */
+/* the inner stage box */
 .inner-stage {
   background-color: #eee;
   border: 2px solid greenyellow;
   color: #333;
   padding: 1px;
-  width: calc(80% - 20px); /* 60% less width than the outer stage */
-  margin: 0 auto; /* Center the inner stage horizontally */
+  width: calc(80% - 20px); /* 60% narrower than the outer stage */
+  margin: 0 auto; /* Center inner stage */
 }
 
-/* Styling for the VIP row */
+/* the VIP row */
 .vip-cell {
-  background-color: #ffc107; /* Yellow color for VIP */
+  background-color: #ffc107; 
   color: #333;
   text-align: center;
   font-weight: bold;
