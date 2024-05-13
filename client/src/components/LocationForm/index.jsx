@@ -45,6 +45,8 @@ function LocationForm({ show }) {
 
 {/* ----------------------------------- ticket purchasing form ------------------------*/}
 
+<h5 className="card-title">Check ticket availability for {name}</h5>
+
           <form>
 
             <div className="ticket-form-group">
