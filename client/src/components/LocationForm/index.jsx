@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
 import dayjs from 'dayjs';
 import '../../App.css';
@@ -12,7 +12,6 @@ function LocationForm({ show }) {
   const [filteredTimes, setFilteredTimes] = useState([]);
   const [showAvailability, setShowAvailability] = useState(false);
   const [selectedSeats, setSelectedSeats] = useState([]);
-
   const [seatRows, setSeatRows] = useState([]);
   const [seatCols, setSeatCols] = useState([]);
 
@@ -184,15 +183,9 @@ const convertToLetter = (row) => {
           )}
 
   {/* Get tickets button */}
-  <button
-            type="submit"
-            className="btn btn-primary"
-            disabled={!isFormValid}
-          >
+  <Link to={`/tickets/purchase/${id}`} className="btn btn-primary" disabled={!isFormValid}> {/* Updated Link to button */}
             Get Tickets
-          </button>
-
-
+          </Link>
         </div>
       </div>
     </div>

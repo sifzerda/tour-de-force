@@ -17,8 +17,9 @@ import Success from './pages/Success';
 import Shop from './pages/Shop.jsx';
 import Shows from './pages/Shows.jsx';
 import ShowDetail from './pages/ShowDetail.jsx';
-import Tickets from './pages/Tickets.jsx';
+//import Tickets from './pages/Tickets.jsx';
 import TicketDetail from './pages/TicketDetail.jsx';
+import TicketPurchase from './pages/TicketPurchase.jsx';
 
 const router = createBrowserRouter([
   {
@@ -29,70 +30,70 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
-      }, 
-////////////////////////////////////////
+      },
+      ////////////////////////////////////////
       {
         path: '/login',
         element: <Login />
-      }, 
-////////////////////////////////////////
+      },
+      ////////////////////////////////////////
       {
         path: '/signup',
         element: <Signup />
-      }, 
-////////////////////////////////////////
+      },
+      ////////////////////////////////////////
       {
         path: '/account',
         element: <OrderHistory />
-      }, 
-////////////////////////////////////////
+      },
+      ////////////////////////////////////////
       {
         path: '/products/:id',
         element: <Detail />
-      }, 
-////////////////////////////////////////
+      },
+      ////////////////////////////////////////
       {
         path: '/success',
         element: <Success />
       },
-/////////////////////////////////////
+      ////////////////////////////////////////
       {
-        path: '/tickets',
-        element: <Tickets />
+        path: '/tickets/:id',
+        element: <TicketDetail />
       },
-////////////////////////////////////////
-{
-  path: '/tickets/:id',
-  element: <TicketDetail />
-}, 
-////////////////////////////////////////
+      ////////////////////////////////////////
       {
         path: '/shop',
         element: <Shop />
       },
-////////////////////////////////////////
+      ////////////////////////////////////////
       {
         path: '/shows',
         element: <Shows />
       },
-////////////////////////////////////////
+      ////////////////////////////////////////
       {
         path: '/shows/:id',
         element: <ShowDetail />
-      }, 
-// more links //////////////////////////////////////////
-//{
-//  path: '/page1',
-//  element: <Events />
-//},
-//{
-//  path: '/page2',
-//  element: <Event-1 />
-//},
-//{
-//path: '/page3',
-//element: <Chat />
-//},
+      },
+      ////////////////////////////////////////
+      {
+        path: '/tickets/purchase/:id',
+        element: <TicketPurchase />
+      },
+      // more links //////////////////////////////////////////
+      //{
+      //  path: '/page1',
+      //  element: <Events />
+      //},
+      //{
+      //  path: '/page2',
+      //  element: <Event-1 />
+      //},
+      //{
+      //path: '/page3',
+      //element: <Chat />
+      //},
 
     ],
   },
