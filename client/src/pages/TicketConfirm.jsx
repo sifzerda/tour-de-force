@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import '../App' 
+import Cart from "../components/Cart";
 
 function TicketConfirmedPage() {
   return (
@@ -17,6 +18,7 @@ function TicketConfirmedPage() {
         <Link to="/" className="confirmation-button">
           Return to Site
         </Link>
+        <Cart />
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import spinner from '../assets/spinner.gif';
 import ShowDetailOne from '../components/ShowDetailOne/index';
 import Auth from '../utils/auth';
 import ThoughtList from '../components/ThoughtList';
+import Cart from "../components/Cart";
 
 import '../App.css';
 
@@ -131,7 +132,7 @@ function ShowDetail() {
             <ThoughtList thoughts={currentShow.thoughts} />
             </div>
             <ShowDetailOne show={currentShow} />
-
+            <Cart />
           </div>
         )
       )}

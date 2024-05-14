@@ -2,6 +2,7 @@ import ShowCardList from '../components/ShowCardList';
 //import shows from '../../../server/config/seeds';
 import { useQuery } from '@apollo/client';
 import { QUERY_SHOWS } from '../utils/queries';
+import Cart from "../components/Cart";
 
 const Shows = () => {
   const { loading, error, data } = useQuery(QUERY_SHOWS);
@@ -15,7 +16,7 @@ const Shows = () => {
       <h1>Shows</h1>
 
       {data && <ShowCardList shows={data.shows} />}
-
+      <Cart />
     </div>
   );
 };

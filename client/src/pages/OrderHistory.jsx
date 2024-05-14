@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import Cart from "../components/Cart";
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
 
@@ -43,6 +43,7 @@ function OrderHistory() {
             ))}
           </>
         ) : null}
+              <Cart />
       </div>
     </>
   );

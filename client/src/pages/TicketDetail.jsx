@@ -5,6 +5,7 @@ import { QUERY_SHOWS } from '../utils/queries';
 import spinner from '../assets/spinner.gif';
 import ShowDetailOne from '../components/ShowDetailOne/index';
 import LocationForm from '../components/LocationForm';
+import Cart from "../components/Cart";
 
 import '../App.css';
 
@@ -69,6 +70,7 @@ function ShowDetail() {
 
                         <ShowDetailOne show={currentShow} />
 
+                        <Cart />
                     </div>
                 )
             )}
