@@ -11,6 +11,8 @@ function LocationForm({ show }) {
   const [selectedTime, setSelectedTime] = useState('');
   const [filteredTimes, setFilteredTimes] = useState([]);
   const [showAvailability, setShowAvailability] = useState(false);
+  const [selectedSeats, setSelectedSeats] = useState([]);
+
   const [seatRows, setSeatRows] = useState([]);
   const [seatCols, setSeatCols] = useState([]);
 
@@ -21,7 +23,7 @@ function LocationForm({ show }) {
   const handleVenueChange = (event) => {
     const selectedVenue = event.target.value;
     setSelectedVenue(selectedVenue);
-    const venueTimes = venue.find(venueItem => venueItem.name === selectedVenue)?.time || [];
+    const venueTimes = venue.find((venueItem) => venueItem.name === selectedVenue)?.time || [];
     setFilteredTimes(venueTimes);
   };
 
@@ -43,6 +45,10 @@ function LocationForm({ show }) {
         setSeatCols(venueData.seatCols);
       }
     }
+  };
+
+  const handleSeatSelection = (row, col) => {
+    setSelectedSeats([{ row, col }]);
   };
 
   // CREATE THE SEAT MAP ----------------------------------//
@@ -79,8 +85,8 @@ const convertToLetter = (row) => {
     </tr>
   );
 
-  // for Loop iterates over the number of seat rows
-  for (let row = 1; row <= seatRows; row++) {
+   // for Loop iterates over the number of seat rows
+   for (let row = 1; row <= seatRows; row++) {
     // create an array called 'cells' to hold the table cells 
     const cells = [];
     // Convert row number to letter
@@ -91,42 +97,37 @@ const convertToLetter = (row) => {
       // Add table cell to the array
       cells.push(
         <td key={key} className="seat-cell">
-          {rowLabel}-{col}
+          <button className="seat-button" onClick={() => handleSeatSelection(rowLabel, col)}>
+            {rowLabel}-{col}
+          </button>
         </td>
       );
     }
-    // Wrap all cells of the row within a single button element
-    rows.push(
-      <tr key={row}>
-        <td colSpan={seatCols}>
-          {/* Wrap the entire row within a single button element */}
-          <button className="seat-button-row">
-            {cells}
-          </button>
-        </td>
-      </tr>
+      // Wrap all cells of the row within a single button element
+      rows.push(
+        <tr key={row}>
+          <td colSpan={seatCols}>
+            {/* Wrap the entire row within a single button element */}
+            <button className="seat-button-row">
+              {cells}
+            </button>
+          </td>
+        </tr>
+      );
+    }
+
+    // Return the generated table rows
+    return (
+      <table className="seat-map">
+        <tbody>{rows}</tbody>
+      </table>
     );
-  }
+  };
 
-  // Return the generated table rows
-  return (
-    <table className="seat-map">
-      <tbody>{rows}</tbody>
-    </table>
-  );
-};
-
-
-
+  const isFormValid = selectedVenue && selectedTime && selectedSeats.length > 0; // Updated to check if any seats have been selected
 
   return (
     <div className='ticket-form-container'>
-
-
-
-
-
-
       <div className="card">
         <Link to={`/Shows/${_id}`}>
           <img className="card-img-top" alt={name} src={`/images/${image}`} />
@@ -137,14 +138,9 @@ const convertToLetter = (row) => {
           <p className="card-text">{description}</p>
           <p className="card-text">Price: ${price}</p>
 
-
-          {/* ----------------------------------- ticket purchasing form ------------------------*/}
-
-          {/* Ticket purchasing form */}
-          <h5 className="card-title">Check ticket availability for {name}</h5>
-
+{/* Ticket purchasing form */}
+<h5 className="card-title">Check ticket availability for {name}</h5>
           <form>
-
             <div className="ticket-form-group">
               <label htmlFor="exampleFormControlSelect1">Select Venue:</label>
               <select className="form-control" id="exampleFormControlSelect1" onChange={handleVenueChange}>
@@ -160,19 +156,16 @@ const convertToLetter = (row) => {
               <select className="form-control" id="exampleFormControlSelect2" onChange={handleTimeChange}>
                 <option value="" disabled selected>Select a time</option>
                 {selectedVenue && filteredTimes.map((timeItem, idx) => (
-                  // ** parse needed to convert from string to number
                   <option key={idx} value={timeItem.time}>{dayjs(parseInt(timeItem.time)).format('DD/MM/YYYY')}</option>
                 ))}
               </select>
             </div>
             <button type="submit" className="btn btn-primary" onClick={handleCheckAvailability}>Check availability</button>
-
           </form>
 
           {/* ----------------------------------- end form ----------------------------------------*/}
 
           {/* Availability card */}
-
           {showAvailability && (
             <div className="availability-card">
               <h5>Availability for {name}</h5>
@@ -180,8 +173,26 @@ const convertToLetter = (row) => {
               <p>Date: {dayjs(parseInt(selectedTime)).format('DD/MM/YYYY')}</p>
               <h5>Seat Map:</h5>
               {generateSeatMap()}
+
+              <p>Ticket Availability</p>
+              {selectedSeats.length > 0 && (
+                <div className="seat-selection-info">
+                  <p>Seats are available</p>
+                </div>
+              )}
             </div>
           )}
+
+  {/* Get tickets button */}
+  <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={!isFormValid}
+          >
+            Get Tickets
+          </button>
+
+
         </div>
       </div>
     </div>
