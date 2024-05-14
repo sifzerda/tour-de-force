@@ -45,7 +45,6 @@ function LocationForm({ show }) {
     }
   };
 
-
   // CREATE THE SEAT MAP ----------------------------------//
 
 // Function to convert row numbers to letters
@@ -59,53 +58,63 @@ const convertToLetter = (row) => {
     // Initialize an array to store the table rows
     const rows = [];
 
-    // 1 row stage
-    rows.push(
-      <tr key="stage">
-        <td colSpan={seatCols} className="stage-cell">
-          <div className="inner-stage">Stage</div>
-        </td>
-      </tr>
-    );
-
-    // 1 row VIP seats
-    rows.push(
-      <tr key="vip">
-        <td colSpan={seatCols} className="vip-cell">
-          <button className="seat-button">VIP</button>
-        </td>
-      </tr>
-    );
-
-// for Loop iterates over the number of seat rows
-for (let row = 1; row <= seatRows; row++) {
-  // create an array called 'cells' to hold the table cells 
-  const cells = [];
-  // Convert row number to letter
-  const rowLabel = convertToLetter(row);
-  for (let col = 1; col <= seatCols; col++) {
-    // Generate a unique label for each seat
-    const key = `seat-${row}-${col}`;
-    // Add table cell to the array
-    cells.push(
-      <td key={key} className="seat-cell">
-        <button className="seat-button">{rowLabel}-{col}</button>
+  // 1 row stage
+  rows.push(
+    <tr key="stage">
+      <td colSpan={seatCols} className="stage-cell">
+        <div className="inner-stage">Stage</div>
       </td>
+    </tr>
+  );
+
+  // 1 row VIP seats
+  rows.push(
+    <tr key="vip">
+      <td colSpan={seatCols} className="vip-cell">
+        {/* Wrap the entire row within a single button element */}
+        <button className="seat-button-row">
+          VIP
+        </button>
+      </td>
+    </tr>
+  );
+
+  // for Loop iterates over the number of seat rows
+  for (let row = 1; row <= seatRows; row++) {
+    // create an array called 'cells' to hold the table cells 
+    const cells = [];
+    // Convert row number to letter
+    const rowLabel = convertToLetter(row);
+    for (let col = 1; col <= seatCols; col++) {
+      // Generate a unique label for each seat
+      const key = `seat-${row}-${col}`;
+      // Add table cell to the array
+      cells.push(
+        <td key={key} className="seat-cell">
+          {rowLabel}-{col}
+        </td>
+      );
+    }
+    // Wrap all cells of the row within a single button element
+    rows.push(
+      <tr key={row}>
+        <td colSpan={seatCols}>
+          {/* Wrap the entire row within a single button element */}
+          <button className="seat-button-row">
+            {cells}
+          </button>
+        </td>
+      </tr>
     );
   }
-  // Add the table row to the array of rows
-  rows.push(<tr key={row}>{cells}</tr>);
-}
 
-    // Return the generated table rows
-    return (
-      <table className="seat-map">
-        <tbody>
-          {rows}
-        </tbody>
-      </table>
-    );
-  };
+  // Return the generated table rows
+  return (
+    <table className="seat-map">
+      <tbody>{rows}</tbody>
+    </table>
+  );
+};
 
 
 
