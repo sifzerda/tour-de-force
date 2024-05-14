@@ -14,11 +14,11 @@ function LocationForm({ show }) {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [seatRows, setSeatRows] = useState([]);
   const [seatCols, setSeatCols] = useState([]);
-
+// if the show id doesn't match the url path id, render nothing
   if (_id !== id) {
     return null;
   }
-
+// function for selecting show venue dropdown
   const handleVenueChange = (event) => {
     const selectedVenue = event.target.value;
     setSelectedVenue(selectedVenue);
@@ -26,11 +26,13 @@ function LocationForm({ show }) {
     setFilteredTimes(venueTimes);
   };
 
+  // function for selecting show time dropdown
   const handleTimeChange = (event) => {
     const selectedTime = event.target.value;
     setSelectedTime(selectedTime);
   };
 
+  // function for ensuring conditional rendering of elements (seat availability confirmation message) only once user selects a time and venue
   const handleCheckAvailability = (event) => {
     event.preventDefault();
     if (!selectedVenue || !selectedTime) {
@@ -50,20 +52,18 @@ function LocationForm({ show }) {
     setSelectedSeats([{ row, col }]);
   };
 
-  // CREATE THE SEAT MAP ----------------------------------//
+  // CREATE THE CONDITIONAL SEAT MAP ----------------------------------//
 
 // Function to convert row numbers to letters
 const convertToLetter = (row) => {
-  // Add 64 to get ASCII value of capital letters starting from 'A'
   return String.fromCharCode(row + 64);
 };
 
-  // Function to generate table rows and columns based on seatRows and seatCols
+  // Function to take venue.seatRows and venue.seatCols and generate a seat grid/map
   const generateSeatMap = () => {
-    // Initialize an array to store the table rows
+    // table rows stored in empty array
     const rows = [];
-
-  // 1 row stage
+  // 1 row stage width of show.venue.seatCols
   rows.push(
     <tr key="stage">
       <td colSpan={seatCols} className="stage-cell">
@@ -72,11 +72,11 @@ const convertToLetter = (row) => {
     </tr>
   );
 
-  // 1 row VIP seats
+  // 1 row VIP seats width of show.venue.seatCols
   rows.push(
     <tr key="vip">
       <td colSpan={seatCols} className="vip-cell">
-        {/* Wrap the entire row within a single button element */}
+        {/* Entire VIP row is a single button */}
         <button className="seat-button-row">
           VIP
         </button>
@@ -86,27 +86,28 @@ const convertToLetter = (row) => {
 
    // for Loop iterates over the number of seat rows
    for (let row = 1; row <= seatRows; row++) {
-    // create an array called 'cells' to hold the table cells 
+    // create an array called 'cells' to store the table cells 
     const cells = [];
     // Convert row number to letter
     const rowLabel = convertToLetter(row);
     for (let col = 1; col <= seatCols; col++) {
-      // Generate a unique label for each seat
+      // create a unique label for each seat
       const key = `seat-${row}-${col}`;
       // Add table cell to the array
       cells.push(
         <td key={key} className="seat-cell">
+          {/* each row is a button for hover /active effect */}
           <button className="seat-button" onClick={() => handleSeatSelection(rowLabel, col)}>
             {rowLabel}-{col}
           </button>
         </td>
       );
     }
-      // Wrap all cells of the row within a single button element
+      // Wrap all cells of the row within a single button element for hover/active effect
       rows.push(
         <tr key={row}>
           <td colSpan={seatCols}>
-            {/* Wrap the entire row within a single button element */}
+            {/* each row is a button for hover /active effect */}
             <button className="seat-button-row">
               {cells}
             </button>
@@ -115,7 +116,7 @@ const convertToLetter = (row) => {
       );
     }
 
-    // Return the generated table rows
+    // Return the generated seat map of rows/cols
     return (
       <table className="seat-map">
         <tbody>{rows}</tbody>
@@ -123,7 +124,9 @@ const convertToLetter = (row) => {
     );
   };
 
-  const isFormValid = selectedVenue && selectedTime && selectedSeats.length > 0; // Updated to check if any seats have been selected
+  // for ungreying 'get ticket' button once venue time selected and seat row clicked to confirm availability
+  // will 'un-disable' if all these conditions are Boolean true
+  const isFormValid = selectedVenue && selectedTime && selectedSeats.length > 0; 
 
   return (
     <div className='ticket-form-container'>
