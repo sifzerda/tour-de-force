@@ -48,6 +48,12 @@ function LocationForm({ show }) {
 
   // CREATE THE SEAT MAP ----------------------------------//
 
+// Function to convert row numbers to letters
+const convertToLetter = (row) => {
+  // Add 64 to get ASCII value of capital letters starting from 'A'
+  return String.fromCharCode(row + 64);
+};
+
   // Function to generate table rows and columns based on seatRows and seatCols
   const generateSeatMap = () => {
     // Initialize an array to store the table rows
@@ -71,24 +77,25 @@ function LocationForm({ show }) {
       </tr>
     );
 
-    // Loop over the number of seat rows
-    for (let row = 1; row <= seatRows; row++) {
-      // Initialize an array to store the table cells (columns) for the current row
-      const cells = [];
-      // Loop over the number of seat columns
-      for (let col = 1; col <= seatCols; col++) {
-        // Generate a unique key for each table cell
-        const key = `seat-${row}-${col}`;
-       // Add the table cell to the array
-       cells.push(
-        <td key={key} className="seat-cell">
-          <button className="seat-button">{row}-{col}</button>
-        </td>
-      );
-    }
-    // Add the table row to the array of rows
-    rows.push(<tr key={row}>{cells}</tr>);
+// for Loop iterates over the number of seat rows
+for (let row = 1; row <= seatRows; row++) {
+  // create an array called 'cells' to hold the table cells 
+  const cells = [];
+  // Convert row number to letter
+  const rowLabel = convertToLetter(row);
+  for (let col = 1; col <= seatCols; col++) {
+    // Generate a unique label for each seat
+    const key = `seat-${row}-${col}`;
+    // Add table cell to the array
+    cells.push(
+      <td key={key} className="seat-cell">
+        <button className="seat-button">{rowLabel}-{col}</button>
+      </td>
+    );
   }
+  // Add the table row to the array of rows
+  rows.push(<tr key={row}>{cells}</tr>);
+}
 
     // Return the generated table rows
     return (
@@ -144,6 +151,7 @@ function LocationForm({ show }) {
               <select className="form-control" id="exampleFormControlSelect2" onChange={handleTimeChange}>
                 <option value="" disabled selected>Select a time</option>
                 {selectedVenue && filteredTimes.map((timeItem, idx) => (
+                  // ** parse needed to convert from string to number
                   <option key={idx} value={timeItem.time}>{dayjs(parseInt(timeItem.time)).format('DD/MM/YYYY')}</option>
                 ))}
               </select>

@@ -81,13 +81,17 @@ const showSchema = new Schema({
     required: true,
     min: 0.99
   },
+//  ticketQuant: {
+//    type: Number,
+//    min: 0,
+//    default: 0
+//  },
   // References the Thought model (which references comments)
   thoughts: [thoughtSchema]  // thoughts is an array of thoughtSchema
 });
 
 // Virtual property to format createdAt date
 thoughtSchema.virtual('formattedCreatedAt').get(function () {
-  // Parse createdAt date and format it
   return dayjs(this.createdAt).format('DD/MM/YYYY');
 });
 

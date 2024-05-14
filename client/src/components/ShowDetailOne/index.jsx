@@ -4,13 +4,13 @@ import '../../App.css';
 //import ThoughtList from '../ThoughtList';
 
 function ShowDetailOne({ show }) {
-    // Destructuring show props
+    // Destructuring show props to get data values
     const { _id, name, description, venue, image, price } = show;
     const { id } = useParams(); // Get the _id from the URL path
 
-    // Check if the _id from the URL path matches the _id of the current show
+    // if id of show matches id of url, render show
     if (_id !== id) {
-        // If not matching, return null to render nothing
+        // If no match, render nothing
         return null;
     }
 
@@ -42,7 +42,6 @@ function ShowDetailOne({ show }) {
             </div>
 
 {/* ------------------------ Thoughts list ------------------------------------*/}
-
         {/*     <ThoughtList thoughts={thoughts} />  */}
 
 

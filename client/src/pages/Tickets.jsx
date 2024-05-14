@@ -11,12 +11,14 @@ function Tickets() {
         </div>
         <h1 className="confirmation-heading">Subscription Confirmed</h1>
         <p className="confirmation-message">
-          Thank you for subscribing to our newsletter! You have been added to our list and will now receive updates about upcoming shows and events.
+          Your ticket purchase has been successful! Please check your email for a digital copy of your ticket.
         </p>
 
 
 
 <LocationForm />
+
+
 
 
 
