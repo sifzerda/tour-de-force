@@ -30,7 +30,6 @@ function ShowDetail() {
         }
     }, [showsData, id]);
 
-
     return (
         <>
             {showsLoading ? (

@@ -12,8 +12,8 @@ function LocationForm({ show }) {
   const [filteredTimes, setFilteredTimes] = useState([]);
   const [showAvailability, setShowAvailability] = useState(false);
   const [selectedSeats, setSelectedSeats] = useState([]);
-  const [seatRows, setSeatRows] = useState([]);
-  const [seatCols, setSeatCols] = useState([]);
+  const [seatRows, setSeatRows] = useState(0);
+  const [seatCols, setSeatCols] = useState(0);
   // if the show id doesn't match the url path id, render nothing
   if (_id !== id) {
     return null;
