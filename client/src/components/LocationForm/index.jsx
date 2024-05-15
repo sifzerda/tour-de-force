@@ -145,8 +145,8 @@ function LocationForm({ show }) {
           <form>
             <div className="ticket-form-group">
               <label htmlFor="exampleFormControlSelect1">Select Venue:</label>
-              <select className="form-control" id="exampleFormControlSelect1" onChange={handleVenueChange}>
-                <option value="" disabled selected>Select a venue</option>
+              <select className="form-control" id="exampleFormControlSelect1" onChange={handleVenueChange} defaultValue="">
+                <option value="" disabled>Select a venue</option>
                 {venue.map((venueItem, index) => (
                   <option key={index} value={venueItem.name}>{venueItem.name}</option>
                 ))}
@@ -155,8 +155,8 @@ function LocationForm({ show }) {
 
             <div className="ticket-form-group">
               <label htmlFor="exampleFormControlSelect2">Select Date:</label>
-              <select className="form-control" id="exampleFormControlSelect2" onChange={handleTimeChange}>
-                <option value="" disabled selected>Select a time</option>
+              <select className="form-control" id="exampleFormControlSelect2" onChange={handleTimeChange} defaultValue="">
+                <option value="" disabled>Select a time</option>
                 {selectedVenue && filteredTimes.map((timeItem, idx) => (
                   <option key={idx} value={timeItem.time}>{dayjs(parseInt(timeItem.time)).format('DD/MM/YYYY')}</option>
                 ))}
@@ -185,11 +185,11 @@ function LocationForm({ show }) {
             </div>
           )}
 
-          {/* Get tickets button */}
           <Link
             to={`/tickets/purchase/${id}?venue=${selectedVenue}&date=${selectedTime}`}
-            className="btn btn-primary"
-            disabled={!isFormValid}>
+            className={`btn btn-primary ${!isFormValid && 'disabled'}`}
+            onClick={isFormValid ? null : (e) => e.preventDefault()}
+          >
             Get Tickets
           </Link>
         </div>
