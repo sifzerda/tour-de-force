@@ -31,11 +31,7 @@ function ShowCard({ show }) {
                             {venueItem.time.map((timeItem, idx) => {
                                     //console.log("TimeItem =", timeItem); //  debugging
                                     //console.log("TimeItem.time =", timeItem.time); // debugging 
-                                    const formattedDate = new Date(parseInt(timeItem.time)).toLocaleDateString('en-AU', {
-                                        day: '2-digit',
-                                        month: '2-digit',
-                                        year: 'numeric'
-                                    });
+                                    const formattedDate = new Date(parseInt(timeItem.time)).toLocaleDateString('en-AU');
                                     return <li key={idx}>{formattedDate}</li>;
                                 })}
                             </ul>

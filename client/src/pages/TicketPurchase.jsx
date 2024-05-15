@@ -9,15 +9,18 @@ import Cart from "../components/Cart";
 import '../App.css';
 
 function TicketPurchase() {
-  // hook which retrieves data from URL parameters
   const params = useParams();
-  const id = params.id.split('?')[0]; // Extracting the id from the URL
-
-  // Extracting venue and date from URL queries
+  const id = params.id.split('?')[0];
   const queryParams = new URLSearchParams(window.location.search);
   const venue = queryParams.get('venue') || '';
   const dateParam = queryParams.get('date') || '';
-  const date = dateParam.split('=')[1]; // Extracting the date value
+
+  // Convert and format the timestamp using dayjs
+  const date = new Date (parseInt(dateParam)).toLocaleDateString('en-AU');
+
+  console.log('Venue:', venue);
+  console.log('Date Param:', dateParam); 
+  console.log('Formatted Date:', date); 
 
   const [currentShow, setCurrentShow] = useState({});
   const { loading: showsLoading, data: showsData } = useQuery(QUERY_SHOWS, {
