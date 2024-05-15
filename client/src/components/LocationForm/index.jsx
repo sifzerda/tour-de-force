@@ -191,7 +191,7 @@ function LocationForm({ show }) {
           )}
 
 <Link
-            to={`/tickets/purchase/${id}?venue=${selectedVenue}&date=${selectedTime}`}
+            to={`/tickets/purchase/${id}?venue=${selectedVenue}&price=${price}&date=${selectedTime}`}
             className={`btn btn-primary ${!isFormValid && 'disabled'}`}
             onClick={isFormValid ? null : (e) => e.preventDefault()}
           >

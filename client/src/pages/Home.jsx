@@ -12,6 +12,8 @@ const Home = () => {
 
       <Carousel />
 
+
+
       <CategoryMenu />
       <ProductList />
       <Cart />

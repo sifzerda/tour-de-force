@@ -3,7 +3,7 @@ const { Schema, model } = mongoose;
 //const dateFormat = require('../utils/dateFormat');
 const dayjs = require('dayjs');
 
-// each show contains multiple venues, each venue contains multiple sshow times
+// each show contains multiple venues, each venue contains multiple show times
 
 // sub-sub-document schema for time and venue combination
 const timeSchema = new Schema({

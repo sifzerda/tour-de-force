@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const ticketSchema = new Schema({
     show: {
         type: Schema.Types.ObjectId,
-        ref: 'Show',
+        ref: 'Show.name',
         required: true
     },
     venue: {
@@ -33,7 +33,7 @@ const ticketSchema = new Schema({
         min: 1,
         default: 1
     },
-    created: {
+    purchased: {
         type: Date,
         default: Date.now
     }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_SHOWS } from '../utils/queries';
 import spinner from '../assets/spinner.gif';
@@ -7,6 +7,7 @@ import spinner from '../assets/spinner.gif';
 //import LocationForm from '../components/LocationForm';
 import Cart from "../components/Cart";
 import '../App.css';
+import PayPalPayment from '../components/PayPalPayment';
 
 function TicketPurchase() {
   const params = useParams();
@@ -23,6 +24,7 @@ function TicketPurchase() {
   //console.log('Formatted Date:', date); ---- debugging
 
   const [currentShow, setCurrentShow] = useState({});
+  const [showPayPal, setShowPayPal] = useState(false);
   const { loading: showsLoading, data: showsData } = useQuery(QUERY_SHOWS, {
     variables: { id },
   });
@@ -37,6 +39,7 @@ function TicketPurchase() {
   const confirmPurchase = () => {
     // Handle purchase confirmation logic here
     console.log('Purchase confirmed!');
+    setShowPayPal(true); // Show PayPal component
   };
 
   return (
@@ -59,7 +62,25 @@ function TicketPurchase() {
                 <p>Venue: {venue}</p>
                 <p>Price: ${currentShow.price}</p>
               </div>
+
+{/* go back button --------------------------------------------------------------*/}
+<Link to={`/tickets/${currentShow._id}`}>← Select a different venue or date </Link>
+             
+{/* proceed to payment gateway --------------------------------------------------*/}
               <button className="confirm-button" onClick={confirmPurchase}>Confirm Purchase</button>
+           
+{/* Conditionally render PayPal div */}
+
+              {showPayPal && (
+                <div className="paypal-div">
+                  <p>PayPal goes here</p>
+
+
+<PayPalPayment />
+
+
+                </div>
+              )}
             </div>
           </div>
           <Cart />
