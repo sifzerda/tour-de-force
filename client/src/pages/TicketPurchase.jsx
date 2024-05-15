@@ -9,9 +9,16 @@ import Cart from "../components/Cart";
 import '../App.css';
 
 function TicketPurchase() {
+  // hook which retrieves data from URL parameters
   const params = useParams();
-  const { venue, date } = params;
   const id = params.id.split('?')[0]; // Extracting the id from the URL
+
+  // Extracting venue and date from URL queries
+  const queryParams = new URLSearchParams(window.location.search);
+  const venue = queryParams.get('venue') || '';
+  const dateParam = queryParams.get('date') || '';
+  const date = dateParam.split('=')[1]; // Extracting the date value
+
   const [currentShow, setCurrentShow] = useState({});
   const { loading: showsLoading, data: showsData } = useQuery(QUERY_SHOWS, {
     variables: { id },
@@ -39,13 +46,13 @@ function TicketPurchase() {
         <div className="container">
           <div className="card">
             <div className="card-header">
-              <h2>Please Confirm Your Event Details</h2>
+              <h2>Confirm Your Event Details</h2>
             </div>
             <div className="card-body">
 
               <div className="ticket-details">
                 <p>Event: {currentShow.name}</p>
-                <p>Date: {currentShow.date}</p>
+                <p>Date: {date}</p>
                 <p>Venue: {venue}</p>
                 <p>Price: ${currentShow.price}</p>
               </div>
