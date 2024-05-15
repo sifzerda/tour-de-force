@@ -24,12 +24,17 @@ function LocationForm({ show }) {
     setSelectedVenue(selectedVenue);
     const venueTimes = venue.find((venueItem) => venueItem.name === selectedVenue)?.time || [];
     setFilteredTimes(venueTimes);
+    setSelectedTime(''); // Reset selected time
+    setSelectedSeats([]); // Reset seat selection
+    setShowAvailability(false); // Hide availability
   };
 
   // function for selecting show time dropdown
   const handleTimeChange = (event) => {
     const selectedTime = event.target.value;
     setSelectedTime(selectedTime);
+    setSelectedSeats([]); // Reset seat selection
+    setShowAvailability(false); // Hide availability
   };
 
   // function for ensuring conditional rendering of elements (seat availability confirmation message) only once user selects a time and venue
@@ -185,7 +190,7 @@ function LocationForm({ show }) {
             </div>
           )}
 
-          <Link
+<Link
             to={`/tickets/purchase/${id}?venue=${selectedVenue}&date=${selectedTime}`}
             className={`btn btn-primary ${!isFormValid && 'disabled'}`}
             onClick={isFormValid ? null : (e) => e.preventDefault()}
