@@ -1,21 +1,26 @@
-import ProductList from "../components/ProductList";
-import CategoryMenu from "../components/CategoryMenu";
 import Cart from "../components/Cart";
-import Carousel from "../components/Carousel";
+import '../App.css';
+
 
 const TicketPurchase = () => {
   return (
     <div className="container">
+      <div className="card">
+        <div className="card-header">
+          <h2>Confirm Your Event Details</h2>
+        </div>
+        <div className="card-body">
 
-
-      <h1>BUY A TICKET</h1>
-
-      <Carousel />
-
-      <CategoryMenu />
-      <ProductList />
+          <div className="ticket-details">
+            <p>Event: Awesome Concert</p>
+            <p>Date: July 21, 2024</p>
+            <p>Time: 7:00 PM</p>
+            <p>Venue: The Grand Arena</p>
+          </div>
+          <button className="confirm-button">Confirm Purchase</button>
+        </div>
+      </div>
       <Cart />
-
     </div>
   );
 };
