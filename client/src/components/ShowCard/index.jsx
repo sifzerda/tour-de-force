@@ -13,13 +13,13 @@ function ShowCard({ show }) {
         <div className="card">
 
 
-<Link to={`/Shows/${_id}`}>
-        <img
-        className="card-img-top" alt={name} src={`/images/${image}`} />
-        <p>{name}</p>
-      </Link>
+            <Link to={`/Shows/${_id}`}>
+                <img
+                    className="card-img-top" alt={name} src={`/images/${image}`} />
+                <p>{name}</p>
+            </Link>
 
-      <div className="card-body">
+            <div className="card-body">
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">{description}</p>
                 <p className="card-text">Price: ${price}</p>
@@ -28,7 +28,7 @@ function ShowCard({ show }) {
                         <li key={index} className="list-group-item">
                             <strong>Venues: {venueItem.name}</strong>
                             <ul>
-                            {venueItem.time.map((timeItem, idx) => {
+                                {venueItem.time.map((timeItem, idx) => {
                                     //console.log("TimeItem =", timeItem); //  debugging
                                     //console.log("TimeItem.time =", timeItem.time); // debugging 
                                     const formattedDate = new Date(parseInt(timeItem.time)).toLocaleDateString('en-AU');

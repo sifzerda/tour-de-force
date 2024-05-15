@@ -16,7 +16,7 @@ function TicketPurchase() {
   const dateParam = queryParams.get('date') || '';
 
   // Convert and format the timestamp using dayjs
-  const date = new Date (parseInt(dateParam)).toLocaleDateString('en-AU');
+  const date = new Date(parseInt(dateParam)).toLocaleDateString('en-AU');
 
   //console.log('Venue:', venue); ---- debugging 
   //console.log('Date Param:', dateParam); ---- debugging
