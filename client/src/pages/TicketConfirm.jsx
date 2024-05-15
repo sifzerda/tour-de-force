@@ -1,27 +1,30 @@
-import { Link } from 'react-router-dom';
-import '../App' 
+import '../App'
 import Cart from "../components/Cart";
 
-function TicketConfirmedPage() {
+function TicketConfirm() {
   return (
-    <div className="confirmation-page">
-      <div className="confirmation-content">
-        <div className="confirmation-icon">
-          <svg viewBox="0 0 512 512" className="confirmation-icon-svg">
-            {/* Your SVG path here */}
-          </svg>
+
+    <div className="container my-1">
+      <div className="card">
+        <div className="card-header">
+          <h2> <span><img src="../../public/images/mic.png" alt="Confetti" />
+</span> Ticket Purchase Confirmed! <span><img src="../../public/images/guitar.png" alt="Confetti" />
+</span> </h2>
+
         </div>
-        <h1 className="confirmation-heading">Ticket Purchase Confirmed</h1>
-        <p className="confirmation-message">
-          Thank you for purchasing a ticket to a show! You will shortly receive an email with a copy of your ticket purchase and instructions on how to access the show.
-        </p>
-        <Link to="/" className="confirmation-button">
-          Return to Site
-        </Link>
+        <div className="card-body">
+          <div className="ticket-details">
+            <p>
+              Thank you for purchasing a ticket! You will shortly receive an email with a copy of your ticket and instructions on how to access the show.
+            </p>
+           
+          </div>
+        </div>
+
         <Cart />
       </div>
     </div>
   );
 }
 
-export default TicketConfirmedPage;
+export default TicketConfirm;

@@ -38,7 +38,7 @@ function TicketPurchase() {
 
   const confirmPurchase = () => {
     // Handle purchase confirmation logic here
-    console.log('Purchase confirmed!');
+    console.log('New PayPal window opened');
     setShowPayPal(true); // Show PayPal component
   };
 

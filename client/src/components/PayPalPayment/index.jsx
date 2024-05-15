@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { useEffect, useState } from 'react';
 import { QUERY_SHOWS } from '../../utils/queries';
-
+import spinner from '../../assets/spinner.gif';
 
 const PayPalPayment = () => {
     const location = useLocation();
@@ -44,21 +44,23 @@ const PayPalPayment = () => {
         });
     };
 
-// ONCE PURCHASE COMPLETED, WRITE TICKET INTO USER MODEL (i.e. mutation update User), AND SEND USER TO THE TICKET CONFIRM PAGE
-// ALSO ON ORDER HISTORY PAGE (USER PROFILE) GRAB (newly updated/made) user.ticket and display on their profile page in order history
-// ALSO WHEN UPDATING USER MODEL CONSIDER ADDING A FIELD FOR STAR RATING (which will be a number 0-5)
-
     const onApprove = (data, actions) => {
         return actions.order.capture().then(function (details) {
             // Handle successful payment
-            // WRITING TICKET INTO USER MODEL WILL BE DONE HERE BELOW <<<<<<<<<<<
+            //<<<<<<<<<<<<<<<<<<<<<<
             console.log('Payment completed:', details);
             document.getElementById('result-message').innerText = 'Payment completed successfully!';
+       
+                   // Redirect to '/' after payment completion
+                   window.location.href = '/tickets/purchase/confirm'
+       
         });
     };
 
     if (showsLoading) {
-        return <div>Loading...</div>; // Show a loading indicator while data is loading
+        return <div>
+        <img src={spinner} alt="loading" />
+        Loading...</div>; // loading spinner if page loading
     }
 
     return (
@@ -71,8 +73,7 @@ const PayPalPayment = () => {
                     <PayPalButtons
                         createOrder={createOrder}
                         onApprove={onApprove}
-                        style={{ layout: 'horizontal' }} // Button layout
-                    />
+                        style={{ layout: 'horizontal' }} />
                 </div>
                 <p id="result-message"></p>
             </div>

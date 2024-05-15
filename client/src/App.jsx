@@ -11,6 +11,9 @@ import Header from './components/Header';
 import Navi from './components/Navi';
 import Footer from './components/Footer';
 
+//import dotenv from 'dotenv';
+//dotenv.config();
+
 //import 'antd/dist/antd.css';
 //import Footer from 'antd/lib/footer';
 

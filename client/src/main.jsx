@@ -20,6 +20,7 @@ import ShowDetail from './pages/ShowDetail.jsx';
 //import Tickets from './pages/Tickets.jsx';
 import TicketDetail from './pages/TicketDetail.jsx';
 import TicketPurchase from './pages/TicketPurchase.jsx';
+import TicketConfirm from './pages/TicketConfirm.jsx';
 
 const router = createBrowserRouter([
   {
@@ -82,10 +83,10 @@ const router = createBrowserRouter([
         element: <TicketPurchase />
       },
       // more links //////////////////////////////////////////
-      //{
-      //  path: '/page1',
-      //  element: <Events />
-      //},
+      {
+        path: '/tickets/purchase/confirm',
+        element: <TicketConfirm />
+      },
       //{
       //  path: '/page2',
       //  element: <Event-1 />
