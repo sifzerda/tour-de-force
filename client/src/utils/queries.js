@@ -168,3 +168,95 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_TICKETS = gql`
+  {
+    tickets {
+      _id
+      purchaseDate
+      show {
+        _id
+        name
+        description
+        ticketDesc
+        ticketBannerImg
+        image
+        price
+        venue {
+          _id
+          name
+          time {
+            _id
+            time
+          }
+          seatRows
+          seatCols
+        }
+      }
+      user {
+        _id
+        firstName
+        lastName
+        email
+        orders {
+          _id
+          purchaseDate
+          products {
+            _id
+            name
+            description
+            price
+            quantity
+            image
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_TICKET = gql`
+  query getTicket($id: ID!) {
+    ticket(_id: $id) {
+      _id
+      purchaseDate
+      show {
+        _id
+        name
+        description
+        ticketDesc
+        ticketBannerImg
+        image
+        price
+        venue {
+          _id
+          name
+          time {
+            _id
+            time
+          }
+          seatRows
+          seatCols
+        }
+      }
+      user {
+        _id
+        firstName
+        lastName
+        email
+        orders {
+          _id
+          purchaseDate
+          products {
+            _id
+            name
+            description
+            price
+            quantity
+            image
+          }
+        }
+      }
+    }
+  }
+`;

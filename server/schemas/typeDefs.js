@@ -63,6 +63,13 @@ type Time {
     show: Show
   }
 
+  type Ticket {
+    _id: ID
+    purchaseDate: String
+    show: Show
+    user: User
+  }
+
   type Checkout {
     session: ID
   }
@@ -111,6 +118,8 @@ type Time {
     checkout(products: [ProductInput]): Checkout
     thoughts(firstName: String): [Thought]
     thought(thoughtId: ID!): Thought
+    ticket(_id: ID!): Ticket
+    tickets: [Ticket]
     me: User
   }
 
@@ -125,6 +134,7 @@ type Time {
     login(email: String!, password: String!): Auth
     addThought(showId: ID!, thoughtText: String!): Thought
     removeThought(thoughtId: ID!): Thought
+    createTicket(showId: ID!, userId: ID!): Ticket
   }
 `;
 

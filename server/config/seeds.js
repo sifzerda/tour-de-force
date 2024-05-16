@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User, Product, Category, Show } = require('../models');
+const { User, Product, Category, Show, Ticket } = require('../models');
 const cleanDB = require('./cleanDB');
 //const thoughtSeeds = require('./thoughtSeeds.json');
 
@@ -9,7 +9,7 @@ db.once('open', async () => {
     await cleanDB('Product', 'products');
     await cleanDB('User', 'users');
     await cleanDB('Show', 'shows');
-//    await cleanDB('Ticket', 'tickets');
+    await cleanDB('Ticket', 'tickets');
     //await cleanDB('Thought', 'thoughts');
 
     const categories = await Category.insertMany([
@@ -147,7 +147,7 @@ db.once('open', async () => {
         }
       ]
     });
-  
+
     await User.create({
       firstName: 'Elijah',
       lastName: 'Holt',
@@ -232,315 +232,306 @@ db.once('open', async () => {
       password: 'password09'
     });
 
-  console.log('🔑 users seeded');
+    console.log('🔑 users seeded');
 
-  // generate venues and shows -----------------------------------------------------------------//
+    // generate venues and shows -----------------------------------------------------------------//
 
-  const shows = await Show.insertMany([
-    {
-      name: 'Coldplay: Music of the Spheres World Tour',
-      description:
-        'The "Music of the Spheres World Tour" is the eighth concert tour by British rock band Coldplay, in support of their album "Music of the Spheres". Coldplay is known for their captivating live performances featuring elaborate stage designs, stunning visual effects, and energetic renditions of their hit songs. Tour surpassed $810.9 million in revenue from 7.66 million tickets across 132 dates, making it the third-highest-grossing and second-most attended tour of all time. Featuring live performance of hit track such as "Higher Power", "Coloratura", and "My Universe" ',
-      ticketBannerImg: 'teddy-bear.jpg',
-      ticketDesc: 'Produced by Live Nation, the Music of the Spheres delivers a show in four Act structure audio-visually representing a journey into the unknown. British rock band Coldplay have been praised for their musicianship, stage presence, joyfulness, and production value. The show production has notably endeavoured to reduce its carbon footprint, whilst not sacrificing the production quality of the show.',
-      image: 'cookie-tin.jpg',
-      price: 32.99,
-      ticketQuant: 5,
+    const shows = await Show.insertMany([
+      {
+        name: 'Coldplay: Music of the Spheres World Tour',
+        description:
+          'The "Music of the Spheres World Tour" is the eighth concert tour by British rock band Coldplay, in support of their album "Music of the Spheres". Coldplay is known for their captivating live performances featuring elaborate stage designs, stunning visual effects, and energetic renditions of their hit songs. Tour surpassed $810.9 million in revenue from 7.66 million tickets across 132 dates, making it the third-highest-grossing and second-most attended tour of all time. Featuring live performance of hit track such as "Higher Power", "Coloratura", and "My Universe" ',
+        ticketBannerImg: 'teddy-bear.jpg',
+        ticketDesc: 'Produced by Live Nation, the Music of the Spheres delivers a show in four Act structure audio-visually representing a journey into the unknown. British rock band Coldplay have been praised for their musicianship, stage presence, joyfulness, and production value. The show production has notably endeavoured to reduce its carbon footprint, whilst not sacrificing the production quality of the show.',
+        image: 'cookie-tin.jpg',
+        price: 32.99,
+        ticketQuant: 5,
 
-      // seed thoughts into show -----------------------------------------------------------------//
+        // seed thoughts into show -----------------------------------------------------------------//
 
-      thoughts: [
-        {
-          thoughtText: "I saw Coldplay at Marvel Stadium and it was incredible!",
-          thoughtAuthor: "Amiko",
-          createdAt: new Date('2024-05-12T10:00:00Z'),
-        },
-        {
-          thoughtText: "Coldplay's Music of the Spheres World Tour was the highlight of the year!",
-          thoughtAuthor: "David",
-          createdAt: new Date('2024-05-10T15:30:00Z'),
-        }
-      ],
+        thoughts: [
+          {
+            thoughtText: "I saw Coldplay at Marvel Stadium and it was incredible!",
+            thoughtAuthor: "Amiko",
+            createdAt: new Date('2024-05-12T10:00:00Z'),
+          },
+          {
+            thoughtText: "Coldplay's Music of the Spheres World Tour was the highlight of the year!",
+            thoughtAuthor: "David",
+            createdAt: new Date('2024-05-10T15:30:00Z'),
+          }
+        ],
 
-      // seed venues into show (and seed times into venues) -----------------------------------------------------------------//
+        // seed venues into show (and seed times into venues) -----------------------------------------------------------------//
 
-      venue: [
+        venue: [
 
-        {
-          name: 'RAC Arena, Perth',
-          seatRows: 4,
-          seatCols: 4,
-          time: [
-            { time: '2024-08-09T00:00:00Z' },
-            { time: '2024-08-10T00:00:00Z' },
-          ]
-        },
+          {
+            name: 'RAC Arena, Perth',
+            seatRows: 4,
+            seatCols: 4,
+            time: [
+              { time: '2024-08-09T00:00:00Z' },
+              { time: '2024-08-10T00:00:00Z' },
+            ]
+          },
 
-        {
-          name: 'Adelaide Entertainment Centre, Adelaide',
-          seatRows: 5,
-          seatCols: 5,
-          time: [
-            { time: '2024-09-01T00:00:00Z' },
-            { time: '2024-09-02T00:00:00Z' },
-          ]
-        },
+          {
+            name: 'Adelaide Entertainment Centre, Adelaide',
+            seatRows: 5,
+            seatCols: 5,
+            time: [
+              { time: '2024-09-01T00:00:00Z' },
+              { time: '2024-09-02T00:00:00Z' },
+            ]
+          },
 
-        {
-          name: 'Marvel Stadium, Melbourne',
-          seatRows: 6,
-          seatCols: 6,
-          time: [
-            { time: '2024-11-05T00:00:00Z' },
-            { time: '2024-11-06T00:00:00Z' },
-          ]
-        },
-      ]
-    },
+          {
+            name: 'Marvel Stadium, Melbourne',
+            seatRows: 6,
+            seatCols: 6,
+            time: [
+              { time: '2024-11-05T00:00:00Z' },
+              { time: '2024-11-06T00:00:00Z' },
+            ]
+          },
+        ]
+      },
 
-    {
-      name: 'Iron Maiden: Future Past World Tour',
-      description:
-        'The "Future Past World Tour" is an ongoing concert tour by English heavy metal band, Iron Maiden, in support of their seventeenth studio album "Senjutsu" and their 1996 album "Somewhere in Time". Iron Maiden is a British heavy metal band that has become one of the most influential and enduring acts in the history of rock music. The band is known for its known for their complex compositions, featuring galloping rhythms, dueling guitar solos, and operatic vocals, as well as their elaborate stage shows. Featuring live performance of hit track such as "Stratego", "The Writing on the Wall", and "Days of Future Past"',
-      ticketBannerImg: 'spinning-top.jpg',
-      ticketDesc: 'The Future Past World Tour has been called one of the most "spectacular stage productions" the band have ever delivered. The iconic British metal band have planned an unforgettable show, featuring live performances of hit Maiden songs that have never been played live before. ',
-      image: 'soap.jpg',
-      price: 109.99,
-      ticketQuant: 5,
+      {
+        name: 'Iron Maiden: Future Past World Tour',
+        description:
+          'The "Future Past World Tour" is an ongoing concert tour by English heavy metal band, Iron Maiden, in support of their seventeenth studio album "Senjutsu" and their 1996 album "Somewhere in Time". Iron Maiden is a British heavy metal band that has become one of the most influential and enduring acts in the history of rock music. The band is known for its known for their complex compositions, featuring galloping rhythms, dueling guitar solos, and operatic vocals, as well as their elaborate stage shows. Featuring live performance of hit track such as "Stratego", "The Writing on the Wall", and "Days of Future Past"',
+        ticketBannerImg: 'spinning-top.jpg',
+        ticketDesc: 'The Future Past World Tour has been called one of the most "spectacular stage productions" the band have ever delivered. The iconic British metal band have planned an unforgettable show, featuring live performances of hit Maiden songs that have never been played live before. ',
+        image: 'soap.jpg',
+        price: 109.99,
+        ticketQuant: 5,
 
-      // seed thoughts into show -----------------------------------------------------------------//
+        // seed thoughts into show -----------------------------------------------------------------//
 
-      thoughts: [
-        {
-          thoughtText: "Just saw Iron Maiden at the RAC Arena and it was amazing!",
-          thoughtAuthor: "Amiko",
-          createdAt: new Date('2024-05-12T10:00:00Z'),
-        },
-        {
-          thoughtText: "I've been to all of Iron Maiden's concerts and this is definitely the best I've seen so far.",
-          thoughtAuthor: "David",
-          createdAt: new Date('2024-05-10T15:30:00Z'),
-        }
-      ],
+        thoughts: [
+          {
+            thoughtText: "Just saw Iron Maiden at the RAC Arena and it was amazing!",
+            thoughtAuthor: "Amiko",
+            createdAt: new Date('2024-05-12T10:00:00Z'),
+          },
+          {
+            thoughtText: "I've been to all of Iron Maiden's concerts and this is definitely the best I've seen so far.",
+            thoughtAuthor: "David",
+            createdAt: new Date('2024-05-10T15:30:00Z'),
+          }
+        ],
 
-      // seed venues into show (and seed times into venues) -----------------------------------------------------------------//
+        // seed venues into show (and seed times into venues) -----------------------------------------------------------------//
 
-      venue: [
+        venue: [
 
-        {
-          name: 'RAC Arena, Perth',
-          seatRows: 4,
-          seatCols: 4,
-          time: [
-            { time: new Date('2024-08-09T00:00:00Z') },
-            { time: new Date('2024-08-10T00:00:00Z') },
-          ]
-        },
+          {
+            name: 'RAC Arena, Perth',
+            seatRows: 4,
+            seatCols: 4,
+            time: [
+              { time: new Date('2024-08-09T00:00:00Z') },
+              { time: new Date('2024-08-10T00:00:00Z') },
+            ]
+          },
 
-        {
-          name: 'Adelaide Entertainment Centre, Adelaide',
-          seatRows: 5,
-          seatCols: 5,
-          time: [
-            { time: new Date('2024-09-01T00:00:00Z') },
-            { time: new Date('2024-09-02T00:00:00Z') },
-          ]
-        },
+          {
+            name: 'Adelaide Entertainment Centre, Adelaide',
+            seatRows: 5,
+            seatCols: 5,
+            time: [
+              { time: new Date('2024-09-01T00:00:00Z') },
+              { time: new Date('2024-09-02T00:00:00Z') },
+            ]
+          },
 
-        {
-          name: 'Rod Laver Arena, Melbourne',
-          seatRows: 3,
-          seatCols: 3,
-          time: [
-            { time: new Date('2024-11-05T00:00:00Z') },
-            { time: new Date('2024-11-06T00:00:00Z') },
-          ]
-        },
+          {
+            name: 'Rod Laver Arena, Melbourne',
+            seatRows: 3,
+            seatCols: 3,
+            time: [
+              { time: new Date('2024-11-05T00:00:00Z') },
+              { time: new Date('2024-11-06T00:00:00Z') },
+            ]
+          },
 
-        {
-          name: 'Brisbane Entertainment Centre, Brisbane',
-          seatRows: 2,
-          seatCols: 2,
-          time: [
-            { time: new Date('2024-11-05T00:00:00Z') },
-            { time: new Date('2024-11-06T00:00:00Z') },
-          ]
-        },
+          {
+            name: 'Brisbane Entertainment Centre, Brisbane',
+            seatRows: 2,
+            seatCols: 2,
+            time: [
+              { time: new Date('2024-11-05T00:00:00Z') },
+              { time: new Date('2024-11-06T00:00:00Z') },
+            ]
+          },
 
-        {
-          name: 'Qudos Bank Arena, Sydney',
-          seatRows: 3,
-          seatCols: 4,
-          time: [
-            { time: new Date('2024-11-05T00:00:00Z') },
-            { time: new Date('2024-11-06T00:00:00Z') },
-          ]
-        },
-      ]
-    },
+          {
+            name: 'Qudos Bank Arena, Sydney',
+            seatRows: 3,
+            seatCols: 4,
+            time: [
+              { time: new Date('2024-11-05T00:00:00Z') },
+              { time: new Date('2024-11-06T00:00:00Z') },
+            ]
+          },
+        ]
+      },
 
-    {
-      name: 'Sia: Reasonable Woman Concert Tour',
-      description:
-        'The "Reasonable Woman Tour" is the sixth concert tour by Australian artist Sia, in support of her tenth studio album, "Reasonable Woman." Sia is renowned for her powerful vocals and emotive stage presence. Her concerts feature high-energy choreography, stunning visuals, and an immersive atmosphere. The concert features live performance of tracks such as "Incredible", "Gimme Love", and "Dance Alone". ',
-      ticketBannerImg: 'canned-coffee.jpg',
-      ticketDesc: 'Produced by LiveNation, the Reasonable Woman Tour is the second arena tour by Sia. The live set has been praised for its imagination with choreography described as "part performance art, part interpretive dance" and an "intense yet celebratory artistic journey of movement, light and sound."',
-      image: 'tablet.jpg',
-      price: 97.99,
-      ticketQuant: 5,
+      {
+        name: 'Sia: Reasonable Woman Concert Tour',
+        description:
+          'The "Reasonable Woman Tour" is the sixth concert tour by Australian artist Sia, in support of her tenth studio album, "Reasonable Woman." Sia is renowned for her powerful vocals and emotive stage presence. Her concerts feature high-energy choreography, stunning visuals, and an immersive atmosphere. The concert features live performance of tracks such as "Incredible", "Gimme Love", and "Dance Alone". ',
+        ticketBannerImg: 'canned-coffee.jpg',
+        ticketDesc: 'Produced by LiveNation, the Reasonable Woman Tour is the second arena tour by Sia. The live set has been praised for its imagination with choreography described as "part performance art, part interpretive dance" and an "intense yet celebratory artistic journey of movement, light and sound."',
+        image: 'tablet.jpg',
+        price: 97.99,
+        ticketQuant: 5,
 
-      // seed thoughts into show -----------------------------------------------------------------//
+        // seed thoughts into show -----------------------------------------------------------------//
 
-      thoughts: [
-        {
-          thoughtText: "If you see this show, you have to get the VIP package, it's worth it!",
-          thoughtAuthor: "Amiko",
-          createdAt: new Date('2024-05-12T10:00:00Z'),
-        },
-        {
-          thoughtText: "Sia is a true performer. Her voice is even more powerful live than on her albums.",
-          thoughtAuthor: "David",
-          createdAt: new Date('2024-05-10T15:30:00Z'),
-        }
-      ],
+        thoughts: [
+          {
+            thoughtText: "If you see this show, you have to get the VIP package, it's worth it!",
+            thoughtAuthor: "Amiko",
+            createdAt: new Date('2024-05-12T10:00:00Z'),
+          },
+          {
+            thoughtText: "Sia is a true performer. Her voice is even more powerful live than on her albums.",
+            thoughtAuthor: "David",
+            createdAt: new Date('2024-05-10T15:30:00Z'),
+          }
+        ],
 
-      // seed venues into show (and seed times into venues) -----------------------------------------------------------------//
+        // seed venues into show (and seed times into venues) -----------------------------------------------------------------//
 
-      venue: [
-        {
-          name: 'AAMI Park, Melbourne',
-          seatRows: 5,
-          seatCols: 3,
-          time: [
-            { time: new Date('2024-08-09T00:00:00Z') },
-            { time: new Date('2024-09-10T00:00:00Z') },
-          ]
-        },
-        {
-          name: 'Allianz Stadium, Adelaide, Sydney',
-          seatRows: 2,
-          seatCols: 6,
-          time: [
-            { time: new Date('2024-10-01T00:00:00Z') },
-            { time: new Date('2024-11-02T00:00:00Z') },
-          ]
-        },
-      ]
-    },
+        venue: [
+          {
+            name: 'AAMI Park, Melbourne',
+            seatRows: 5,
+            seatCols: 3,
+            time: [
+              { time: new Date('2024-08-09T00:00:00Z') },
+              { time: new Date('2024-09-10T00:00:00Z') },
+            ]
+          },
+          {
+            name: 'Allianz Stadium, Adelaide, Sydney',
+            seatRows: 2,
+            seatCols: 6,
+            time: [
+              { time: new Date('2024-10-01T00:00:00Z') },
+              { time: new Date('2024-11-02T00:00:00Z') },
+            ]
+          },
+        ]
+      },
 
-    {
-      name: 'Dua Lipa: Radical Optimism Tour',
-      description:
-        'The "Radical Optimism Tour" is a global concert tour by English/Albanian singer-songwriter Dua Lipa, in support of her third studio album, "Radical Optimism." It features the hit pop anthems retro flair and a modern twist. Dua Lipa is known for her powerful vocals, energetic performances, and catchy pop anthems with retro flair and a modern twist. The concert features live performance of tracks such as "Houdini", "Training Season", and "Illusion". ',
-      ticketBannerImg: 'bedtime-book.jpg',
-      ticketDesc: 'The show is produced by creative studio Ceremony London, and Dua Lipa and her team aims to deliver a show influenced by 1970s-era psychedelia, disco, Britpop, and British rave. It mixes live instrumentation with electronic production.',
-      image: 'camera.jpg',
-      price: 104.99,
-      ticketQuant: 5,
-      // seed thoughts into show -----------------------------------------------------------------//
+      {
+        name: 'Dua Lipa: Radical Optimism Tour',
+        description:
+          'The "Radical Optimism Tour" is a global concert tour by English/Albanian singer-songwriter Dua Lipa, in support of her third studio album, "Radical Optimism." It features the hit pop anthems retro flair and a modern twist. Dua Lipa is known for her powerful vocals, energetic performances, and catchy pop anthems with retro flair and a modern twist. The concert features live performance of tracks such as "Houdini", "Training Season", and "Illusion". ',
+        ticketBannerImg: 'bedtime-book.jpg',
+        ticketDesc: 'The show is produced by creative studio Ceremony London, and Dua Lipa and her team aims to deliver a show influenced by 1970s-era psychedelia, disco, Britpop, and British rave. It mixes live instrumentation with electronic production.',
+        image: 'camera.jpg',
+        price: 104.99,
+        ticketQuant: 5,
+        // seed thoughts into show -----------------------------------------------------------------//
 
-      thoughts: [
-        {
-          thoughtText: "I saw this show at the Adelaide Entertainment Centre and it was one-of-a-kind, plus scored some amazing seats!",
-          thoughtAuthor: "Amiko",
-          createdAt: new Date('2024-05-12T10:00:00Z'),
-        },
-        {
-          thoughtText: "The Radical Optimism Tour was even better than the Future Nostalgia Tour.",
-          thoughtAuthor: "David",
-          createdAt: new Date('2024-05-10T15:30:00Z'),
-        }
-      ],
+        thoughts: [
+          {
+            thoughtText: "I saw this show at the Adelaide Entertainment Centre and it was one-of-a-kind, plus scored some amazing seats!",
+            thoughtAuthor: "Amiko",
+            createdAt: new Date('2024-05-12T10:00:00Z'),
+          },
+          {
+            thoughtText: "The Radical Optimism Tour was even better than the Future Nostalgia Tour.",
+            thoughtAuthor: "David",
+            createdAt: new Date('2024-05-10T15:30:00Z'),
+          }
+        ],
 
-      // seed venues into show (and seed times into venues) -----------------------------------------------------------------//
+        // seed venues into show (and seed times into venues) -----------------------------------------------------------------//
 
-      venue: [
+        venue: [
 
-        {
-          name: 'RAC Arena, Perth',
-          seatRows: 4,
-          seatCols: 4,
-          time: [
-            { time: new Date('2024-11-09T00:00:00Z') },
-            { time: new Date('2024-11-10T00:00:00Z') },
-          ]
-        },
+          {
+            name: 'RAC Arena, Perth',
+            seatRows: 4,
+            seatCols: 4,
+            time: [
+              { time: new Date('2024-11-09T00:00:00Z') },
+              { time: new Date('2024-11-10T00:00:00Z') },
+            ]
+          },
 
-        {
-          name: 'Adelaide Entertainment Centre, Adelaide',
-          seatRows: 5,
-          seatCols: 5,
-          time: [
-            { time: new Date('2024-12-01T00:00:00Z') },
-            { time: new Date('2024-09-02T00:00:00Z') },
-          ]
-        },
+          {
+            name: 'Adelaide Entertainment Centre, Adelaide',
+            seatRows: 5,
+            seatCols: 5,
+            time: [
+              { time: new Date('2024-12-01T00:00:00Z') },
+              { time: new Date('2024-09-02T00:00:00Z') },
+            ]
+          },
 
-        {
-          name: 'Rod Laver Arena, Melbourne',
-          seatRows: 3,
-          seatCols: 3,
-          time: [
-            { time: new Date('2024-05-05T00:00:00Z') },
-            { time: new Date('2024-06-06T00:00:00Z') },
-          ]
-        },
+          {
+            name: 'Rod Laver Arena, Melbourne',
+            seatRows: 3,
+            seatCols: 3,
+            time: [
+              { time: new Date('2024-05-05T00:00:00Z') },
+              { time: new Date('2024-06-06T00:00:00Z') },
+            ]
+          },
 
-        {
-          name: 'Brisbane Entertainment Centre, Brisbane',
-          seatRows: 2,
-          seatCols: 2,
-          time: [
-            { time: new Date('2024-02-05T00:00:00Z') },
-            { time: new Date('2024-03-06T00:00:00Z') },
-          ]
-        },
+          {
+            name: 'Brisbane Entertainment Centre, Brisbane',
+            seatRows: 2,
+            seatCols: 2,
+            time: [
+              { time: new Date('2024-02-05T00:00:00Z') },
+              { time: new Date('2024-03-06T00:00:00Z') },
+            ]
+          },
 
-        {
-          name: 'Qudos Bank Arena, Sydney',
-          seatRows: 3,
-          seatCols: 4,
-          time: [
-            { time: new Date('2024-11-05T00:00:00Z') },
-            { time: new Date('2024-08-06T00:00:00Z') },
-          ]
-        },
-      ]
-    },
+          {
+            name: 'Qudos Bank Arena, Sydney',
+            seatRows: 3,
+            seatCols: 4,
+            time: [
+              { time: new Date('2024-11-05T00:00:00Z') },
+              { time: new Date('2024-08-06T00:00:00Z') },
+            ]
+          },
+        ]
+      },
 
-  ]);
+    ]);
 
-  console.log('🎤 shows seeded');
-  console.log('💭 thoughts seeded');
+    console.log('🎤 shows seeded');
+    console.log('💭 thoughts seeded');
 
-    // generate tickets for already bought tickets as demo -----------------------------------------------------------------//
+    // TICKETS - generate already bought tickets as demo -----------------------------------------------------------------//
 
-//    await Ticket.create({
-//      show: shows[0]._id,
-///      venue: shows[0].venue[0]._id,
-//      time: shows[0].venue[0].time[0].time,
-//      price: shows[0].price,
-//      user: users[0]._id,
-//      quantity: 2
-//    });
-  
-//    await Ticket.create({
-//      show: shows[1]._id,
-//      venue: shows[1].venue[1]._id,
-//      time: shows[1].venue[1].time[1].time,
-//      price: shows[0].price,
-//      user: users[1]._id,
-//      quantity: 3
-//    });
+    // find existing user and show ids
+    const user1 = await User.findOne({ email: 'pamela@testmail.com' });
+    const show1 = await Show.findOne({ name: 'Coldplay: Music of the Spheres World Tour' });
 
-  
-//    console.log('🎟️🎟️🎟️ ("pre-bought") tickets seeded');
+    await Ticket.create({
+      purchaseDate: new Date(), // Sets the purchase date as the seed date
+      user: user1._id,
+      show: show1._id,
+    });
+
+    console.log('🎟️🎟️🎟️ tickets seeded');
 
     // ---------------------------------------------------------- //
 
-  process.exit();
-} catch (err) {
-  console.error(err);
-  process.exit(1);
-}
+    process.exit();
+  } catch (err) {
+    console.error(err);
+    process.exit(1);
+  }
 });

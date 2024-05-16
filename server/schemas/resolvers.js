@@ -1,4 +1,4 @@
-const { User, Product, Category, Order, Show } = require('../models');
+const { User, Product, Category, Order, Show, Ticket } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -7,6 +7,29 @@ const resolvers = {
   Query: {
 
     // ----------------------------------------------------- //
+
+    ticket: async (parent, { _id }) => {
+      try {
+        return await Ticket.findById(_id)
+          .populate('show')
+          .populate('user');
+      } catch (error) {
+        console.error(error);
+        throw new Error('Failed to fetch a ticket by id.');
+      }
+    },
+
+    tickets: async () => {
+      try {
+        return await Ticket.find()
+          .populate('show')
+          .populate('user');
+      } catch (error) {
+        console.error(error);
+        throw new Error('Failed to fetch tickets.');
+      }
+    },
+
 /////////////
     thoughts: async (parent, args) => {
       // Assuming thoughts are retrieved from the current show of the logged-in user
@@ -63,9 +86,6 @@ const resolvers = {
         throw new Error('Failed to fetch show.');
       }
     },
-
-    // ----------------------------------------------------- //
-
 
     // ----------------------------------------------------- //
 
@@ -150,8 +170,32 @@ const resolvers = {
 
   Mutation: {
 
-        //------------------- tickets ------------------------- //
- 
+  //------------------- tickets ------------------------- //
+
+        createTicket: async (parent, { showId, userId }) => {
+          try {
+            // Find the show and user by their IDs
+            const show = await Show.findById(showId);
+            const user = await User.findById(userId);
+            
+            if (!show || !user) {
+              throw new Error('Show or user not found.');
+            }
+    
+            // Create a new ticket
+            const ticket = new Ticket({
+              show: show._id,
+              user: user._id,
+            });
+    
+            // Save the ticket to the database
+            const savedTicket = await ticket.save();
+            return savedTicket;
+          } catch (error) {
+            console.error(error);
+            throw new Error('Failed to create a new ticket.');
+          }
+        },
     
 //------------------- thoughts ------------------------- //
 
