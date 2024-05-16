@@ -41,8 +41,8 @@ function OrderHistory() {
       </>
     ) : null
 
-    {/*     create a function called const renderTicketHistory then second renderOrderHistory below to renderTicketHistory*/}
-
+{/*     create a function called const renderTicketHistory then second renderOrderHistory below to renderTicketHistory*/}
+{/* CHANGE USER.ORDERS TO USER, AND GET TICKET INFO*/}
     const renderTicketHistory = (user) => 
       user ? (
         <>
