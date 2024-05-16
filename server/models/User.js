@@ -3,6 +3,18 @@ const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 const Order = require('./Order');
 
+const ticketSchema = new Schema({
+  purchaseDate: {
+    type: Date,
+    default: Date.now,
+  },
+  show: {
+    type: Schema.Types.ObjectId,
+    ref: 'Show',
+    required: true,
+  },
+});
+
 const userSchema = new Schema({
   firstName: {
     type: String,
@@ -23,6 +35,9 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 5
+  },
+  tickets: {
+    type: [ticketSchema],
   },
   thoughts: [
     {

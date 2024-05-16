@@ -1,4 +1,4 @@
-const { User, Product, Category, Order, Show, Ticket } = require('../models');
+const { User, Product, Category, Order, Show } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -6,31 +6,39 @@ const resolvers = {
 
   Query: {
 
-    // ----------------------------------------------------- //
+    ////////////
 
-    ticket: async (parent, { _id }) => {
+    ticket: async (parent, { userId, ticketId }) => {
       try {
-        return await Ticket.findById(_id)
-          .populate('show')
-          .populate('user');
+        const user = await User.findById(userId);
+        if (!user) {
+          throw new Error('User not found.');
+        }
+        const ticket = user.tickets.id(ticketId);
+        if (!ticket) {
+          throw new Error('Ticket not found.');
+        }
+        return ticket;
       } catch (error) {
         console.error(error);
-        throw new Error('Failed to fetch a ticket by id.');
+        throw new Error('Failed to fetch ticket.');
       }
     },
 
-    tickets: async () => {
+    tickets: async (parent, { userId }) => {
       try {
-        return await Ticket.find()
-          .populate('show')
-          .populate('user');
+        const user = await User.findById(userId);
+        if (!user) {
+          throw new Error('User not found.');
+        }
+        return user.tickets;
       } catch (error) {
         console.error(error);
         throw new Error('Failed to fetch tickets.');
       }
     },
 
-/////////////
+    /////////////
     thoughts: async (parent, args) => {
       // Assuming thoughts are retrieved from the current show of the logged-in user
       if (args.firstName && args.showId) {
@@ -40,7 +48,7 @@ const resolvers = {
       }
       throw new Error('Invalid query parameters.');
     },
-///////////
+    ///////////
     thought: async (parent, { thoughtId }) => {
       try {
         // Find the thought within the shows collection where it's embedded
@@ -53,7 +61,7 @@ const resolvers = {
         throw new Error('Failed to find the thought.');
       }
     },
-///////
+    ///////
     me: async (parent, args, context) => {
       console.log("Debugging 'me' query - Context User:", context.user);
       if (context.user) {
@@ -66,7 +74,7 @@ const resolvers = {
       throw new AuthenticationError('You must be logged in');
     },
     // ----------------------------------------------------- //
-/////////
+    /////////
     shows: async () => {
       try {
         return await Show.find()
@@ -76,7 +84,7 @@ const resolvers = {
         throw new Error('Failed to fetch shows.');
       }
     },
-/////////
+    /////////
     show: async (parent, { _id }) => {
       try {
         return await Show.findById(_id)
@@ -92,7 +100,7 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-/////////////    
+    /////////////    
     products: async (parent, { category, name }) => {
       const params = {};
       if (category) {
@@ -106,24 +114,26 @@ const resolvers = {
       return await Product.find(params)
         .populate('category');
     },
-///////////    
+    ///////////    
     product: async (parent, { _id }) => {
       return await Product.findById(_id)
         .populate('category');
     },
-/////////    
+    /////////    
     user: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id).populate({
+        const user = await User.findById(context.user._id)
+        .populate({
           path: 'orders.products',
           populate: 'category',
-        });
+        })
+        .populate('tickets');
         user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
         return user;
       }
       throw AuthenticationError;
     },
-//////////    
+    //////////    
     order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id)
@@ -135,7 +145,7 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-/////////////    
+    /////////////    
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
       // We map through the list of products sent by the client to extract the _id of each item and create a new Order.
@@ -144,7 +154,7 @@ const resolvers = {
       for (const product of args.products) {
         line_items.push({
           price_data: {
-            currency: 'usd',
+            currency: 'aud',
             product_data: {
               name: product.name,
               description: product.description,
@@ -170,34 +180,25 @@ const resolvers = {
 
   Mutation: {
 
-  //------------------- tickets ------------------------- //
-
-        createTicket: async (parent, { showId, userId }) => {
-          try {
-            // Find the show and user by their IDs
-            const show = await Show.findById(showId);
-            const user = await User.findById(userId);
-            
-            if (!show || !user) {
-              throw new Error('Show or user not found.');
-            }
-    
-            // Create a new ticket
-            const ticket = new Ticket({
-              show: show._id,
-              user: user._id,
-            });
-    
-            // Save the ticket to the database
-            const savedTicket = await ticket.save();
-            return savedTicket;
-          } catch (error) {
-            console.error(error);
-            throw new Error('Failed to create a new ticket.');
+    createTicket: async (parent, { showId }, context) => {
+      try {
+        if (context.user) {
+          const user = await User.findById(context.user._id);
+          if (!user) {
+            throw new AuthenticationError('User not found.');
           }
-        },
+          await user.createTicket(showId);
+          return { message: 'Ticket created successfully.' };
+        }
+        throw new AuthenticationError('You must be logged in to create a ticket.');
+      } catch (error) {
+        console.error(error);
+        throw new Error('Failed to create ticket.');
+      }
+    },
+
     
-//------------------- thoughts ------------------------- //
+    //------------------- thoughts ------------------------- //
 
     // creating a thought linked to a show 
     addThought: async (parent, { showId, thoughtText }, context) => {
@@ -223,7 +224,7 @@ const resolvers = {
       throw new Error('You must be logged in');
     },
 
-/////////////////
+    /////////////////
     removeThought: async (parent, { thoughtId }, context) => {
       if (context.user) {
         try {
@@ -252,31 +253,31 @@ const resolvers = {
 
 
     //------------------- shows ------------------------- //
-//////////////
+    //////////////
     createShow: async (parent, { input }) => {
       const show = await Show.create(input);
       //  add thoughts here if you want
       return show;
     },
-//////////////    
+    //////////////    
     updateShow: async (parent, { _id, input }) => {
       const updatedShow = await Show.findByIdAndUpdate(_id, input, { new: true });
       // add thoughts update here if you want
       return updatedShow;
     },
-///////////////    
+    ///////////////    
     deleteShow: async (parent, { _id }) => {
       return await Show.findByIdAndDelete(_id);
     },
 
     //------------------- ------ ------------------------- //
-////////////
+    ////////////
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
       return { token, user };
     },
-/////////////
+    /////////////
     addOrder: async (parent, { products }, context) => {
       if (context.user) {
         const order = new Order({ products });
@@ -287,7 +288,7 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-///////////////
+    ///////////////
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, {
@@ -296,7 +297,7 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-//////////////
+    //////////////
     updateProduct: async (parent, { _id, quantity }) => {
       const decrement = Math.abs(quantity) * -1;
       return await Product.findByIdAndUpdate(
@@ -305,7 +306,7 @@ const resolvers = {
         { new: true }
       );
     },
-//////////////
+    //////////////
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
@@ -318,11 +319,11 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     }, // end login bracket
-//////////////
+    //////////////
 
 
   }, // end mutation bracket
 
-}; // end resolvers bracket
+} // end resolvers bracket
 
 module.exports = resolvers;

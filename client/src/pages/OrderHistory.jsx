@@ -14,21 +14,15 @@ function OrderHistory() {
 
   if (data) {
     user = data.user;
-    console.log("User:", user); 
   }
 
-  const renderOrderHistory = (user) => 
-
+  const renderOrderHistory = (user) => (
     user ? (
       <>
-        <h2>
-          Your Order History
-        </h2>
+        <h2>Your Order History</h2>
         {user.orders.map((order) => (
           <div key={order._id} className="my-2">
-            <h3>
-              {new Date(parseInt(order.purchaseDate)).toLocaleDateString('en-AU')}
-            </h3>
+            <h3>{new Date(parseInt(order.purchaseDate)).toLocaleDateString('en-AU')}</h3>
             <div className="flex-row">
               {order.products.map(({ _id, image, name, price }, index) => (
                 <div key={index} className="card px-1 py-1">
@@ -46,42 +40,36 @@ function OrderHistory() {
         ))}
       </>
     ) : null
+  );
 
-{/*     create a function called const renderTicketHistory then second renderOrderHistory below to renderTicketHistory*/}
-{/* CHANGE USER.ORDERS TO USER, AND GET TICKET INFO*/}
-    const renderTicketHistory = (user) => 
-      user ? (
-        <>
-          <h2>
-            Your Ticket History
-          </h2>
-          {user.orders.map((order) => (
-            <div key={order._id} className="my-2">
-              <h3>
-                {new Date(parseInt(order.purchaseDate)).toLocaleDateString('en-AU')}
-              </h3>
-              <div className="flex-row">
-                {order.products.map(({ _id, image, name, price }, index) => (
-                  <div key={index} className="card px-1 py-1">
-                    <Link to={`/products/${_id}`}>
-                      <img alt={name} src={`/images/${image}`} />
-                      <p>{name}</p>
-                    </Link>
-                    <div>
-                      <span>${price}</span>
-                    </div>
-                  </div>
-                ))}
+  const renderTicketHistory = (user) => (
+    user ? (
+      <>
+        <h2>Your Ticket History</h2>
+        {user.tickets.map((ticket) => (
+          <div key={ticket._id} className="my-2">
+            <h3>{new Date(parseInt(ticket.purchaseDate)).toLocaleDateString('en-AU')}</h3>
+            <div className="flex-row">
+              <div className="card px-1 py-1">
+                <Link to={`/shows/${ticket.show._id}`}>
+                  <img alt={ticket.show.name} src={`/images/${ticket.show.image}`} />
+                  <p>{ticket.show.name}</p>
+                </Link>
+                <div>
+                  <span>${ticket.show.price}</span>
+                </div>
               </div>
             </div>
-          ))}
-        </>
-      ) : null;
+          </div>
+        ))}
+      </>
+    ) : null
+  );
 
   return (
     <>
-    <h2> Welcome back <span>{user.firstName} {user.lastName}</span>!</h2>
-    <Link to="/shop">← Back to Products</Link>
+      <h2>Welcome back <span>{user.firstName} {user.lastName}</span>!</h2>
+      <Link to="/shop">← Back to Products</Link>
       <div className="container my-1">
         <div className="flex-container">
           <div className="flex-column">
@@ -93,7 +81,7 @@ function OrderHistory() {
         </div>
         <Cart />
       </div>
-      <div className='col-container'>{`
+      <style>{`
         .flex-container {
           display: flex;
           justify-content: space-between;
@@ -102,11 +90,9 @@ function OrderHistory() {
           flex: 1;
           margin: 0 10px;
         }
-      `}</div>
+      `}</style>
     </>
   );
 }
 
 export default OrderHistory;
-
-

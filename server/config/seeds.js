@@ -1,7 +1,6 @@
 const db = require('./connection');
-const { User, Product, Category, Show, Ticket } = require('../models');
+const { User, Product, Category, Show } = require('../models');
 const cleanDB = require('./cleanDB');
-//const thoughtSeeds = require('./thoughtSeeds.json');
 
 db.once('open', async () => {
   try {
@@ -9,8 +8,6 @@ db.once('open', async () => {
     await cleanDB('Product', 'products');
     await cleanDB('User', 'users');
     await cleanDB('Show', 'shows');
-    await cleanDB('Ticket', 'tickets');
-    //await cleanDB('Thought', 'thoughts');
 
     const categories = await Category.insertMany([
       { name: 'Food' },
@@ -136,7 +133,7 @@ db.once('open', async () => {
 
     // ----------------------------------------------- create users
 
-    await User.create({
+    const pamela = await User.create({
       firstName: 'Pamela',
       lastName: 'Washington',
       email: 'pamela@testmail.com',
@@ -513,19 +510,15 @@ db.once('open', async () => {
     console.log('🎤 shows seeded');
     console.log('💭 thoughts seeded');
 
-    // TICKETS - generate already bought tickets as demo -----------------------------------------------------------------//
+    // ----------------------------- tickets into Users----------------------------- //
 
-    // find existing user and show ids
-    const user1 = await User.findOne({ email: 'pamela@testmail.com' });
-    const show1 = await Show.findOne({ name: 'Coldplay: Music of the Spheres World Tour' });
-
-    await Ticket.create({
-      purchaseDate: new Date(), // Sets the purchase date as the seed date
-      user: user1._id,
-      show: show1._id,
+    pamela.tickets.push({
+      show: shows[0]._id,
     });
 
-    console.log('🎟️🎟️🎟️ tickets seeded');
+    await pamela.save();
+
+    console.log('🎫 tickets seeded');
 
     // ---------------------------------------------------------- //
 

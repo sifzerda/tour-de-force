@@ -1,5 +1,29 @@
 import { gql } from '@apollo/client';
 
+export const CREATE_TICKET = gql`
+  mutation CreateTicket($showId: ID!) {
+    createTicket(showId: $showId) {
+      _id
+      purchaseDate
+      show {
+        _id
+        name
+        description
+        image
+        price
+        venue {
+          name
+          time {
+            time
+          }
+          seatRows
+          seatCols
+        }
+      }
+    }
+  }
+`;
+
 export const ADD_THOUGHT = gql`
 mutation addThought($showId: ID!, $thoughtText: String!) {
   addThought(showId: $showId, thoughtText: $thoughtText) {
