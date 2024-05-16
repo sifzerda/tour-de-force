@@ -2,41 +2,25 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+// the ticket model will return all tickets that have been bought by users
+
 const ticketSchema = new Schema({
-    show: {
-        type: Schema.Types.ObjectId,
-        ref: 'Show.name',
-        required: true
-    },
-    venue: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Show.venue',
-        required: true
-    },
-    time: {
-        type: Date,
-        ref: 'Show.venue.time',
-        required: true
-    },
-    price: {
-        type: Number,
-        ref: 'Show.price',
-        required: true,
-    },
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
-    quantity: {
-        type: Number,
-        min: 1,
-        default: 1
-    },
-    purchased: {
-        type: Date,
-        default: Date.now
+  purchaseDate: {
+    type: Date,
+    default: Date.now
+  },
+  show: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Show'
     }
+  ],
+  user: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  ],
 });
 
 const Ticket = mongoose.model('Ticket', ticketSchema);
