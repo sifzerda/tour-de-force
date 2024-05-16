@@ -33,6 +33,9 @@ const PayPalPayment = () => {
     //console.log('ticketString:', ticketString); // debugging
 
     const createOrder = (data, actions) => {
+        //console.log('createOrder data:', data);
+        //console.log('createOrder actions:', actions);
+       //console.log('createOrder data:', data);
         return actions.order.create({
             purchase_units: [{
                 amount: {

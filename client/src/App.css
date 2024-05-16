@@ -629,6 +629,28 @@ div.container.my-1 {
   /* Add more styles as needed */
 }
 
+/*--------------------------------------- Account/profile/order history --------------------*/
+
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.flex-column {
+  flex: 1;
+  min-width: 300px;
+  margin: 0 10px;
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
 
 /*--------------------------------------- MEDIA QUERIES --------------------*/
 

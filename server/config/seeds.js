@@ -136,92 +136,101 @@ db.once('open', async () => {
 
     // ----------------------------------------------- create users
 
-    const users = await User.insertMany([
-      {
-        firstName: 'Pamela',
-        lastName: 'Washington',
-        email: 'pamela@testmail.com',
-        password: 'password12345',
-        orders: [
-          {
-            products: [products[0]._id, products[0]._id, products[1]._id]
-          }
-        ]
-      },
-      {
-        firstName: 'Elijah',
-        lastName: 'Holt',
-        email: 'eholt@testmail.com',
-        password: 'password12345'
-      },
-      {
-        firstName: 'Sal',
-        lastName: 'W',
-        email: 'sal@hotmail.com',
-        password: 'password12345'
-      },
-      {
-        firstName: 'Lernantino',
-        lastName: 'V',
-        email: 'lernantino@gmail.com',
-        password: 'password12345'
-      },
-      {
-        firstName: 'Amiko',
-        lastName: 'Y',
-        email: 'amiko2k20@aol.com',
-        password: 'password12345'
-      },
-      {
-        firstName: 'Xandromus',
-        lastName: 'X',
-        email: 'xandro@aol.com',
-        password: 'password12345'
-      },
-      {
-        firstName: 'Brian',
-        lastName: 'Kernighan',
-        email: 'bkernighan@techfriends.dev',
-        password: 'password01'
-      },
-      {
-        firstName: 'Max',
-        lastName: 'Kanat-Alexander',
-        email: 'mkanatalexander@techfriends.dev',
-        password: 'password02'
-      },
-      {
-        firstName: 'Kent',
-        lastName: 'Beck',
-        email: 'kbeck@techfriends.dev',
-        password: 'password04'
-      },
-      {
-        firstName: 'Edward',
-        lastName: 'Berard',
-        email: 'evberard@techfriends.dev',
-        password: 'password05'
-      },
-      {
-        firstName: 'Alan',
-        lastName: 'Kay',
-        email: 'akay@techfriends.dev',
-        password: 'password06'
-      },
-      {
-        firstName: 'David',
-        lastName: 'Thomas',
-        email: 'dthomas@techfriends.dev',
-        password: 'password08'
-      },
-      {
-        firstName: 'Donald',
-        lastName: 'Knuth',
-        email: 'dknuth@techfriends.dev',
-        password: 'password09'
-      },
+    await User.create({
+      firstName: 'Pamela',
+      lastName: 'Washington',
+      email: 'pamela@testmail.com',
+      password: 'password12345',
+      orders: [
+        {
+          products: [products[0]._id, products[0]._id, products[1]._id]
+        }
+      ]
+    });
+  
+    await User.create({
+      firstName: 'Elijah',
+      lastName: 'Holt',
+      email: 'eholt@testmail.com',
+      password: 'password12345'
+    });
 
-    ]);
+    await User.create({
+      firstName: 'Sal',
+      lastName: 'W',
+      email: 'sal@hotmail.com',
+      password: 'password12345'
+    });
+
+    await User.create({
+      firstName: 'Lernantino',
+      lastName: 'V',
+      email: 'lernantino@gmail.com',
+      password: 'password12345'
+    });
+
+    await User.create({
+      firstName: 'Amiko',
+      lastName: 'Y',
+      email: 'amiko2k20@aol.com',
+      password: 'password12345'
+    });
+
+    await User.create({
+      firstName: 'Xandromus',
+      lastName: 'X',
+      email: 'xandro@aol.com',
+      password: 'password12345'
+    });
+
+    await User.create({
+      firstName: 'Brian',
+      lastName: 'Kernighan',
+      email: 'bkernighan@techfriends.dev',
+      password: 'password01'
+    });
+
+    await User.create({
+      firstName: 'Max',
+      lastName: 'Kanat-Alexander',
+      email: 'mkanatalexander@techfriends.dev',
+      password: 'password02'
+    });
+
+    await User.create({
+      firstName: 'Kent',
+      lastName: 'Beck',
+      email: 'kbeck@techfriends.dev',
+      password: 'password04'
+    });
+
+    await User.create({
+      firstName: 'Edward',
+      lastName: 'Berard',
+      email: 'evberard@techfriends.dev',
+      password: 'password05'
+    });
+
+    await User.create({
+      firstName: 'Alan',
+      lastName: 'Kay',
+      email: 'akay@techfriends.dev',
+      password: 'password06'
+    });
+
+    await User.create({
+      firstName: 'David',
+      lastName: 'Thomas',
+      email: 'dthomas@techfriends.dev',
+      password: 'password08'
+    });
+
+    await User.create({
+      firstName: 'Donald',
+      lastName: 'Knuth',
+      email: 'dknuth@techfriends.dev',
+      password: 'password09'
+    });
 
   console.log('🔑 users seeded');
 

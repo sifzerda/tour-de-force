@@ -8,6 +8,7 @@ import spinner from '../assets/spinner.gif';
 import Cart from "../components/Cart";
 import '../App.css';
 import PayPalPayment from '../components/PayPalPayment';
+import Auth from "../utils/auth";
 
 function TicketPurchase() {
   const params = useParams();
@@ -37,9 +38,12 @@ function TicketPurchase() {
   }, [showsData, id]);
 
   const confirmPurchase = () => {
-    // Handle purchase confirmation logic here
+    if (!Auth.loggedIn()) {
+      alert('Please log in or sign up to finalize your purchase.');
+      return;
+    }
     console.log('New PayPal window opened');
-    setShowPayPal(true); // Show PayPal component
+    setShowPayPal(true);
   };
 
   return (
@@ -55,7 +59,6 @@ function TicketPurchase() {
               <h2>Confirm Your Event Details</h2>
             </div>
             <div className="card-body">
-
               <div className="ticket-details">
                 <p>Event: {currentShow.name}</p>
                 <p>Date: {date}</p>
@@ -64,26 +67,23 @@ function TicketPurchase() {
               </div>
 
 {/* go back button --------------------------------------------------------------*/}
-<Link to={`/tickets/${currentShow._id}`}>← Select a different venue or date </Link>
-             
-{/* proceed to payment gateway --------------------------------------------------*/}
-              <button className="confirm-button" onClick={confirmPurchase}>Confirm Purchase</button>
-           
-{/* Conditionally render PayPal div */}
-
+<Link to={`/tickets/${currentShow._id}`}>← Select a different venue or date</Link>
+              {Auth.loggedIn() ? (
+                <button className="confirm-button" onClick={confirmPurchase}>Confirm Purchase</button>
+              ) : (
+                <button className="confirm-button" onClick={() => alert('Please log in to finalize your purchase.')}>
+                  Confirm Purchase
+                </button>
+              )}
               {showPayPal && (
                 <div className="paypal-div">
                   <p>PayPal goes here</p>
-
-
-<PayPalPayment />
-
-
+                  <PayPalPayment />
                 </div>
               )}
             </div>
           </div>
-          <Cart />
+          {/* Include Cart component */}
         </div>
       )}
     </>
