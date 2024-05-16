@@ -120,6 +120,7 @@ type Time {
     thoughts(firstName: String): [Thought]
     thought(thoughtId: ID!): Thought
     me: User
+    users: [User]
     ticket(userId: ID!, ticketId: ID!): Ticket 
     tickets(userId: ID!): [Ticket]
   }

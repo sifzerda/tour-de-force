@@ -84,6 +84,7 @@ function TicketPurchase() {
             </div>
           </div>
           {/* Include Cart component */}
+          <Cart />
         </div>
       )}
     </>

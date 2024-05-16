@@ -8,6 +8,15 @@ const resolvers = {
 
     ////////////
 
+    users: async () => {
+      try {
+        return await User.find();
+      } catch (error) {
+        console.error(error);
+        throw new Error('Failed to fetch users.');
+      }
+    },
+    
     ticket: async (parent, { userId, ticketId }) => {
       try {
         const user = await User.findById(userId);
@@ -24,7 +33,6 @@ const resolvers = {
         throw new Error('Failed to fetch ticket.');
       }
     },
-
     tickets: async (parent, { userId }) => {
       try {
         const user = await User.findById(userId);
@@ -37,7 +45,6 @@ const resolvers = {
         throw new Error('Failed to fetch tickets.');
       }
     },
-
     /////////////
     thoughts: async (parent, args) => {
       // Assuming thoughts are retrieved from the current show of the logged-in user
@@ -180,22 +187,26 @@ const resolvers = {
 
   Mutation: {
 
-    createTicket: async (parent, { showId }, context) => {
-      try {
-        if (context.user) {
-          const user = await User.findById(context.user._id);
-          if (!user) {
-            throw new AuthenticationError('User not found.');
-          }
-          await user.createTicket(showId);
-          return { message: 'Ticket created successfully.' };
-        }
-        throw new AuthenticationError('You must be logged in to create a ticket.');
-      } catch (error) {
-        console.error(error);
-        throw new Error('Failed to create ticket.');
+createTicket: async (parent, { showId }, context) => {
+  try {
+    if (context.user) {
+      const user = await User.findByIdAndUpdate(
+        context.user._id,
+        { $push: { tickets: { show: showId } } },
+        { new: true }
+      ).populate('tickets');
+      if (!user) {
+        throw new AuthenticationError('User not found.');
       }
-    },
+      const newTicket = user.tickets[user.tickets.length - 1];
+      return { message: 'Ticket created successfully.', ticket: newTicket };
+    }
+    throw new AuthenticationError('You must be logged in to create a ticket.');
+  } catch (error) {
+    console.error(error);
+    throw new Error('Failed to create ticket.');
+  }
+},
 
     
     //------------------- thoughts ------------------------- //
