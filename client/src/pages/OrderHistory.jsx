@@ -16,7 +16,7 @@ function OrderHistory() {
     user ? (
       <>
         <h2>
-          Order History for {user.firstName} {user.lastName}
+          Your Order History
         </h2>
         {user.orders.map((order) => (
           <div key={order._id} className="my-2">
@@ -43,16 +43,46 @@ function OrderHistory() {
 
     {/*     create a function called const renderTicketHistory then second renderOrderHistory below to renderTicketHistory*/}
 
+    const renderTicketHistory = (user) => 
+      user ? (
+        <>
+          <h2>
+            Your Ticket History
+          </h2>
+          {user.orders.map((order) => (
+            <div key={order._id} className="my-2">
+              <h3>
+                {new Date(parseInt(order.purchaseDate)).toLocaleDateString('en-AU')}
+              </h3>
+              <div className="flex-row">
+                {order.products.map(({ _id, image, name, price }, index) => (
+                  <div key={index} className="card px-1 py-1">
+                    <Link to={`/products/${_id}`}>
+                      <img alt={name} src={`/images/${image}`} />
+                      <p>{name}</p>
+                    </Link>
+                    <div>
+                      <span>${price}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </>
+      ) : null;
+
   return (
     <>
+    <h2> Welcome back <span>{user.firstName} {user.lastName}</span>!</h2>
+    <Link to="/shop">← Back to Products</Link>
       <div className="container my-1">
-        <Link to="/shop">← Back to Products</Link>
         <div className="flex-container">
           <div className="flex-column">
             {renderOrderHistory(user)}
           </div>
           <div className="flex-column">
-            {renderOrderHistory(user)}
+            {renderTicketHistory(user)}
           </div>
         </div>
         <Cart />
