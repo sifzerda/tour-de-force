@@ -16,7 +16,7 @@ const resolvers = {
         throw new Error('Failed to fetch users.');
       }
     },
-    
+
     ticket: async (parent, { userId, ticketId }) => {
       try {
         const user = await User.findById(userId);
@@ -39,7 +39,7 @@ const resolvers = {
         if (!user) {
           throw new Error('User not found.');
         }
-        return user.tickets;
+          return user.tickets;
       } catch (error) {
         console.error(error);
         throw new Error('Failed to fetch tickets.');
@@ -130,11 +130,11 @@ const resolvers = {
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id)
-        .populate({
-          path: 'orders.products',
-          populate: 'category',
-        })
-        .populate('tickets');
+          .populate({
+            path: 'orders.products',
+            populate: 'category',
+          })
+          .populate('tickets');
         user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
         return user;
       }
