@@ -137,7 +137,7 @@ db.once('open', async () => {
       firstName: 'Pamela',
       lastName: 'Washington',
       email: 'pamela@testmail.com',
-      password: 'password12345',
+      password: '12345',
       orders: [
         {
           products: [products[0]._id, products[0]._id, products[1]._id]
