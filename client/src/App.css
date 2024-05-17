@@ -348,7 +348,7 @@ div.show-card-list {
 }
 
 div.card {
-  background-color: var(--cyan);
+  background-color: var(--bootstrap-dark);
   border: 4px solid var(--light-red);
   border-radius: 5px;
   margin: 10px;
@@ -369,7 +369,7 @@ div.card img {
 }
 
 div.card h5 {
-  color: var(--dark-yellow);
+  color: var(--light-red);
   font-size: 1.5rem;
 }
 
@@ -386,6 +386,11 @@ div.card h5 {
 }
 
 p.card-text {
+  color: white;
+  font-size: 1.2rem;
+}
+
+p.card-text-2 {
   color: var(--blue);
   font-size: 1.2rem;
 }
@@ -395,8 +400,13 @@ p.card-text {
 }
 
 .list-group-item {
-  color: purple;
+  color: rgb(0, 0, 0);
   font-size: 1.2rem;
+  margin: 10px;
+}
+
+li {
+  list-style-type: none;
 }
 
 /* ---------- show detail page ---------- */

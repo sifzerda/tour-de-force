@@ -16,17 +16,18 @@ function ShowCard({ show }) {
             <Link to={`/Shows/${_id}`}>
                 <img
                     className="card-img-top" alt={name} src={`/images/${image}`} />
-                <p>{name}</p>
+
             </Link>
 
             <div className="card-body">
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">{description}</p>
-                <p className="card-text">Price: ${price}</p>
+                <p className="card-text-2">Price: ${price}</p>
+                <h5 className=''>Venues:</h5>
                 <ul className="list-group list-group-flush">
                     {venue.map((venueItem, index) => (
                         <li key={index} className="list-group-item">
-                            <strong>Venues: {venueItem.name}</strong>
+                            <strong>{venueItem.name}</strong>
                             <ul>
                                 {venueItem.time.map((timeItem, idx) => {
                                     //console.log("TimeItem =", timeItem); //  debugging
