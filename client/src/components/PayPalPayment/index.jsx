@@ -41,9 +41,10 @@ const PayPalPayment = () => {
     };
 
     const onApprove = (data, actions) => {
-        return actions.order.capture().then(function (details) {
+        return actions.order.capture().then(async function (details) {
             console.log('Payment completed:', details);
             document.getElementById('result-message').innerText = 'Payment completed successfully!';
+            await handleCreateTicket(); // Create ticket once payment is successful
             window.location.href = '/tickets/purchase/confirm';
         });
     };
