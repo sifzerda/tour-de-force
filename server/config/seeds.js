@@ -133,10 +133,10 @@ db.once('open', async () => {
 
     // ----------------------------------------------- create users
 
-    const pamela = await User.create({
-      firstName: 'Pamela',
-      lastName: 'Washington',
-      email: 'pamela@testmail.com',
+    const xandromus = await User.create({
+      firstName: 'Xandromus',
+      lastName: 'X',
+      email: 'xandro@aol.com',
       password: '12345',
       orders: [
         {
@@ -170,13 +170,6 @@ db.once('open', async () => {
       firstName: 'Amiko',
       lastName: 'Y',
       email: 'amiko2k20@aol.com',
-      password: 'password12345'
-    });
-
-    await User.create({
-      firstName: 'Xandromus',
-      lastName: 'X',
-      email: 'xandro@aol.com',
       password: 'password12345'
     });
 
@@ -512,11 +505,11 @@ db.once('open', async () => {
 
     // ----------------------------- tickets into Users----------------------------- //
 
-    pamela.tickets.push({
+    xandromus.tickets.push({
       show: shows[0]._id,
     });
 
-    await pamela.save();
+    await xandromus.save();
 
     console.log('🎫 tickets seeded');
 

@@ -341,6 +341,12 @@ p.p-red {
 
 /*--------------------------------------- Show Page / Cards --------------------*/
 
+div.show-card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 div.card {
   background-color: var(--cyan);
   border: 4px solid var(--light-red);
@@ -631,7 +637,6 @@ div.container.my-1 {
 
 /*--------------------------------------- Account/profile/order history --------------------*/
 
-
 .flex-container {
   display: flex;
   justify-content: space-between;
@@ -644,12 +649,6 @@ div.container.my-1 {
   margin: 0 10px;
   box-sizing: border-box;
 }
-
-
-
-
-
-
 
 
 /*--------------------------------------- MEDIA QUERIES --------------------*/
