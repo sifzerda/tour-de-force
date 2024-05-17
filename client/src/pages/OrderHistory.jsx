@@ -46,22 +46,27 @@ function OrderHistory() {
     user ? (
       <>
         <h2>Your Ticket History</h2>
-        {user.tickets.map((ticket) => (
-          <div key={ticket._id} className="my-2">
-            <h3>{new Date(parseInt(ticket.purchaseDate)).toLocaleDateString('en-AU')}</h3>
-            <div className="flex-row">
-              <div className="card px-1 py-1">
-                <Link to={`/shows/${ticket.show._id}`}>
-                  <img alt={ticket.show.name} src={`/images/${ticket.show.image}`} />
-                  <p>{ticket.show.name}</p>
-                </Link>
-                <div>
-                  <span>${ticket.show.price}</span>
+        {user.tickets.map((ticket) => {
+          console.log('Ticket:', ticket); // Log the ticket object
+          return (
+            <div key={ticket._id} className="my-2">
+              <h3>{new Date(parseInt(ticket.purchaseDate)).toLocaleDateString('en-AU')}</h3>
+              <div className="flex-row">
+                <div className="card px-1 py-1">
+                  <Link to={`/shows/${ticket.show._id}`}>
+                    <img alt={ticket.show.name} src={`/images/${ticket.show.image}`} />
+                    <p>{ticket.show.name}</p>
+                  </Link>
+
+{/* USER CHOICE OF VENUE*/}
+{/* USER CHOICE OF TIME*/}
+
+                  <div><span>${ticket.show.price}</span></div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </>
     ) : null
   );

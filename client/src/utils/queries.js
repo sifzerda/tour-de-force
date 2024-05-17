@@ -139,9 +139,6 @@ export const QUERY_USER = gql`
         show {
           _id
           name
-          description
-          ticketDesc
-          ticketBannerImg
           image
           price
           venue {
@@ -151,8 +148,6 @@ export const QUERY_USER = gql`
               _id
               time
             }
-            seatRows
-            seatCols
           }
         }
       }
@@ -191,9 +186,6 @@ export const QUERY_USERS = gql`
       show {
         _id
         name
-        description
-        ticketDesc
-        ticketBannerImg
         image
         price
         venue {
@@ -203,8 +195,6 @@ export const QUERY_USERS = gql`
             _id
             time
           }
-          seatRows
-          seatCols
         }
       }
     }
@@ -258,9 +248,6 @@ export const QUERY_TICKET = gql`
       show {
         _id
         name
-        description
-        ticketDesc
-        ticketBannerImg
         image
         price
         venue {
@@ -270,8 +257,6 @@ export const QUERY_TICKET = gql`
             _id
             time
           }
-          seatRows
-          seatCols
         }
       }
     }

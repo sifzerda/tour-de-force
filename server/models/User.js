@@ -8,9 +8,10 @@ const ticketSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  // Define a reference to the Show model
   show: {
     type: Schema.Types.ObjectId,
-    ref: 'Show',
+    ref: 'Show', // Reference to the Show model
     required: true,
   },
 });
@@ -36,9 +37,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  tickets: {
-    type: [ticketSchema],
-  },
+  tickets: [ticketSchema],
   thoughts: [
     {
       type: Schema.Types.ObjectId,

@@ -10,7 +10,22 @@ const resolvers = {
 
     users: async () => {
       try {
-        return await User.find();
+        const users = await User.find()
+          .populate({
+            path: 'tickets',
+            populate: {
+              path: 'show',
+              model: 'Show'
+            }
+          })
+          .populate({
+            path: 'orders',
+            populate: {
+              path: 'products',
+              model: 'Product'
+            }
+          });
+        return users;
       } catch (error) {
         console.error(error);
         throw new Error('Failed to fetch users.');
@@ -35,7 +50,13 @@ const resolvers = {
     },
     tickets: async (parent, { userId }) => {
       try {
-        const user = await User.findById(userId);
+        const user = await User.findById(userId).populate({
+          path: 'tickets',
+          populate: {
+            path: 'show',
+            model: 'Show'
+          }
+        });
         if (!user) {
           throw new Error('User not found.');
         }
@@ -186,29 +207,53 @@ const resolvers = {
   // ------------------------ MUTATIONS ----------------------------------------------------- //
 
   Mutation: {
+    createTicket: async (parent, { showId, venue, time }, context) => {
+      if (context.user) {
+        try {
+          const user = await User.findById(context.user._id);
+          if (!user) {
+            throw new Error('User not found');
+          }
+          const show = await Show.findById(showId);
+          if (!show) {
+            throw new Error('Show not found');
+          }
+          // Create a new ticket object
+          const newTicket = {
+            show: {
+              _id: show._id,
+              name: show.name,
+              description: show.description,
+              image: show.image,
+              price: show.price,
+              venue: {
+                name: venue, // Set venue name
+                time: {
+                  time: time,
+                }
+              },
+            },
+            purchaseDate: new Date(),
+          };
+          console.log('createTicket - New ticket:', newTicket);
 
-createTicket: async (parent, { showId }, context) => {
-  try {
-    if (context.user) {
-      const user = await User.findByIdAndUpdate(
-        context.user._id,
-        { $push: { tickets: { show: showId } } },
-        { new: true }
-      ).populate('tickets');
-      if (!user) {
-        throw new AuthenticationError('User not found.');
+          // Push the new ticket to the user's tickets array
+          user.tickets.push(newTicket);
+          // Save the updated user
+          await user.save();
+          console.log('createTicket - Ticket saved successfully');
+
+          // Return the newly created ticket
+          return newTicket;
+        } catch (error) {
+          console.error('Failed to create ticket:', error);
+          throw new Error(`Failed to create ticket: ${error.message}`);
+        }
+      } else {
+        throw new AuthenticationError('You must be logged in to create a ticket.');
       }
-      const newTicket = user.tickets[user.tickets.length - 1];
-      return { message: 'Ticket created successfully.', ticket: newTicket };
-    }
-    throw new AuthenticationError('You must be logged in to create a ticket.');
-  } catch (error) {
-    console.error(error);
-    throw new Error('Failed to create ticket.');
-  }
-},
+    },
 
-    
     //------------------- thoughts ------------------------- //
 
     // creating a thought linked to a show 

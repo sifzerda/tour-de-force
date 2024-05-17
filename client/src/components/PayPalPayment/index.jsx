@@ -1,9 +1,10 @@
 import "../../App.css";
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { useLocation } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { useEffect, useState } from 'react';
 import { QUERY_SHOWS } from '../../utils/queries';
+import { CREATE_TICKET } from '../../utils/mutations';
 import spinner from '../../assets/spinner.gif';
 
 const PayPalPayment = () => {
@@ -11,10 +12,8 @@ const PayPalPayment = () => {
     const pathId = location.pathname.split('/');
     const id = pathId[pathId.length - 1];
     const queryParams = new URLSearchParams(location.search);
-    const price = queryParams.get('price');
-    // Define productName as a variable or string literal
-    //const ticketString = '<strong>Entry Pass to </strong>'; // HTML string for 'ticket'
-    //console.log('ticketString:', ticketString); 
+    const venue = queryParams.get('venue');
+    const time = queryParams.get('date');
 
     const [currentShow, setCurrentShow] = useState({});
     const { loading: showsLoading, data: showsData } = useQuery(QUERY_SHOWS, {
@@ -28,49 +27,76 @@ const PayPalPayment = () => {
         }
     }, [showsData, id]);
 
-    const productName = currentShow.name || 'Show entry pass'; // show name or default
-    //console.log('productName:', productName); // debugging
-    //console.log('ticketString:', ticketString); // debugging
+    const [createTicket, { loading: ticketLoading }] = useMutation(CREATE_TICKET);
 
     const createOrder = (data, actions) => {
-        //console.log('createOrder data:', data);
-        //console.log('createOrder actions:', actions);
-       //console.log('createOrder data:', data);
         return actions.order.create({
             purchase_units: [{
                 amount: {
                     currency_code: 'AUD',
-                    value: price // Payment amount from URL
+                    value: currentShow.price // Payment amount from URL
                 },
-                description: `${productName}`, // Product name with 'ticket'
             }]
         });
     };
 
     const onApprove = (data, actions) => {
         return actions.order.capture().then(function (details) {
-            // Handle successful payment
-            //<<<<<<<<<<<<<<<<<<<<<<
             console.log('Payment completed:', details);
             document.getElementById('result-message').innerText = 'Payment completed successfully!';
-       
-                   // Redirect to '/' after payment completion
-                   window.location.href = '/tickets/purchase/confirm'
-       
+            window.location.href = '/tickets/purchase/confirm';
         });
     };
 
-    if (showsLoading) {
-        return <div>
-        <img src={spinner} alt="loading" />
-        Loading...</div>; // loading spinner if page loading
+    const handleCreateTicket = async () => {
+        try {
+            console.log('Current show:', currentShow); // Log the current show object
+            console.log('Show ID:', id); // Log the show ID
+            console.log('Show price:', currentShow.price); // Log the show price
+            console.log('Venue:', venue); // Log the venue value
+            console.log('Time:', time); // Log the time value
+
+            // Convert Unix timestamp to milliseconds and then create a Date object
+            const formattedTime = new Date(parseInt(time)).toLocaleDateString('en-AU');
+            console.log('formatted date:', formattedTime); // Log the time value
+            // Pass show name and price as variables to the mutation
+            await createTicket({
+                variables: {
+                    showId: id,
+                    purchaseDate: new Date(), // Set purchaseDate to current date
+                    show: {
+                        _id: currentShow._id,
+                        name: currentShow.name, // Set show name
+                        price: currentShow.price, // Set show price
+                        description: currentShow.description,
+                        image: currentShow.image,
+                        venue: {
+                            name: venue,
+                            time: formattedTime,
+                        }
+                    }
+                },
+            });
+
+            console.log('Ticket created successfully!');
+            document.getElementById('result-message').innerText = 'Ticket created successfully!';
+        } catch (error) {
+            console.error('Failed to create ticket:', error);
+            document.getElementById('result-message').innerText = 'Failed to create ticket.';
+        }
+    };
+
+    if (showsLoading || ticketLoading) {
+        return (
+            <div>
+                <img src={spinner} alt="loading" />
+                Loading...
+            </div>
+        );
     }
 
     return (
-        <PayPalScriptProvider options={{
-            "client-id": 'ASfVm9USLt1pIfj6gt7ix7hwjWbwG4Q5sebHmw0eeyIIRit-CNBQXmTUQHZZPLa1WWltlP_rvm1-eDCe',
-            currency: "AUD"
-        }}>
+        <PayPalScriptProvider options={{ "client-id": 'ASfVm9USLt1pIfj6gt7ix7hwjWbwG4Q5sebHmw0eeyIIRit-CNBQXmTUQHZZPLa1WWltlP_rvm1-eDCe', currency: "AUD" }}>
             <div>
                 <div id="paypal-button-container">
                     <PayPalButtons
@@ -78,6 +104,7 @@ const PayPalPayment = () => {
                         onApprove={onApprove}
                         style={{ layout: 'horizontal' }} />
                 </div>
+                <button onClick={handleCreateTicket}>Create Ticket</button>
                 <p id="result-message"></p>
             </div>
         </PayPalScriptProvider>
