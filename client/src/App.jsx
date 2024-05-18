@@ -1,5 +1,4 @@
-//import './App.css';
-// index.js or App.js
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Outlet } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink, } from '@apollo/client';
@@ -14,8 +13,6 @@ import Footer from './components/Footer';
 //import dotenv from 'dotenv';
 //dotenv.config();
 
-//import 'antd/dist/antd.css';
-//import Footer from 'antd/lib/footer';
 
 ////////////////////////////////////////////////////////////////////
 
