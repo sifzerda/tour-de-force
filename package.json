@@ -9,7 +9,7 @@
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
     "build": "cd client && npm run build",
-    "render-build":"npm install && npm run build"
+    "render-build": "npm install && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +17,7 @@
   "devDependencies": {
     "concurrently": "^5.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.2.1"
+  }
 }
