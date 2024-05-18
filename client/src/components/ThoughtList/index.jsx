@@ -26,13 +26,13 @@ const ThoughtList = ({
                 >
                   {thought.thoughtAuthor} <br />
                   <span style={{ fontSize: '1rem' }}>
-                    had this thought on {dayjs(thought.createdAt).format('DD/MM/YYYY')}
+                    said on  {dayjs(thought.createdAt).format('DD/MM/YYYY')}
                   </span>
                 </Link>
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
-                    You had this thought on {dayjs(thought.createdAt).format('DD/MM/YYYY')}
+                    You said on {dayjs(thought.createdAt).format('DD/MM/YYYY')}
                   </span>
                 </>
               )}
@@ -44,7 +44,7 @@ const ThoughtList = ({
               className="btn btn-primary btn-block btn-squared"
               to={`/thoughts/${thought._id}`}
             >
-              INSERT STAR RATING HERE OR HEADER OF THOUGHT
+
             </Link>
           </div>
         ))}

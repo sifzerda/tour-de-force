@@ -1,3 +1,4 @@
+import '../../App.css'
 
 import { Link } from 'react-router-dom';
 
@@ -5,15 +6,14 @@ function Header() {
   return (
 
       <header>
-      <h1>
+      <p className='logo-text'>
           <Link to="/">
-            <span role="img" aria-label="shopping bag">🛍️</span>
             tour de force
           </Link>
-        </h1>
+
+          <span><img className='logo-img' src="../../public/images/mic.png" alt="Microphone" /></span> 
+        </p>
       </header>
-
-
   );
 }
 

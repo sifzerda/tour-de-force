@@ -173,7 +173,6 @@ db.once('open', async () => {
       password: 'password08'
     });
 
-
     console.log('🔑 users seeded');
 
     // generate venues and shows -----------------------------------------------------------------//
@@ -182,11 +181,11 @@ db.once('open', async () => {
       {
         name: 'Coldplay: Music of the Spheres World Tour',
         description:
-          'The "Music of the Spheres World Tour" is the eighth concert tour by British rock band Coldplay, in support of their album "Music of the Spheres". Coldplay is known for their captivating live performances featuring elaborate stage designs, stunning visual effects, and energetic renditions of their hit songs. Tour surpassed $810.9 million in revenue from 7.66 million tickets across 132 dates, making it the third-highest-grossing and second-most attended tour of all time. Featuring live performance of hit track such as "Higher Power", "Coloratura", and "My Universe" ',
+          'The "Music of the Spheres World Tour" is the eighth concert tour by British rock band Coldplay, in support of their album "Music of the Spheres". Coldplay is known for their captivating live performances featuring elaborate stage designs, stunning visual effects, and energetic renditions of their hit songs. Tour surpassed $810.9 million in revenue from 7.66 million tickets across 132 dates, making it the third-highest-grossing and second-most attended tour of all time. Featuring live performance of hit tracks such as "Higher Power", "Coloratura", and "My Universe" ',
         ticketBannerImg: 'banner-C.jpg',
         ticketDesc: 'Produced by Live Nation, the Music of the Spheres delivers a show in four Act structure audio-visually representing a journey into the unknown. British rock band Coldplay have been praised for their musicianship, stage presence, joyfulness, and production value. The show production has notably endeavoured to reduce its carbon footprint, whilst not sacrificing the production quality of the show.',
-        image: 'cookie-tin.jpg',
-        price: 32.99,
+        image: 'Cimage.jpg',
+        price: 120.99,
         ticketQuant: 5,
 
         // seed thoughts into show -----------------------------------------------------------------//
@@ -246,7 +245,7 @@ db.once('open', async () => {
           'The "Future Past World Tour" is an ongoing concert tour by English heavy metal band, Iron Maiden, in support of their seventeenth studio album "Senjutsu" and their 1996 album "Somewhere in Time". Iron Maiden is a British heavy metal band that has become one of the most influential and enduring acts in the history of rock music. The band is known for its known for their complex compositions, featuring galloping rhythms, dueling guitar solos, and operatic vocals, as well as their elaborate stage shows. Featuring live performance of hit track such as "Stratego", "The Writing on the Wall", and "Days of Future Past"',
         ticketBannerImg: 'banner-IM.jpg',
         ticketDesc: 'The Future Past World Tour has been called one of the most "spectacular stage productions" the band have ever delivered. The iconic British metal band have planned an unforgettable show, featuring live performances of hit Maiden songs that have never been played live before. ',
-        image: 'soap.jpg',
+        image: 'IMimage.jpg',
         price: 109.99,
         ticketQuant: 5,
 
@@ -327,7 +326,7 @@ db.once('open', async () => {
           'The "Eras Tour" is the sixth concert tour by American singer-songwriter Taylor Swift, who is renowned for her narrative songwriting, catchy pop hooks, and elaborate stage productions. The show features live performances of hit tracks encompassing her entire career, from her country beginnings to her pop superstardom. The concert features live performance of tracks such as "We Are Never Ever Getting Back Together", "Bad Blood", and "Shake It Off".',
         ticketBannerImg: 'banner-TS.jpg',
         ticketDesc: 'Taylor Swift and her production team The Eras Tour is structured to highlight the different phases of her musical career, and featuring songs across all her studio albums. Each segment of the concert is dedicated to a specific era, with Swift performing songs that define that period of her career. The tour is a vibrant mix of nostalgia and innovation, offering fans a comprehensive experience of her artistic evolution."',
-        image: 'tablet.jpg',
+        image: 'TSimage.jpg',
         price: 107.99,
         ticketQuant: 5,
 
@@ -376,7 +375,7 @@ db.once('open', async () => {
           'The "Radical Optimism Tour" is a global concert tour by English/Albanian singer-songwriter Dua Lipa, in support of her third studio album, "Radical Optimism." It features the hit pop anthems retro flair and a modern twist. Dua Lipa is known for her powerful vocals, energetic performances, and catchy pop anthems with retro flair and a modern twist. The concert features live performance of tracks such as "Houdini", "Training Season", and "Illusion". ',
         ticketBannerImg: 'banner-DL-X.jpg',
         ticketDesc: 'The show is produced by creative studio Ceremony London, and Dua Lipa and her team aims to deliver a show influenced by 1970s-era psychedelia, disco, Britpop, and British rave. It mixes live instrumentation with electronic production.',
-        image: 'camera.jpg',
+        image: 'DLimage.jpg',
         price: 104.99,
         ticketQuant: 5,
         // seed thoughts into show -----------------------------------------------------------------//

@@ -6,18 +6,14 @@ import { ADD_USER } from '../utils/mutations';
 import Cart from "../components/Cart";
 
 function Signup(props) {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ firstName: '', lastName: '', email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
+  const [inputFocus, setInputFocus] = useState(false);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const mutationResponse = await addUser({
-      variables: {
-        email: formState.email,
-        password: formState.password,
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-      },
+      variables: { ...formState },
     });
     const token = mutationResponse.data.addUser.token;
     Auth.login(token);
@@ -32,53 +28,65 @@ function Signup(props) {
   };
 
   return (
-    <div className="container my-1">
-      <Link to="/login">← Go to Login</Link>
+    <div className="signup-container">
+      <Link to="/login" className="back-link">← Go to Login</Link>
 
-      <h2 className='login-title'>Signup</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="firstName" className="email-label">First Name:</label>
+      <h2 className="signup-title">Signup</h2>
+      <form className="signup-form" onSubmit={handleFormSubmit}>
+        <div className="form-group-z">
+          <label htmlFor="firstName" className="label-z">First Name:</label>
           <input
-            placeholder="First"
+            className={`input-z ${inputFocus ? 'focused' : ''}`}
+            placeholder="First Name"
             name="firstName"
-            type="firstName"
+            type="text"
             id="firstName"
             onChange={handleChange}
+            onFocus={() => setInputFocus(true)}
+            onBlur={() => setInputFocus(false)}
           />
         </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="lastName" className="email-label">Last Name:</label>
+        <div className="form-group-z">
+          <label htmlFor="lastName" className="label-z">Last Name:</label>
           <input
-            placeholder="Last"
+            className={`input-z ${inputFocus ? 'focused' : ''}`}
+            placeholder="Last Name"
             name="lastName"
-            type="lastName"
+            type="text"
             id="lastName"
             onChange={handleChange}
+            onFocus={() => setInputFocus(true)}
+            onBlur={() => setInputFocus(false)}
           />
         </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="email" className="email-label">Email:</label>
+        <div className="form-group-z">
+          <label htmlFor="email" className="label-z">Email:</label>
           <input
+            className={`input-z ${inputFocus ? 'focused' : ''}`}
             placeholder="youremail@test.com"
             name="email"
             type="email"
             id="email"
             onChange={handleChange}
+            onFocus={() => setInputFocus(true)}
+            onBlur={() => setInputFocus(false)}
           />
         </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="pwd" className="email-label">Password:</label>
+        <div className="form-group-z">
+          <label htmlFor="password" className="label-z">Password:</label>
           <input
+            className={`input-z ${inputFocus ? 'focused' : ''}`}
             placeholder="******"
             name="password"
             type="password"
-            id="pwd"
+            id="password"
             onChange={handleChange}
+            onFocus={() => setInputFocus(true)}
+            onBlur={() => setInputFocus(false)}
           />
         </div>
-        <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
+        <div className="form-group-z">
+          <button type="submit" className="submit-button-z">Submit</button>
         </div>
       </form>
       <Cart />

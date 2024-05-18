@@ -49,28 +49,30 @@ function TicketPurchase() {
           <img src={spinner} alt="loading" />
         </div>
       ) : (
-        <div className="container">
-          <div className="card">
+        <div className="container-2-6">
+          <div className="card-2-6">
             <div className="card-header">
               <h2>Confirm Your Event Details</h2>
             </div>
             <div className="card-body">
               <div className="ticket-details">
-                <p>Event: {currentShow.name}</p>
-                <p>Date: {date}</p>
-                <p>Venue: {venue}</p>
-                <p>Price: ${currentShow.price}</p>
+                <p className='p-white'>Event: <span className='text-cyan'>{currentShow.name}</span></p>
+                <p className='p-white'>Date: <span className='text-cyan'>{date}</span></p>
+                <p className='p-white'>Venue: <span className='text-cyan'>{venue}</span></p>
+                <p className='p-white'>Price: <span className='text-cyan'>${currentShow.price}</span></p>
               </div>
 
-{/* go back button --------------------------------------------------------------*/}
-<Link to={`/tickets/${currentShow._id}`}>← Select a different venue or date</Link>
-              {Auth.loggedIn() ? (
-                <button className="confirm-button" onClick={confirmPurchase}>Confirm Purchase</button>
-              ) : (
-                <button className="confirm-button" onClick={() => alert('Please log in to finalize your purchase.')}>
-                  Confirm Purchase
-                </button>
-              )}
+              {/* go back button --------------------------------------------------------------*/}
+              <div className="button-container">
+              <Link to={`/tickets/${currentShow._id}`}>← Select a different venue or date</Link>
+  {Auth.loggedIn() ? (
+    <button className="confirm-button-2" onClick={confirmPurchase}>Confirm Purchase</button>
+  ) : (
+    <button className="confirm-button-2" onClick={() => alert('Please log in to finalize your purchase.')}>
+      Confirm Purchase
+    </button>
+  )}
+</div>
               {showPayPal && (
                 <div className="paypal-div">
                   <p>PayPal goes here</p>

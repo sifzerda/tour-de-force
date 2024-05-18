@@ -45,58 +45,49 @@ function Navi() {
 
   // end login condition function-----------------------------------------------//
 
-  // ---------------------------------- MAIN NAVIGATION LINKS ----------//
+// ---------------------------------- MAIN NAVIGATION LINKS ----------//
 
-  return (
-    <ul className="nav nav-tabs">
+return (
+  <ul className="nav nav-tabs">
 
-{/* ---------------------------------- HOME --------------------------------  */}
+    {/* ---------------------------------- HOME --------------------------------  */}
 
-      <li className="nav-item">
-        <Link
-          to="/"
-          // This is a conditional (ternary) operator that checks to see if the current page is "Home"
-          // If it is, we set the current page to 'nav-link-active', otherwise we set it to 'nav-link'
-          className={currentPage === '/' ? 'nav-link active' : 'nav-link'}>
-          Home
-        </Link>
-      </li>
+    <li className="nav-item">
+      <Link
+        to="/"
+        className={currentPage === '/' ? 'nav-link active' : 'nav-link'}>
+        Home
+      </Link>
+    </li>
 
-{/* ---------------------------------- SHOWS (ALL) --------------------------------  */}
+    {/* ---------------------------------- SHOWS (ALL) --------------------------------  */}
 
-      <li className="nav-item">
-        <Link
-          to="/Shows"
-          // Check to see if the currentPage is `Shows`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
-          className={currentPage === '/Shows' ? 'nav-link active' : 'nav-link'}>
-          Shows & Events
-        </Link>
-      </li>
+    <li className="nav-item">
+      <Link
+        to="/Shows"
+        className={currentPage === '/Shows' ? 'nav-link active' : 'nav-link'}>
+        Shows & Events
+      </Link>
+    </li>
 
-{/* ---------------------------------- SHOP (ALL) --------------------------------  */}
+    {/* ---------------------------------- SHOP (ALL) --------------------------------  */}
 
-      <li className="nav-item">
-        <Link
-          to="/Shop"
-          // Check to see if the currentPage is `Shop`, and if so we use the active link class from bootstrap. Otherwise, we set it to a normal nav-link
-          className={currentPage === '/Shop' ? 'nav-link active' : 'nav-link'}>
-          Shop
-        </Link>
-      </li>
+    <li className="nav-item">
+      <Link
+        to="/Shop"
+        className={currentPage === '/Shop' ? 'nav-link active' : 'nav-link'}>
+        Shop
+      </Link>
+    </li>
 
-{/* ---------------------------------- log in conditional function --------------------------------  */}
+    {/* ---------------------------------- log in conditional function --------------------------------  */}
 
-<li className="nav-item">
-        {showNavigation()}
-      </li>
+    {showNavigation()}
 
+    {/* ----------------------------------end --------------------------------  */}
 
-{/* ----------------------------------end --------------------------------  */}
-
-
-    </ul>
-
-  );
+  </ul>
+);
 }
 
 export default Navi;

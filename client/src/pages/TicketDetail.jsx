@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_SHOWS } from '../utils/queries';
 import spinner from '../assets/spinner.gif';
-import ShowDetailOne from '../components/ShowDetailOne/index';
 import LocationForm from '../components/LocationForm';
 import Cart from "../components/Cart";
 
@@ -31,39 +30,35 @@ function ShowDetail() {
                 </div>
             ) : (
                 currentShow && (
-                    <div className="container my-1-2">
+                    <>
+                        <Link to={`/shows/${currentShow._id}`} className='back-to-shows link-with-margin'>← Back to Show Info</Link>
+                        <div className="container my-1-2">
 
-{/* ------------------------ insert currentShow.ticketBannerImg ----------------*/}
+                            {/* ------------------------ insert currentShow.ticketBannerImg ----------------*/}
 
-                        <div className='banner-image'>
+                            <div className='banner-image'>
+                                <img className='banner-image' src={`/images/${currentShow.ticketBannerImg}`} alt={currentShow.name} />
+                            </div>
 
-                            <img className='banner-image' src={`/images/${currentShow.ticketBannerImg}`} alt={currentShow.name} />
+                            <div className="card-body-5">
+                                <h2 className='detail-title'>{currentShow.name}</h2>
+                                <p className='detail-text'>{currentShow.ticketDesc}</p>
+                                <p className='detail-price'><strong>Price:</strong>${currentShow.price}{' '}</p>
+                            
+                            </div>
 
+                            {/* ------------------------ insert currentShow.ticketDesc ----------------*/}
+
+                            <p className='detail-price'><strong className='find-tickets'>Find Tickets:</strong></p>
+                            {/* Pass the venues of the current show as props to LocationForm */}
+
+                            <LocationForm show={currentShow} />
+
+                            {/* ------------------------ insert currentShow.ticketDesc ----------------*/}
+
+                            <Cart />
                         </div>
-
-
-
-                        <Link to={`/shows/${currentShow._id}`}>← Back to Show Info</Link>
-                        <div className="card-body">
-                            <h2 className='detail-title'>{currentShow.name}</h2>
-                            <p className='detail-text'>{currentShow.ticketDesc}</p>
-                            <p className='detail-price'><strong>Price:</strong>${currentShow.price}{' '}</p>
-                            <img src={`/images/${currentShow.image}`} alt={currentShow.name} />
-                        </div>
-
-{/* ------------------------ insert currentShow.ticketDesc ----------------*/}
-
-                        <p className='detail-price'><strong>Find Tickets:</strong></p>
-{/* Pass the venues of the current show as props to LocationForm */}
-
-                        <LocationForm show={currentShow} />
-
-{/* ------------------------ insert currentShow.ticketDesc ----------------*/}
-
-                        <ShowDetailOne show={currentShow} />
-
-                        <Cart />
-                    </div>
+                    </>
                 )
             )}
         </>

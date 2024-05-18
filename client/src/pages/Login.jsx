@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 import Cart from "../components/Cart";
+import '../App'; 
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -31,14 +32,15 @@ function Login(props) {
   };
 
   return (
-    <div className="container my-1">
-      <Link to="/signup">← Go to Signup</Link>
+    <div className="container my-1-9">
+      <Link to="/signup" className="back-link">← Go to Signup</Link>
 
       <h2 className='login-title'>Login</h2>
       <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="email" className="email-label">Email address:</label>
+        <div className="form-group-z">
+          <label htmlFor="email" className="label-z">Email address:</label>
           <input
+            className="input-z"
             placeholder="youremail@test.com"
             name="email"
             type="email"
@@ -46,9 +48,10 @@ function Login(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="pwd" className="email-label">Password:</label>
+        <div className="form-group">
+          <label htmlFor="pwd" className="label-z">Password:</label>
           <input
+            className="input-z"
             placeholder="******"
             name="password"
             type="password"
@@ -56,17 +59,18 @@ function Login(props) {
             onChange={handleChange}
           />
         </div>
-        {error ? (
+        {error && (
           <div>
             <p className="error-text">The provided credentials are incorrect</p>
           </div>
-        ) : null}
-        <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
+        )}
+        <div className="button-container-z">
+          <button type="submit" className="submit-button-z">Submit</button>
         </div>
       </form>
       <Cart />
     </div>
+    
   );
 }
 
