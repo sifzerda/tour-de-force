@@ -32,7 +32,7 @@
 }
 
 body {
-  background-color: var(--bootstrap-dark);
+  background-color: white;
 }
 
 h1 {
@@ -460,19 +460,32 @@ border: 2px solid greenyellow;
 
 /* ------------------ ticket page ------------------*/
 
-div.banner-image {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  height: 300px;
-  width: 100%;
-  border: 2px dashed var(--blue);
+/* ticket detail container */
+/* ticket detail container */
+.container.my-1-2 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: 2px solid var(--light-red);
+  width: 100%; /* Set width to 100% by default */
+  max-width: 900px; /* Maximum width */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
-img.banner-image {
-  height: 300px;
-  width: 100%;
+/* Styles for .banner-image */
+.banner-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Ensure the div takes full width */
+  border: 6px solid var(--blue);
+}
+
+/* Make the image responsive */
+.banner-image img {
+  width: 100%; /* Image takes full width of its container */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure the image covers the container */
+  flex-shrink: 0;
 }
 
 .my-1 {
@@ -480,7 +493,14 @@ img.banner-image {
   margin-bottom: 2rem !important;
 }
 
-.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+
+.container, 
+.container-fluid, 
+.container-lg, 
+.container-md, 
+.container-sm, 
+.container-xl, 
+.container-xxl {
   --bs-gutter-x: 0rem;
 }
 
@@ -676,5 +696,29 @@ div.container.my-1 {
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
+  }
+}
+
+/* ticket-banner img */
+/* Media queries for different screen sizes */
+
+/* Mobile phones (up to 600px) */
+@media (max-width: 600px) {
+  .container.my-1-2 {
+    width: 90%; /* Adjust width for mobile phones */
+  }
+}
+
+/* Tablets (601px to 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .container.my-1-2 {
+    width: 90%; /* Adjust width for tablets */
+  }
+}
+
+/* PCs (1025px and above) */
+@media (min-width: 1025px) {
+  .container.my-1-2 {
+    width: 100%; /* Full width for PCs */
   }
 }

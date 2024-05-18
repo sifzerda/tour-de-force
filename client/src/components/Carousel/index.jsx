@@ -24,6 +24,21 @@ function Carousel() {
         <div>
           <img src="image3.jpg" alt="Slide 3" />
         </div>
+        <div>
+          <img src="image3.jpg" alt="Slide 4" />
+        </div>
+        <div>
+          <img src="image3.jpg" alt="Slide 5" />
+        </div>
+        <div>
+          <img src="image3.jpg" alt="Slide 6" />
+        </div>
+        <div>
+          <img src="image3.jpg" alt="Slide 7" />
+        </div>
+        <div>
+          <img src="image3.jpg" alt="Slide 8" />
+        </div>
       </Slider>
     );
   }

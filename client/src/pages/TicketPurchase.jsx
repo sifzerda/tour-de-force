@@ -20,10 +20,6 @@ function TicketPurchase() {
   // Convert and format the timestamp using dayjs
   const date = new Date(parseInt(dateParam)).toLocaleDateString('en-AU');
 
-  //console.log('Venue:', venue); ---- debugging 
-  //console.log('Date Param:', dateParam); ---- debugging
-  //console.log('Formatted Date:', date); ---- debugging
-
   const [currentShow, setCurrentShow] = useState({});
   const [showPayPal, setShowPayPal] = useState(false);
   const { loading: showsLoading, data: showsData } = useQuery(QUERY_SHOWS, {

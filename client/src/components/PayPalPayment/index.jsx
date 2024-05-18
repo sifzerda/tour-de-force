@@ -71,10 +71,9 @@ const PayPalPayment = () => {
                         price: currentShow.price, // Set show price
                         description: currentShow.description,
                         image: currentShow.image,
-                        venue: {
-                            name: venue,
-                            time: formattedTime,
-                        }
+                        // these are taken from the current page URL query params
+                        venue: venue,
+                        time: formattedTime
                     }
                 },
             });

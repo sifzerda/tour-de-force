@@ -1,14 +1,20 @@
 
+import { Link } from 'react-router-dom';
+
 function Header() {
-    return (
+  return (
+
       <header>
-        <h1>My Website</h1>
-  
-        <nav>
-  
-        </nav>
+      <h1>
+          <Link to="/">
+            <span role="img" aria-label="shopping bag">🛍️</span>
+            tour de force
+          </Link>
+        </h1>
       </header>
-    );
-  }
-  
-  export default Header;
+
+
+  );
+}
+
+export default Header;

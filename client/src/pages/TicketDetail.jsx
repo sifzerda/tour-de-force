@@ -9,13 +9,6 @@ import Cart from "../components/Cart";
 
 import '../App.css';
 
-//import ThoughtForm from '../components/ThoughtForm';
-//import { QUERY_THOUGHTS } from '../utils/queries';
-//import Cart from '../components/Cart';
-//import { useStoreContext } from '../utils/GlobalState';
-//import {  REMOVE_FROM_CART,  UPDATE_CART_QUANTITY,  ADD_TO_CART,  UPDATE_PRODUCTS, } from '../utils/actions';
-//import { idbPromise } from '../utils/helpers';
-
 function ShowDetail() {
     const { id } = useParams();
     const [currentShow, setCurrentShow] = useState({});
@@ -38,7 +31,7 @@ function ShowDetail() {
                 </div>
             ) : (
                 currentShow && (
-                    <div className="container my-1">
+                    <div className="container my-1-2">
 
 {/* ------------------------ insert currentShow.ticketBannerImg ----------------*/}
 
