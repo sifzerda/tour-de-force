@@ -1061,6 +1061,17 @@ div.container.my-1-9 {
   margin-top: 20px;
 }
 
+/* home page videos */
+
+ .video-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+ }
+
+ .youtube-video-container {
+ }
+
 /*--------------------------------------- Account/profile/order history --------------------*/
 
 .ticket-history {
@@ -1260,6 +1271,36 @@ h3.order-date-margin-bottom {
   object-fit: contain; 
 }
 
+.show-list li button {
+  background-color: var(--blue);
+  border: 2px solid rgb(2, 92, 95);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add transition for background color */
+}
+
+.show-list li button:hover {
+  background-color: rgb(115, 255, 0);
+  border: 2px solid rgb(37, 80, 2);
+  color: black;
+}
+
+.show-list li {
+  display: flex; 
+  align-items: center; 
+  margin-bottom: 5px; 
+}
+
+.show-list li a {
+  flex: 1; 
+  text-decoration: none; 
+}
+
+.show-list li button {
+  margin-left: 10px; 
+}
 
 /*--------------------------------------- MEDIA QUERIES --------------------*/
 
@@ -1357,3 +1398,16 @@ h3.order-date-margin-bottom {
   }
 }
 
+/* Media queries */
+@media screen and (max-width: 768px) {
+  .react-player {
+    width: 80%; /* Adjust width for smaller screens */
+    height: auto; /* Allow height to adjust proportionally */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .react-player {
+    width: 90%; /* Further adjust width for even smaller screens */
+  }
+}

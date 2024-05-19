@@ -7,6 +7,7 @@ type Show {
   image: String
   ticketBannerImg: String
   ticketDesc: String
+  videoUrl: String
   venue: [Venue]
   price: Float
   thoughts: [Thought]

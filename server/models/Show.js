@@ -71,6 +71,9 @@ const showSchema = new Schema({
   image: {
     type: String
   },
+  videoUrl: {
+    type: String
+  },
   // References the Venue model (which references time schema)
   venue: {
     type: [venueSchema],

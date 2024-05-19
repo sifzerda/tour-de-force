@@ -141,6 +141,7 @@ db.once('open', async () => {
         ticketBannerImg: 'banner-C.jpg',
         ticketDesc: 'Produced by Live Nation, the Music of the Spheres delivers a show in four Act structure audio-visually representing a journey into the unknown. British rock band Coldplay have been praised for their musicianship, stage presence, joyfulness, and production value. The show production has notably endeavoured to reduce its carbon footprint, whilst not sacrificing the production quality of the show.',
         image: 'Cimage.jpg',
+        videoUrl: 'https://www.youtube.com/watch?v=hZDJjSHHGok',
         price: 120.99,
         ticketQuant: 5,
 
@@ -202,6 +203,7 @@ db.once('open', async () => {
         ticketBannerImg: 'banner-IM.jpg',
         ticketDesc: 'The Future Past World Tour has been called one of the most "spectacular stage productions" the band have ever delivered. The iconic British metal band have planned an unforgettable show, featuring live performances of hit Maiden songs that have never been played live before. ',
         image: 'IMimage.jpg',
+        videoUrl: 'https://www.youtube.com/watch?v=UEEm61impBY',
         price: 109.99,
         ticketQuant: 5,
 
@@ -283,6 +285,7 @@ db.once('open', async () => {
         ticketBannerImg: 'banner-TS.jpg',
         ticketDesc: 'Taylor Swift and her production team The Eras Tour is structured to highlight the different phases of her musical career, and featuring songs across all her studio albums. Each segment of the concert is dedicated to a specific era, with Swift performing songs that define that period of her career. The tour is a vibrant mix of nostalgia and innovation, offering fans a comprehensive experience of her artistic evolution."',
         image: 'TSimage.jpg',
+        videoUrl: 'https://www.youtube.com/watch?v=KudedLV0tP0',
         price: 107.99,
         ticketQuant: 5,
 
@@ -332,6 +335,7 @@ db.once('open', async () => {
         ticketBannerImg: 'banner-DL-X.jpg',
         ticketDesc: 'The show is produced by creative studio Ceremony London, and Dua Lipa and her team aims to deliver a show influenced by 1970s-era psychedelia, disco, Britpop, and British rave. It mixes live instrumentation with electronic production.',
         image: 'DLimage.jpg',
+        videoUrl: 'https://www.youtube.com/watch?v=a9cyG_yfh1k',
         price: 104.99,
         ticketQuant: 5,
         // seed thoughts into show -----------------------------------------------------------------//

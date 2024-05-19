@@ -9,6 +9,7 @@ export const QUERY_SHOWS = gql`
       ticketDesc
       ticketBannerImg
       image
+      videoUrl
       price
       venue {
         _id
@@ -39,6 +40,7 @@ export const QUERY_SHOW = gql`
       ticketDesc
       ticketBannerImg
       image
+      videoUrl
       price
       venue {
         _id

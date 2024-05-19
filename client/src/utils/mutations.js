@@ -51,6 +51,7 @@ export const UPDATE_SHOW = gql`
       name
       description
       image
+      videoUrl
       price
       venue {
         name
