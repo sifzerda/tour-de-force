@@ -1152,6 +1152,80 @@ p.ticket-text {
   margin: 5px 0;  
 }
 
+/* merch store order history */
+
+p.merch-name {
+  color: var(--light-red);
+  font-size: 1.5rem;
+}
+
+.image-container-y {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  background-color: var(--bootstrap-dark);
+}
+
+.details-container-y {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  background-color: white;
+}
+
+h3.order-date-margin-bottom {
+  padding-bottom: 10px;
+
+}
+
+.order-history-item {
+  margin-bottom: 20px;
+}
+
+.order-history-item h3 {
+  margin-bottom: 10px;
+}
+
+.order-products {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+.order-product {
+  display: flex;
+  align-items: center;
+  height: 170px;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.order-product img {
+  width: 170px;
+  height: 140px; 
+  margin-right: 20px;  
+  margin-left: 20px;
+}
+
+.product-details {
+  flex: 1;
+}
+
+.product-details p {
+  margin: 0;
+}
+
+.product-details .merch-name {
+  font-weight: bold;
+}
+
+.product-details .price {
+  font-size: 18px;
+  color: #333;
+}
+
 /*  ------------------------ carousel images -------------  */
 
 .carousel-slide {

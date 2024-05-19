@@ -20,19 +20,20 @@ function OrderHistory() {
     user ? (
       <>
         <h2>Your Order History</h2>
-        
         {user.orders.map((order) => (
-          <div key={order._id} className="my-2">
-            <h3>{new Date(parseInt(order.purchaseDate)).toLocaleDateString('en-AU')}</h3>
-            <div className="flex-row">
+          <div key={order._id} className="order-history-item">
+            <h3 className='order-date-margin-bottom'>{new Date(parseInt(order.purchaseDate)).toLocaleDateString('en-AU')}</h3>
+            <div className="order-products">
               {order.products.map(({ _id, image, name, price }, index) => (
-                <div key={index} className="card px-1 py-1">
+                <div key={index} className="order-product">
                   <Link to={`/products/${_id}`}>
                     <img alt={name} src={`/images/${image}`} />
-                    <p>{name}</p>
                   </Link>
-                  <div>
-                    <span>${price}</span>
+                  <div className="product-details">
+                    <Link to={`/products/${_id}`}>
+                      <p className='merch-name'>{name}</p>
+                    </Link>
+                    <div className="price">${price}</div>
                   </div>
                 </div>
               ))}
@@ -74,10 +75,10 @@ function OrderHistory() {
       <div className="container my-1">
         <div className="flex-container-x">
           <div className="flex-column-x">
-            {renderTicketHistory(user)}  {/* Ticket history on the left */}
+            {renderTicketHistory(user)} 
           </div>
           <div className="flex-column-x">
-            {renderOrderHistory(user)}   {/* Order history on the right */}
+            {renderOrderHistory(user)}  
           </div>
         </div>
         <Cart />
