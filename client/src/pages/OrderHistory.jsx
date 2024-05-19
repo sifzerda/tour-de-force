@@ -20,6 +20,7 @@ function OrderHistory() {
     user ? (
       <>
         <h2>Your Order History</h2>
+        
         {user.orders.map((order) => (
           <div key={order._id} className="my-2">
             <h3>{new Date(parseInt(order.purchaseDate)).toLocaleDateString('en-AU')}</h3>
@@ -45,29 +46,23 @@ function OrderHistory() {
   const renderTicketHistory = (user) => (
     user ? (
       <>
-        <h2>Your Ticket History</h2>
-        {user.tickets.map((ticket) => {
-          console.log('Ticket:', ticket); // Log the ticket object
-          return (
-            <div key={ticket._id} className="my-2">
-              <h3>{new Date(parseInt(ticket.purchaseDate)).toLocaleDateString('en-AU')}</h3>
-              <div className="flex-row">
-                <div className="card px-1 py-1">
-                 {/*  <Link to={`/shows/${ticket.show._id}`}>
-                    <img alt={ticket.show.name} src={`/images/${ticket.show.image}`} />
-                    <p>{ticket.show.name}</p>
-                  </Link> */}
-<p>{ticket.showName}</p>
-{/*                    <div><span>${ticket.price}</span></div>  */}
-<p>{ticket.venue}</p>
-<p>{ticket.showName}</p>
-<p>{ticket.time}</p>
-
+        <h2 className='text-add-margin-bottom'>Your Ticket History</h2>
+        <div className="ticket-history">
+          {user.tickets.map((ticket) => (
+            <div key={ticket._id} className="ticket-card">
+              <div className="dashed-line"></div>
+              <div className="ticket-content">
+                <h3>Purchased on: {new Date(parseInt(ticket.purchaseDate)).toLocaleDateString('en-AU')}</h3>
+                <div className="ticket-details">
+                  <p><strong>Show:</strong> {ticket.showName}</p>
+                  <p><strong>Venue:</strong> {ticket.venue}</p>
+                  <p><strong>Date & Time:</strong> {ticket.time}</p>
                 </div>
               </div>
+              <div className="barcode"></div>
             </div>
-          );
-        })}
+          ))}
+        </div>
       </>
     ) : null
   );
@@ -77,26 +72,16 @@ function OrderHistory() {
       <h2>Welcome back <span>{user.firstName} {user.lastName}</span>!</h2>
       <Link to="/shop">← Back to Products</Link>
       <div className="container my-1">
-        <div className="flex-container">
-          <div className="flex-column">
-            {renderOrderHistory(user)}
+        <div className="flex-container-x">
+          <div className="flex-column-x">
+            {renderTicketHistory(user)}  {/* Ticket history on the left */}
           </div>
-          <div className="flex-column">
-            {renderTicketHistory(user)}
+          <div className="flex-column-x">
+            {renderOrderHistory(user)}   {/* Order history on the right */}
           </div>
         </div>
         <Cart />
       </div>
-      <style>{`
-        .flex-container {
-          display: flex;
-          justify-content: space-between;
-        }
-        .flex-column {
-          flex: 1;
-          margin: 0 10px;
-        }
-      `}</style>
     </>
   );
 }
