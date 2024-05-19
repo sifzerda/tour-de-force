@@ -136,20 +136,10 @@ export const QUERY_USER = gql`
       tickets {
         _id
         purchaseDate
-        show {
-          _id
-          name
-          image
-          price
-          venue {
-            _id
-            name
-            time {
-              _id
-              time
-            }
-          }
-        }
+        showName
+        price
+        venue
+        time
       }
     }
   }
@@ -183,20 +173,10 @@ export const QUERY_USERS = gql`
     tickets {
       _id
       purchaseDate
-      show {
-        _id
-        name
-        image
-        price
-        venue {
-          _id
-          name
-          time {
-            _id
-            time
-          }
-        }
-      }
+      showName
+      price
+      venue
+      time
     }
   }
 }
@@ -245,20 +225,10 @@ export const QUERY_TICKET = gql`
     ticket(userId: $userId, ticketId: $ticketId) {
       _id
       purchaseDate
-      show {
-        _id
-        name
-        image
-        price
-        venue {
-          _id
-          name
-          time {
-            _id
-            time
-          }
-        }
-      }
+      showName
+      price
+      venue
+      time
     }
   }
 `;

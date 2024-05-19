@@ -68,8 +68,12 @@ type Time {
   type Ticket {
     _id: ID
     purchaseDate: String
-    show: Show
+    showName: String
+    price: Float
+    venue: String
+    time: String
   }
+  
 
   type Checkout {
     session: ID
@@ -136,7 +140,7 @@ type Time {
     login(email: String!, password: String!): Auth
     addThought(showId: ID!, thoughtText: String!): Thought
     removeThought(thoughtId: ID!): Thought
-    createTicket(showId: ID!): Ticket
+    createTicket(purchaseDate: String!, showName: String!, price: Float!, venue: String!, time: String!): Ticket
   }
 `;
 

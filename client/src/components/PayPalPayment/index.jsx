@@ -63,18 +63,12 @@ const PayPalPayment = () => {
             // Pass show name and price as variables to the mutation
             await createTicket({
                 variables: {
-                    showId: id,
-                    purchaseDate: new Date(), // Set purchaseDate to current date
-                    show: {
-                        _id: currentShow._id,
-                        name: currentShow.name, // Set show name
-                        price: currentShow.price, // Set show price
-                        description: currentShow.description,
-                        image: currentShow.image,
-                        // these are taken from the current page URL query params
-                        venue: venue,
-                        time: formattedTime
-                    }
+                    //showId: id,
+                    purchaseDate: new Date(),
+                    showName: currentShow.name,
+                    price: currentShow.price,
+                    venue: venue,
+                    time: formattedTime,//.toISOString(),
                 },
             });
 

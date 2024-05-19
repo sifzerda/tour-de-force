@@ -8,10 +8,16 @@ const ticketSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  // Define a reference to the Show model
-  show: {
-    type: Schema.Types.ObjectId,
-    ref: 'Show', // Reference to the Show model
+  showName: {
+    type: String,
+    required: true,
+  },
+  venue: {
+    type: String,
+    required: true,
+  },
+  time: {
+    type: String,
     required: true,
   },
 });

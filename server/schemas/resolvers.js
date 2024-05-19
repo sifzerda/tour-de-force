@@ -11,13 +11,7 @@ const resolvers = {
     users: async () => {
       try {
         const users = await User.find()
-          .populate({
-            path: 'tickets',
-            populate: {
-              path: 'show',
-              model: 'Show'
-            }
-          })
+          .populate('tickets')
           .populate({
             path: 'orders',
             populate: {
@@ -207,43 +201,22 @@ const resolvers = {
   // ------------------------ MUTATIONS ----------------------------------------------------- //
 
   Mutation: {
-    createTicket: async (parent, { showId, venue, time }, context) => {
+    createTicket: async (parent, { purchaseDate, showName, price, venue, time }, context) => {
       if (context.user) {
         try {
           const user = await User.findById(context.user._id);
           if (!user) {
             throw new Error('User not found');
           }
-          const show = await Show.findById(showId);
-          if (!show) {
-            throw new Error('Show not found');
-          }
-          // Create a new ticket object
           const newTicket = {
-            show: {
-              _id: show._id,
-              name: show.name,
-              description: show.description,
-              image: show.image,
-              price: show.price,
-              venue: {
-                name: venue, // Set venue name
-                time: {
-                  time: time,
-                }
-              },
-            },
-            purchaseDate: new Date(),
+            purchaseDate,
+            showName,
+            price,
+            venue,
+            time,
           };
-          console.log('createTicket - New ticket:', newTicket);
-
-          // Push the new ticket to the user's tickets array
           user.tickets.push(newTicket);
-          // Save the updated user
           await user.save();
-          console.log('createTicket - Ticket saved successfully');
-
-          // Return the newly created ticket
           return newTicket;
         } catch (error) {
           console.error('Failed to create ticket:', error);

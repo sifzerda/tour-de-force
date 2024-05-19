@@ -131,50 +131,6 @@ db.once('open', async () => {
 
     console.log('📦 products seeded');
 
-    // ----------------------------------------------- create users
-
-    const xandromus = await User.create({
-      firstName: 'Xandromus',
-      lastName: 'X',
-      email: 'xandro@aol.com',
-      password: '12345',
-      orders: [
-        {
-          products: [products[0]._id, products[0]._id, products[1]._id]
-        }
-      ]
-    });
-
-    await User.create({
-      firstName: 'Sal',
-      lastName: 'W',
-      email: 'sal@hotmail.com',
-      password: 'password12345'
-    });
-
-    await User.create({
-      firstName: 'Lernantino',
-      lastName: 'V',
-      email: 'lernantino@gmail.com',
-      password: 'password12345'
-    });
-
-    await User.create({
-      firstName: 'Amiko',
-      lastName: 'Y',
-      email: 'amiko2k20@aol.com',
-      password: 'password12345'
-    });
-
-    await User.create({
-      firstName: 'David',
-      lastName: 'Thomas',
-      email: 'dthomas@techfriends.dev',
-      password: 'password08'
-    });
-
-    console.log('🔑 users seeded');
-
     // generate venues and shows -----------------------------------------------------------------//
 
     const shows = await Show.insertMany([
@@ -452,17 +408,70 @@ db.once('open', async () => {
     ]);
 
     console.log('🎤 shows seeded');
+
     console.log('💭 thoughts seeded');
 
-    // ----------------------------- tickets into Users----------------------------- //
+       // ----------------------------------------------- create users
 
-    xandromus.tickets.push({
-      show: shows[0]._id,
-    });
+       const xandromus = await User.create({
+        firstName: 'Xandromus',
+        lastName: 'X',
+        email: 'xandro@aol.com',
+        password: '12345',
+        orders: [
+          {
+            products: [products[0]._id, products[0]._id, products[1]._id]
+          }
+        ],
+        tickets: [
+          // seed tickets for xandromus
+          {
+            purchaseDate: new Date(),
+            showName: shows[0].name, 
+            venue: shows[0].venue[0].name, 
+            time: shows[0].venue[0].time[0].time 
+          },
+          {
+            purchaseDate: new Date(),
+            showName: shows[1].name, 
+            venue: shows[1].venue[0].name, 
+            time: shows[1].venue[0].time[0].time 
+          }
+          // Add more tickets....
+        ]
+      });
 
-    await xandromus.save();
-
-    console.log('🎫 tickets seeded');
+      console.log('🎫 tickets seeded');
+  
+      await User.create({
+        firstName: 'Sal',
+        lastName: 'W',
+        email: 'sal@hotmail.com',
+        password: 'password12345'
+      });
+  
+      await User.create({
+        firstName: 'Lernantino',
+        lastName: 'V',
+        email: 'lernantino@gmail.com',
+        password: 'password12345'
+      });
+  
+      await User.create({
+        firstName: 'Amiko',
+        lastName: 'Y',
+        email: 'amiko2k20@aol.com',
+        password: 'password12345'
+      });
+  
+      await User.create({
+        firstName: 'David',
+        lastName: 'Thomas',
+        email: 'dthomas@techfriends.dev',
+        password: 'password08'
+      });
+  
+      console.log('🔑 users seeded');
 
     // ---------------------------------------------------------- //
 
