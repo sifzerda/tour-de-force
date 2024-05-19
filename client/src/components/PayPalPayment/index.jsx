@@ -101,10 +101,12 @@ const PayPalPayment = () => {
         <PayPalScriptProvider options={{ "client-id": 'ASfVm9USLt1pIfj6gt7ix7hwjWbwG4Q5sebHmw0eeyIIRit-CNBQXmTUQHZZPLa1WWltlP_rvm1-eDCe', currency: "AUD" }}>
             <div>
                 <div id="paypal-button-container">
-                    <PayPalButtons
-                        createOrder={createOrder}
-                        onApprove={onApprove}
-                        style={{ layout: 'horizontal' }} />
+                    <div className='white-surround'>
+                        <PayPalButtons
+                            createOrder={createOrder}
+                            onApprove={onApprove}
+                            style={{ layout: 'horizontal' }} />
+                    </div>
                 </div>
                 <button onClick={handleCreateTicket}>Create Ticket</button>
                 <p id="result-message"></p>

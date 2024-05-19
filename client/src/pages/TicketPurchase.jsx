@@ -75,7 +75,6 @@ function TicketPurchase() {
 </div>
               {showPayPal && (
                 <div className="paypal-div">
-                  <p>PayPal goes here</p>
                   <PayPalPayment />
                 </div>
               )}

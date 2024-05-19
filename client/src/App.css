@@ -857,8 +857,24 @@ p.p-white {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 40vh; /* Full viewport height */
+  min-height: 40vh;  
 }
+
+#paypal-button-container {
+  position: static!important;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.paypal-button {
+  width: 300px !important;  
+  height: 50px !important;  
+ 
+}
+
+ 
 /* -------------------------------- SEAT MAP ---------------------------------------*/
 
 .seat-map {
