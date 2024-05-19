@@ -853,6 +853,12 @@ p.p-white {
   font-size: 1.3rem;
 }
 
+.my-1-XYZ {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh; /* Full viewport height */
+}
 /* -------------------------------- SEAT MAP ---------------------------------------*/
 
 .seat-map {

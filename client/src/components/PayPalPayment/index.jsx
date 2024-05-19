@@ -45,7 +45,6 @@ const PayPalPayment = () => {
             console.log('Payment completed:', details);
             document.getElementById('result-message').innerText = 'Payment completed successfully!';
             await handleCreateTicket(); // Create ticket once payment is successful
-            window.location.href = '/tickets/purchase/confirm';
         });
     };
 
@@ -82,6 +81,10 @@ const PayPalPayment = () => {
         } catch (error) {
             console.error('Failed to create ticket:', error);
             document.getElementById('result-message').innerText = 'Failed to create ticket.';
+        } finally {
+            setTimeout(() => {
+                window.location.href = '/tickets/purchase/confirm';
+            }, 4000); // 5-second delay before redirecting
         }
     };
 

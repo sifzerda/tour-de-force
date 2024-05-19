@@ -4,7 +4,7 @@ import Cart from "../components/Cart";
 function TicketConfirm() {
   return (
 
-    <div className="container my-1">
+    <div className="container my-1-XYZ">
       <div className="card">
         <div className="card-header">
           <h2> <span><img src="../../public/images/mic.png" alt="Confetti" />
@@ -14,7 +14,7 @@ function TicketConfirm() {
         </div>
         <div className="card-body">
           <div className="ticket-details">
-            <p>
+            <p className='p-white'>
               Thank you for purchasing a ticket! You will shortly receive an email with a copy of your ticket and instructions on how to access the show.
             </p>
            
