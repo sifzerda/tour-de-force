@@ -23,7 +23,7 @@ function ShowCard({ show }) {
                 <h5 className="card-title-2">{name}</h5>
                 <p className="card-text">{description}</p>
                 <p className="card-text-2">Price: ${price}</p>
-                <h5 className=''>Venues:</h5>
+                <h5 className='venues-title'>Venues:</h5>
                 <ul className="list-group list-group-flush">
                     {venue.map((venueItem, index) => (
                         <li key={index} className="list-group-item">
