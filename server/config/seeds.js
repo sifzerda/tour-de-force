@@ -428,12 +428,14 @@ db.once('open', async () => {
           {
             purchaseDate: new Date(),
             showName: shows[0].name, 
+            price: shows[0].price,
             venue: shows[0].venue[0].name, 
             time: shows[0].venue[0].time[0].time 
           },
           {
             purchaseDate: new Date(),
             showName: shows[1].name, 
+            price: shows[1].price,
             venue: shows[1].venue[0].name, 
             time: shows[1].venue[0].time[0].time 
           }

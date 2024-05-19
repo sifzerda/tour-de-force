@@ -53,15 +53,16 @@ function OrderHistory() {
               <h3>{new Date(parseInt(ticket.purchaseDate)).toLocaleDateString('en-AU')}</h3>
               <div className="flex-row">
                 <div className="card px-1 py-1">
-                  <Link to={`/shows/${ticket.show._id}`}>
+                 {/*  <Link to={`/shows/${ticket.show._id}`}>
                     <img alt={ticket.show.name} src={`/images/${ticket.show.image}`} />
                     <p>{ticket.show.name}</p>
-                  </Link>
+                  </Link> */}
+<p>{ticket.showName}</p>
+{/*                    <div><span>${ticket.price}</span></div>  */}
+<p>{ticket.venue}</p>
+<p>{ticket.showName}</p>
+<p>{ticket.time}</p>
 
-{/* USER CHOICE OF VENUE*/}
-{/* USER CHOICE OF TIME*/}
-
-                  <div><span>${ticket.show.price}</span></div>
                 </div>
               </div>
             </div>

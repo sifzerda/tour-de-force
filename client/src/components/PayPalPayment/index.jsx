@@ -58,13 +58,18 @@ const PayPalPayment = () => {
             console.log('Time:', time); // Log the time value
 
             // Convert Unix timestamp to milliseconds and then create a Date object
-            const formattedTime = new Date(parseInt(time)).toLocaleDateString('en-AU');
-            console.log('formatted date:', formattedTime); // Log the time value
+            const formattedTime = new Date(parseInt(time));
+            console.log('Formatted date:', formattedTime); // debugging
+
+            // Convert current date to formatted string
+            const currentDate = new Date();
+            console.log('Current date:', currentDate); // debugging
+
             // Pass show name and price as variables to the mutation
             await createTicket({
                 variables: {
                     //showId: id,
-                    purchaseDate: new Date(),
+                    purchaseDate: currentDate,
                     showName: currentShow.name,
                     price: currentShow.price,
                     venue: venue,

@@ -12,6 +12,10 @@ const ticketSchema = new Schema({
     type: String,
     required: true,
   },
+  price: {
+    type: Number,
+    required: true,
+  },
   venue: {
     type: String,
     required: true,
