@@ -60,68 +60,62 @@ function ShowDetail() {
       ) : (
         currentShow && (
           <>
-            <Link to="/Shows"  className='back-to-shows link-with-margin'>← Check Out What Else is On</Link>
+            <Link to="/Shows" className='back-to-shows link-with-margin'>← Check Out What Else is On</Link>
             <div className="container my-1-3">
-  <div className="card-body">
-    <h2 className='detail-title'>{currentShow.name}</h2>
-    <p className='detail-text'>{currentShow.description}</p>
-    <div className="divider-2" />
-    <p className='detail-price'><strong>Price:</strong>${currentShow.price}{' '}</p>
+              <div className="card-body">
+                <h2 className='detail-title'>{currentShow.name}</h2>
+                <p className='detail-text'>{currentShow.description}</p>
+                <div className="divider-2" />
+                <p className='detail-price'><strong>Price:</strong>${currentShow.price}{' '}</p>
 
-    <div className="container my-1-4">
-      <Link to={`/tickets/${currentShow._id}`} className="ticket-link">
-        <p>  
-          <span className="ticket-icon">🎟️</span>
-          <span className="ticket-icon">🎟️</span>
-          <span className="ticket-icon">🎟️</span>
-          <span className="ticket-icon">🎟️</span>
-          Find Tickets to {currentShow.name}
-          <span className="ticket-icon">🎟️</span>
-          <span className="ticket-icon">🎟️</span>
-          <span className="ticket-icon">🎟️</span>
-          <span className="ticket-icon">🎟️</span>
-        </p>
-      </Link>
-    </div>
+                <div className="container my-1-4">
+                  <Link to={`/tickets/${currentShow._id}`} className="ticket-link">
+                    <p>
+                      <span className="ticket-icon">🎟️</span>
+                      <span className="ticket-icon">🎟️</span>
+                      <span className="ticket-icon">🎟️</span>
+                      <span className="ticket-icon">🎟️</span>
+                      Find Tickets to {currentShow.name}
+                      <span className="ticket-icon">🎟️</span>
+                      <span className="ticket-icon">🎟️</span>
+                      <span className="ticket-icon">🎟️</span>
+                      <span className="ticket-icon">🎟️</span>
+                    </p>
+                  </Link>
+                </div>
 
                 <img src={`/images/${currentShow.image}`} alt={currentShow.name} />
               </div>
-
               {/*--------------------------- Form to add thought -----------------------------------------------------------------*/}
               <div className='post-box'>
                 <h3 className='post-head'>Seen the show? Leave a Review!</h3>
                 {Auth.loggedIn() ? (
-        <>
-          {/* Center the form */}
-          <div className="row justify-content-center">
-            <form onSubmit={handleThoughtSubmit} className="col-lg-9">
-              <textarea
-                name="thoughtText"
-                placeholder="Share your thoughts..."
-                value={thoughtText}
-                className="form-input w-100"
-                style={{ lineHeight: '1.5', resize: 'vertical' }}
-                onChange={handleThoughtChange}
-              ></textarea>
-            </form>
-          </div>
-
-          <div className="row justify-content-center">
-            <div className="col-lg-9">
-              <button className="btn btn-primary btn-block py-3" type="submit">
-                Submit
-              </button>
-            </div>
-          </div>
-          {thoughtError && <p>Error: {thoughtError.message}</p>}
-        </>
-      ) : (
-        <p>
-          You need to be logged in to share a review. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
-      )}
-    </div>
+                  <>
+                    {/* Center the form */}
+                    <div className="row justify-content-center">
+                      <form onSubmit={handleThoughtSubmit} className="col-lg-9">
+                        <textarea
+                          name="thoughtText"
+                          placeholder="Share your thoughts..."
+                          value={thoughtText}
+                          className="form-input w-100"
+                          style={{ lineHeight: '1.5', resize: 'vertical' }}
+                          onChange={handleThoughtChange}
+                        ></textarea>
+                        <button className="btn btn-primary btn-block py-3" type="submit">
+                          Submit
+                        </button>
+                      </form>
+                    </div>
+                    {thoughtError && <p>Error: {thoughtError.message}</p>}
+                  </>
+                ) : (
+                  <p>
+                    You need to be logged in to share a review. Please{' '}
+                    <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
+                  </p>
+                )}
+              </div>
 
               <div className='post-box'>
                 <h3 className='post-head'>What others are saying about the show</h3>
