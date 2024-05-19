@@ -112,6 +112,13 @@ ul.nav.nav-tabs li.nav-item {
   margin: 0 10px; 
 }
 
+h1.whats-on {
+  color: Black;
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .show-list {
   list-style-type: none;
   padding: 0;

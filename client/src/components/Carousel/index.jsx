@@ -17,6 +17,7 @@ function Carousel() {
     return (
       <Slider {...settings}>
         <div className="carousel-slide">
+          
           <div className="aspect-ratio-box">
             <img src="/images/c-c-1.jpg" alt="Slide 1" className="carousel-image" />
           </div>

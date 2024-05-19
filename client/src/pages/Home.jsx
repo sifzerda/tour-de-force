@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Cart from "../components/Cart";
 import Carousel from "../components/Carousel";
 import { QUERY_SHOWS } from '../utils/queries';
+import ReactPlayer from 'react-player';
 
 const Home = () => {
   // Fetch shows data using the query
@@ -13,11 +14,11 @@ const Home = () => {
 
   return (
     <div className="container">
-      <h1>What's On</h1>
+      <h1 className='whats-on'>What's On</h1>
       <Carousel />
 
-
-      {/* a list of links to each show */}
+    
+      {/* links to each show */}
       <div>
         <h2>All Shows</h2>
         <div className="link-list">
