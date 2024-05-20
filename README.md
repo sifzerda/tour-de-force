@@ -1,81 +1,3 @@
-# tour-de-force
-
-
-
-
-## technologies and packages used:
-
-- React Slick Carousel = Home page image carousel
-- fort awesome icons
-- react material UI component library = components and icons
-- sendinblue/Brevo API = for sending notifications to subscribers, and purchase confirmation emails
-- 
-
-
-
-
-## to do:
-- create some queries for shows/typeDEFS, resolvers, mutations, etc
-
-
-Pre-made working accounts for logging in debugging purposes:
-
-
-    email: xandro@aol.com
-    password: password12345
-
-    email: sal@hotmail.com
-    password: password12345
-
-    email: lernantino@gmail.com
-    password: password12345
-
-    email: amiko2k20@aol.com
-    password: password12345
-
-    email: eholt@testmail.com
-    password: password12345
-
-    email: eholt@testmail.com
-    password: 'password12345'
-
-    email: bkernighan@techfriends.dev
-    password: password01
-
-    email: mkanatalexander@techfriends.dev
-    password: password02
-
-    email: kbeck@techfriends.dev
-    password: password04
-
-    email: evberard@techfriends.dev
-    password: password05
-
-    email: akay@techfriends.dev
-    password: password06
-
-    email: dthomas@techfriends.dev
-    password: password08
-
-    email: dknuth@techfriends.dev
-    password: password09
-
-
-
-
-Links to each specific show can be found using the URL:
-
-http:// [domain] /Shows/ [show._id]
-
-
-Instructions:
-
-- npm i 
-- npm run seed
-- npm run start (or develop)
-
-//////////////////////////////////
-
 # Final Project: Tour-de-force Tour Tracker
 
 ## Table of Contents
@@ -90,6 +12,10 @@ Instructions:
 8. Authors and acknowledgment
 9. License
 10. Project status
+
+# Description
+
+This is a fullstack MERN app that runs a ticket purchasing system and merchandise store. It uses express, a MongoDB database, graphql and Apollo server. It allows users to search for gigs and shows, check venues and times where these are showing, and then purchase a ticket, or merchandise from the store.
 
 ## 2. Badges
 
@@ -109,7 +35,6 @@ Instructions:
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) 
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) 
 ![ESLint](https://img.shields.io/badge/ESLint-4B32C3.svg?style=for-the-badge&logo=ESLint&logoColor=white) 
-![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white) 
 ![Apollo-GraphQL](https://img.shields.io/badge/-ApolloGraphQL-311C87?style=for-the-badge&logo=apollo-graphql) 
 ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens) 
 ![Font Awesome](https://img.shields.io/badge/Font%20Awesome-538DD7.svg?style=for-the-badge&logo=Font-Awesome&logoColor=white)
@@ -117,29 +42,19 @@ Instructions:
 ![Material Design Icons](https://img.shields.io/badge/Material%20Design%20Icons-2196F3.svg?style=for-the-badge&logo=Material-Design-Icons&logoColor=white)
 ![Stripe](https://img.shields.io/badge/Stripe-008CDD.svg?style=for-the-badge&logo=Stripe&logoColor=white)
 
-
-
-
 ## 3. Visuals
 
-Link to app deployed on Heroku
+Link to app deployed on Heroku:
+
 https://young-brushlands-11834-82a452c6a69a.herokuapp.com/
 
 ## 4. Installation
 
 CODE EDITOR TERMINAL:
 
-- create an .env file in the directory and paste:
-   - DB_NAME='blog_db'
-   - DB_PASSWORD=' '      <----- enter your mysql password into here 
-   - DB_USER='root'
-
 - npm install i
-- mysql -u root –p
-- SOURCE db/schema.sql
-- Exit;
 - npm run seed
-- npm run watch or npm run start
+- npm run start
 
 Pre-made working accounts for logging in debugging purposes:
 
@@ -157,9 +72,9 @@ Pre-made working accounts for logging in debugging purposes:
 
 ## 5. Usage
 
-This is an API and full stack code that runs a tech related blog. It runs on an express server using Sequelize models that interact with a MySQL database.
+User authentication with JWTs allow users to create an account, which stores data on past store and ticket purchases. Users can also leave reviews to shows they've seen. Visitors can browse current shows and make a purchase of a ticket to a show. Payment for tickets uses PayPal, while merchandise store purchases use Stripe. 
 
-The user can sign up for an account, to create, delete and update posts, and make comments on posts. 
+Once purchasing a ticket or merchandise, users can find records of purchases displaying on their profile page. 
 
 ## 6. Support
 
@@ -184,7 +99,7 @@ The author acknowledges and credits those who have contributed to this project, 
 -	Chee Ho Tai
 -	Pranita Shrestha
 -	Phil Loy 
--   Megan Meyers
+-   Chat GPT and the Xpert Learning Assistant
 
 ## 10. License
 

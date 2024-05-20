@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import dayjs from 'dayjs';
 import '../../App.css';
 
-
 function LocationForm({ show }) {
   const { _id, name, venue, price } = show;
   const { id } = useParams();
@@ -57,7 +56,7 @@ function LocationForm({ show }) {
     setSelectedSeats([{ row, col }]);
   };
 
-  // CREATE THE CONDITIONAL SEAT MAP ----------------------------------//
+  // --------------------------------CREATE THE CONDITIONAL SEAT MAP ----------------------------------//
 
   // Function to convert row numbers to letters
   const convertToLetter = (row) => {
