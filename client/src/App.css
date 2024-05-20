@@ -1328,6 +1328,111 @@ h3.order-date-margin-bottom {
   margin-left: 10px; 
 }
 
+/* ---------------------------  SHOP --------------- */
+
+.product-list-q {
+  width: 100%;
+  padding: 20px;
+}
+
+.product-grid-q {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px; 
+}
+
+.product-card-q {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto; 
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+  transition: transform 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card-q:hover {
+  transform: scale(1.05);
+}
+
+.product-link-q {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.product-image-q {
+  width: 50%;
+  object-fit: cover; 
+  margin-bottom: 10px;
+}
+
+.product-name-q {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 10px 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.product-details-q {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.product-stock-q {
+  font-size: 0.9em;
+  color: #888;
+}
+
+.product-price-q {
+  font-size: 1.1em;
+  color: #333;
+  font-weight: bold;
+}
+
+.add-to-cart-button-q {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart-button-q:hover {
+  background-color: #218838;
+}
+
+button {
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.25rem 1rem;
+  border-radius: .1rem;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid var(--light-red);
+  background-color: var(--bootstrap-dark);
+}
+
 /*--------------------------------------- MEDIA QUERIES --------------------*/
 
 @keyframes logo-spin {

@@ -10,122 +10,121 @@ db.once('open', async () => {
     await cleanDB('Show', 'shows');
 
     const categories = await Category.insertMany([
-      { name: 'Food' },
-      { name: 'Household Supplies' },
-      { name: 'Electronics' },
-      { name: 'Books' },
-      { name: 'Toys' }
+      { name: 'Coldplay: Music of the Spheres' },
+      { name: 'Iron Maiden: Future Past' },
+      { name: 'Taylor Swift: Eras' },
+      { name: 'Dua Lipa: Radical Optimism' }
     ]);
 
     console.log('🔠 categories seeded');
 
     const products = await Product.insertMany([
       {
-        name: 'Tin of Cookies',
+        name: 'Coldplay T-shirt',
         description:
-          'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-        image: 'cookie-tin.jpg',
+          'Coldplay Music of the Spheres Tour Concert Unisex T-shirt.',
+        image: 'product-C-t-shirt.jpg',
         category: categories[0]._id,
-        price: 2.99,
+        price: 45.99,
         quantity: 500
       },
       {
-        name: 'Canned Coffee',
+        name: 'Coldplay Signed Framed Poster',
         description:
-          'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
-        image: 'canned-coffee.jpg',
+          'A Coldplay Music of the Spheres Tour Concert Framed and Signed Poster.',
+        image: 'product-C-framed.jpg',
         category: categories[0]._id,
-        price: 1.99,
+        price: 129.99,
         quantity: 500
       },
       {
-        name: 'Toilet Paper',
-        category: categories[1]._id,
+        name: 'Coldplay Special Edition Vinyl Record Set',
+        category: categories[0]._id,
         description:
-          'Donec volutpat erat erat, sit amet gravida justo sodales in. Phasellus tempus euismod urna. Proin ultrices nisi ut ipsum congue, vitae porttitor libero suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lacinia a nisi non congue.',
-        image: 'toilet-paper.jpg',
-        price: 7.99,
+          'A Coldplay Music of the Spheres Special Edition set of Vinyl Records.',
+        image: 'product-C-CD.webp',
+        price: 42.99,
         quantity: 20
       },
       {
-        name: 'Handmade Soap',
+        name: 'Iron Maiden T-shirt',
         category: categories[1]._id,
         description:
-          'Praesent placerat, odio vel euismod venenatis, lectus arcu laoreet felis, et fringilla sapien turpis vestibulum nisl.',
-        image: 'soap.jpg',
-        price: 3.99,
+          'An Iron Maiden Future Past Tour Concert T-shirt.',
+        image: 'product-IM-t-shirt.jpg',
+        price: 39.99,
         quantity: 50
       },
       {
-        name: 'Set of Wooden Spoons',
+        name: 'Iron Maiden Resin Tankard',
         category: categories[1]._id,
         description:
-          'Vivamus ut turpis in purus pretium mollis. Donec turpis odio, semper vel interdum ut, vulputate at ex. Duis dignissim nisi vel tortor imperdiet finibus. Aenean aliquam sagittis rutrum.',
-        image: 'wooden-spoons.jpg',
-        price: 14.99,
+          'An Iron Maiden Handmade Future Past Grey Resin Tankard.',
+        image: 'product-IM-cup.jpg',
+        price: 140.99,
         quantity: 100
       },
       {
-        name: 'Camera',
-        category: categories[2]._id,
+        name: 'Iron Maiden Senjetsu CD',
+        category: categories[1]._id,
         description:
-          'Vestibulum risus metus, luctus non tortor quis, tincidunt consectetur ex. Nullam vitae lobortis ligula, ut sagittis massa. Curabitur consectetur, tellus at pulvinar venenatis, erat augue cursus erat, eu ullamcorper eros lectus ultrices ipsum. Integer rutrum, augue vitae auctor venenatis, turpis turpis elementum orci, at sagittis risus mi a leo.',
-        image: 'camera.jpg',
-        price: 399.99,
+          'An Iron Maiden Senjetsu CD set.',
+        image: 'product-IM-CD.jpg',
+        price: 52.99,
         quantity: 30
       },
       {
-        name: 'Tablet',
+        name: 'Taylor Swift Eras Tour Concert Bag',
         category: categories[2]._id,
         description:
-          'In sodales, ipsum quis ultricies porttitor, tellus urna aliquam arcu, eget venenatis purus ligula ut nisi. Fusce ut felis dolor. Mauris justo ante, aliquet non tempus in, tempus ac lorem. Aliquam lacinia dolor eu sem eleifend ultrices. Etiam mattis metus metus. Sed ligula dui, placerat non turpis vitae, suscipit volutpat elit. Phasellus sagittis, diam elementum suscipit fringilla, libero mauris scelerisque ex, ac interdum diam erat non sapien.',
-        image: 'tablet.jpg',
-        price: 199.99,
+          'A Taylor Swift Eras Tour Concert Tote Bag.',
+        image: 'product-TS-bag.jpg',
+        price: 15.00,
         quantity: 30
       },
       {
-        name: 'Tales at Bedtime',
+        name: 'Taylor Swift Cup',
+        category: categories[2]._id,
+        description:
+          'A Taylor Swift Porcelain Cup',
+        image: 'product-TS-cup.jpg',
+        price: 9.99,
+        quantity: 100
+      },
+      {
+        name: 'Taylor Swift Eras Tour Concert T-shirt',
+        category: categories[2]._id,
+        description: 'A Taylor Swift Eras Tour Concert T-shirt.',
+        image: 'product-TS-t-shirt.jpg',
+        price: 45.99,
+        quantity: 1000
+      },
+      {
+        name: 'Dua Lipa Radical Optimism Tour Concert T-shirt',
         category: categories[3]._id,
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare diam quis eleifend rutrum. Aliquam nulla est, volutpat non enim nec, pharetra gravida augue. Donec vitae dictum neque. Pellentesque arcu lorem, fringilla non ligula ac, tristique bibendum erat. Ut a semper nibh. Quisque a mi et mi tempor ultricies. Maecenas eu ipsum eu enim hendrerit accumsan at euismod urna.',
-        image: 'bedtime-book.jpg',
-        price: 9.99,
-        quantity: 100
-      },
-      {
-        name: 'Spinning Top',
-        category: categories[4]._id,
-        description: 'Ut vulputate hendrerit nibh, a placerat elit cursus interdum.',
-        image: 'spinning-top.jpg',
-        price: 1.99,
+          'A Dua Lipa Radical Optimism Tour Concert T-shirt.',
+        image: 'product-DL-t-shirt.jpg',
+        price: 42.00,
         quantity: 1000
       },
       {
-        name: 'Set of Plastic Horses',
-        category: categories[4]._id,
+        name: 'Dua Lipa Radical Optimism Tour Concert Special Edition Vinyl Record Set',
+        category: categories[3]._id,
         description:
-          'Sed a mauris condimentum, elementum enim in, rhoncus dui. Phasellus lobortis leo odio, sit amet pharetra turpis porta quis.',
-        image: 'plastic-horses.jpg',
-        price: 2.99,
-        quantity: 1000
-      },
-      {
-        name: 'Teddy Bear',
-        category: categories[4]._id,
-        description:
-          'Vestibulum et erat finibus erat suscipit vulputate sed vitae dui. Ut laoreet tellus sit amet justo bibendum ultrices. Donec vitae felis vestibulum, congue augue eu, finibus turpis.',
-        image: 'teddy-bear.jpg',
-        price: 7.99,
+          'A Dua Lipa Radical Optimism Tour Concert Special Edition Vinyl Record Set.',
+        image: 'product-DL-CD.jpg',
+        price: 41.99,
         quantity: 100
       },
       {
-        name: 'Alphabet Blocks',
-        category: categories[4]._id,
+        name: 'Dua Lipa Radical Optimism Tour Concert Box Set',
+        category: categories[3]._id,
         description:
-          'Morbi consectetur viverra urna, eu fringilla turpis faucibus sit amet. Suspendisse potenti. Donec at dui ac sapien eleifend hendrerit vel sit amet lectus.',
-        image: 'alphabet-blocks.jpg',
-        price: 9.99,
-        quantity: 600
+          'A Dua Lipa Radical Optimism Tour Concert Box Set.',
+        image: 'product-DL-box.png',
+        price: 60.99,
+        quantity: 50
       }
     ]);
 
