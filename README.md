@@ -46,7 +46,7 @@ This is a fullstack MERN app that runs a ticket purchasing system and merchandis
 
 Link to app deployed on Heroku:
 
-https://young-brushlands-11834-82a452c6a69a.herokuapp.com/
+https://tour-de-force-397007b365cc.herokuapp.com/
 
 ## 4. Installation
 
