@@ -70,6 +70,21 @@ Pre-made working accounts for logging in debugging purposes:
     email: xandro@aol.com
     password: password12345
 
+Dummy stripe card number:
+
+- 4242 4242 4242 4242
+- other details can be made up
+
+Dummy PayPal account info:
+- Email: sb-2vzk530821041@personal.example.com
+- Password: wQ9jfet@
+- Name: John Doe
+- Card: 
+   - Type: VISA
+   - Card Number: 4239535067551077
+   - Expiry: 06/2029
+   - CVC Code: Any 3 digits
+
 ## 5. Usage
 
 User authentication with JWTs allow users to create an account, which stores data on past store and ticket purchases. Users can also leave reviews to shows they've seen. Visitors can browse current shows and make a purchase of a ticket to a show. Payment for tickets uses PayPal, while merchandise store purchases use Stripe. 
