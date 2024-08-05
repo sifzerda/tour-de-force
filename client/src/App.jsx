@@ -13,7 +13,6 @@ import Footer from './components/Footer';
 //import dotenv from 'dotenv';
 //dotenv.config();
 
-
 ////////////////////////////////////////////////////////////////////
 
 const httpLink = createHttpLink({

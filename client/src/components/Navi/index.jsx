@@ -49,7 +49,6 @@ function Navi() {
 
 return (
   <ul className="nav nav-tabs">
-
     {/* ---------------------------------- HOME --------------------------------  */}
 
     <li className="nav-item">
